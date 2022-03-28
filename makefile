@@ -5,7 +5,7 @@ LDLIBS = -lglut -lGLU -lGL -lm
 all: einvolution simple-clean
 
 einvolution: main.o
-	$(CC) main.o $(GLUT) -o einvolution
+	$(CC) main.o $(LDLIBS) -o einvolution
 
 main: main.c
 	$(CC) $(CFLAGS) main.c -c
