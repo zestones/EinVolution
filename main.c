@@ -1,16 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "GL/glut.h"
-#include "GL/gl.h"
-
-#include <math.h>
-
+#include "./includes/global.h"
 #include "./includes/camera.h"
 
 #include "window.h"
 
-camera cam;
+static camera cam;
 
 /**
  * @brief Init the glut window
@@ -36,16 +29,6 @@ static void Init(void) {
         get_x(look_at), get_y(look_at), get_z(look_at), 
         get_x(cam.up), get_y(cam.up), get_z(cam.up)
     );
-}
-
-/**
- * @brief Handle key events
- */
-static void Key(unsigned char key, int x, int y) {
-    switch (key) {
-        // escape
-        case 27: exit(EXIT_SUCCESS);
-    }
 }
 
 /**
@@ -81,8 +64,37 @@ static void Draw(void) {
     glutSwapBuffers();
 }
 
-// Moves the camera according to the key pressed, then ask to refresh the display.
-void special(int key, int x, int y) {
+/**
+ * @brief handle key events
+ * 
+ * @param key 
+ * @param x 
+ * @param y 
+ */
+static void Key(unsigned char key, int x, int y) {
+    switch (key) {
+        // escape
+        case 27: exit(EXIT_SUCCESS);
+        // spacebar
+        case 32: move_up(&cam);
+        break;
+        // 'n'
+        case 110: move_down(&cam);
+        break;
+    }
+
+    glutPostRedisplay();
+}
+
+/**
+ * @brief Moves the camera according to the key pressed,
+ * then ask to refresh the display. 
+ * 
+ * @param key 
+ * @param x 
+ * @param y 
+ */
+static void special(int key, int x, int y) {
     switch (key) {
         case GLUT_KEY_LEFT: move_right(&cam); break;
         case GLUT_KEY_RIGHT: move_left(&cam); break;

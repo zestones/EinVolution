@@ -61,8 +61,8 @@ void move_left(camera *cam) {
  * @param cam 
  * @param speed 
  */
-static void move(camera *cam, double speed) {
-    cam->eye = addition_vector(cam->eye, mult_vector(cam->forward, speed));  
+static void move(camera *cam, vector direction, double speed) {
+    cam->eye = addition_vector(cam->eye, mult_vector(direction, speed));  
 }
 
 /**
@@ -70,17 +70,30 @@ static void move(camera *cam, double speed) {
  * 
  * @param cam 
  */
-void move_forward(camera *cam) {
-    move(cam, cam->speed);
-}
+void move_forward(camera *cam) { move(cam, cam->forward,cam->speed); }
 
 /**
  * @brief move the camera backward
  * 
  * @param cam 
  */
-void move_backward(camera *cam) {
-    move(cam, -cam->speed);
+void move_backward(camera *cam) { move(cam, cam->forward, -cam->speed); }
+
+/**
+ * @brief move the camera up
+ * 
+ * @param cam 
+ */
+void move_up(camera *cam) { move(cam, cam->up, cam->speed); }
+
+/**
+ * @brief move the camera down
+ * 
+ * @param cam 
+ */
+void move_down(camera *cam) {
+    if (get_y(cam->eye) < 1) return;
+    move(cam, cam->up, -cam->speed);
 }
 
 /**

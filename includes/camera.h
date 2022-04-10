@@ -63,6 +63,20 @@ void move_forward(camera *cam);
 void move_backward(camera *cam);
 
 /**
+ * @brief move the camera up
+ * 
+ * @param cam 
+ */
+void move_up(camera *cam);
+
+/**
+ * @brief move the camera down
+ * 
+ * @param cam 
+ */
+void move_down(camera *cam);
+
+/**
  * @brief Get the camera direction object
  * 
  * @param cam 
