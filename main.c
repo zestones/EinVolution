@@ -66,11 +66,11 @@ static void draw_axes() {
  */
 static void Draw(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-
     draw_axes();
 
+    glLoadIdentity();
     vector look_at = addition_vector(get_camera_position(cam), get_camera_direction(cam));
+
     gluLookAt(
         get_x(cam.eye), get_y(cam.eye), get_z(cam.eye), 
         get_x(look_at), get_y(look_at), get_z(look_at), 
