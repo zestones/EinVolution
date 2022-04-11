@@ -1,5 +1,13 @@
 #include "../../includes/utils/cube.h"
 
+/**
+ * @brief Create a cube object
+ * 
+ * @param p1 
+ * @param p2 
+ * @param size 
+ * @return cube 
+ */
 cube create_cube(position p1, position p2, double size) {
     cube c;
     
@@ -9,7 +17,12 @@ cube create_cube(position p1, position p2, double size) {
     return c;
 }
 
-/** Retourne les 8 points du cube */
+/**
+ * @brief Get the point cube object
+ * 
+ * @param c 
+ * @return position* 
+ */
 position *get_point_cube(cube c) {
     int i = 0;
     
@@ -28,11 +41,26 @@ position *get_point_cube(cube c) {
     return point_cube;
 }
 
+/**
+ * @brief check if p is inside the cube 
+ * 
+ * @param c 
+ * @param p 
+ * @return int 
+ */
 int is_point_inside_cube(cube c, position p) {
     return (((c.p1.x <= p.x) && (p.x <= c.p2.x)) && ((c.p1.y <= p.y) && (p.y <= c.p2.x)) && ((c.p1.z <= p.z) && (p.z <= c.p2.z)));
 }
 
-static void dessine_face_cube(position p0, position p1, position p2, position p3) {
+/**
+ * @brief draw a face of the cube
+ * 
+ * @param p0 
+ * @param p1 
+ * @param p2 
+ * @param p3 
+ */
+static void draw_face_cube(position p0, position p1, position p2, position p3) {
     glColor3f(0.9, 0.9, 0.9);
 
     glBegin(GL_LINES);
@@ -59,26 +87,26 @@ void print_cube(cube c) {
     printf("\n---------------------------\n");
 }
 
-// Affiche un cube
+/**
+ * @brief draw the cube
+ * 
+ * @param c 
+ */
 void draw_cube(cube c) {
-    // recup les points du cube
     position *point_cube = get_point_cube(c);
 
     // * dessine face avant
-    dessine_face_cube(point_cube[0], point_cube[1], point_cube[7], point_cube[2]);
+    draw_face_cube(point_cube[0], point_cube[1], point_cube[7], point_cube[2]);
     
     // * dessine face arriere
-    dessine_face_cube(point_cube[3], point_cube[6], point_cube[4], point_cube[5]);
-
-    // * dessine face gauche
-    // dessine_face_cube(point_cube[0], point_cube[3], point_cube[2], point_cube[5]);
+    draw_face_cube(point_cube[3], point_cube[6], point_cube[4], point_cube[5]);
 
     // * dessine face droite
-    dessine_face_cube(point_cube[1], point_cube[7], point_cube[4], point_cube[6]);
+    draw_face_cube(point_cube[1], point_cube[7], point_cube[4], point_cube[6]);
 
     // * dessine face bas
-    dessine_face_cube(point_cube[0], point_cube[1], point_cube[6], point_cube[3]);
+    draw_face_cube(point_cube[0], point_cube[1], point_cube[6], point_cube[3]);
 
     // * dessine face haut
-    dessine_face_cube(point_cube[2], point_cube[7], point_cube[4], point_cube[5]);
+    draw_face_cube(point_cube[2], point_cube[7], point_cube[4], point_cube[5]);
 }
