@@ -4,8 +4,8 @@ LDLIBS = -lglut -lGLU -lGL -lm
 
 all: einvolution simple-clean
 
-einvolution: main.o camera.o position.o vector.o cube.o world.o face.o house.o box.o color.o
-	$(CC) main.o camera.o position.o vector.o cube.o world.o face.o house.o box.o color.o $(LDLIBS) -o einvolution
+einvolution: main.o camera.o position.o vector.o cube.o world.o face.o house.o box.o color.o pyramide.o
+	$(CC) main.o camera.o position.o vector.o cube.o world.o face.o house.o box.o color.o pyramide.o $(LDLIBS) -o einvolution
 
 main.o: main.c
 	$(CC) $(CFLAGS) main.c -c
@@ -33,6 +33,9 @@ house.o: ./src/object/house.c
 
 box.o: ./src/object/box.c 
 	$(CC) $(CFLAGS) ./src/object/box.c -c
+
+pyramide.o: ./src/object/pyramide.c 
+	$(CC) $(CFLAGS) ./src/object/pyramide.c -c
 
 color.o: ./src/utils/color.c 
 	$(CC) $(CFLAGS) ./src/utils/color.c -c

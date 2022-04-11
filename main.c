@@ -4,17 +4,23 @@
 #include "./includes/object/face.h"
 #include "./includes/object/house.h"
 #include "./includes/object/box.h"
-
+#include "./includes/object/pyramide.h"
 #include "./includes/window.h"
+
 
 static camera cam;
 static world w;
 static box test_box;
+static pyramide py;
+static house hou;
 /**
  * @brief Init the glut window
  */
 static void Init(void) {
     test_box = create_box(set_position(5, 5, 0), 3);
+    py = create_pyramide(set_position(2, 1, 10), 2);
+    hou = create_house(set_position(0,0,0) , 2);
+
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
 
     // projection
@@ -59,6 +65,8 @@ static void Draw(void) {
     draw_axes();
     draw_world(w);
     draw_box(test_box);
+    draw_pyramide(py);
+    draw_house(hou);
 
     glLoadIdentity();
     vector look_at = addition_vector(get_camera_position(cam), get_camera_direction(cam));

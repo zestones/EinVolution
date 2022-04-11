@@ -8,6 +8,7 @@
         "world.h": "c",
         "camera.h": "c",
         "house.h": "c",
-        "face.h": "c"
+        "face.h": "c",
+        "box.h": "c"
     }
 }
