@@ -6,6 +6,8 @@
         "window.h": "c",
         "global.h": "c",
         "world.h": "c",
-        "camera.h": "c"
+        "camera.h": "c",
+        "house.h": "c",
+        "face.h": "c"
     }
 }

@@ -1,16 +1,20 @@
 #include "./includes/global.h"
 #include "./includes/camera.h"
 #include "./includes/world.h"
+#include "./includes/object/face.h"
+#include "./includes/object/house.h"
+#include "./includes/object/box.h"
 
 #include "./includes/window.h"
 
 static camera cam;
 static world w;
+static box test_box;
 /**
  * @brief Init the glut window
  */
 static void Init(void) {
-
+    test_box = create_box(set_position(5, 5, 0), 3);
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
 
     // projection
@@ -54,6 +58,7 @@ static void Draw(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     draw_axes();
     draw_world(w);
+    draw_box(test_box);
 
     glLoadIdentity();
     vector look_at = addition_vector(get_camera_position(cam), get_camera_direction(cam));
