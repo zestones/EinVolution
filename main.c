@@ -110,6 +110,21 @@ static void special(int key, int x, int y) {
 }
 
 /**
+ * @brief reshape the window with the good proportion
+ * 
+ * @param width 
+ * @param height 
+ */
+void reshape(int width, int height) {
+    glViewport(0, 0, width, height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(60.0, (GLfloat) width / (GLfloat) height, 0.05, 300.0);
+    glMatrixMode(GL_MODELVIEW);
+}
+
+
+/**
  * @brief Main function
  * 
  * @param argc : number of arguments passed in the command line
@@ -136,6 +151,9 @@ int main(int argc, char *argv[]) {
     glutDisplayFunc(Draw);
     glutSpecialFunc(special);
 	glutKeyboardFunc(Key);
+
+    // reshape the window
+    glutReshapeFunc(reshape);
 
     // start the loop
     glutMainLoop();
