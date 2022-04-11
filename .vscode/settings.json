@@ -2,6 +2,10 @@
     "files.associations": {
         "math.h": "c",
         "vector": "cpp",
-        "position.h": "c"
+        "position.h": "c",
+        "window.h": "c",
+        "global.h": "c",
+        "world.h": "c",
+        "camera.h": "c"
     }
 }

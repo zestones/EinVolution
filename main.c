@@ -1,14 +1,17 @@
 #include "./includes/global.h"
 #include "./includes/camera.h"
+#include "./includes/world.h"
 
-#include "window.h"
+#include "./includes/window.h"
 
 static camera cam;
-
+static world w;
 /**
  * @brief Init the glut window
  */
 static void Init(void) {
+
+    w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
 
     // projection
     glMatrixMode(GL_PROJECTION);
@@ -50,6 +53,7 @@ static void draw_axes() {
 static void Draw(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     draw_axes();
+    draw_world(w);
 
     glLoadIdentity();
     vector look_at = addition_vector(get_camera_position(cam), get_camera_direction(cam));
@@ -76,10 +80,10 @@ static void Key(unsigned char key, int x, int y) {
         // escape
         case 27: exit(EXIT_SUCCESS);
         // spacebar
-        case 32: move_up(&cam);
+        case 32: move_up(&cam, w);
         break;
         // 'n'
-        case 110: move_down(&cam);
+        case 110: move_down(&cam, w);
         break;
     }
 
@@ -98,8 +102,8 @@ static void special(int key, int x, int y) {
     switch (key) {
         case GLUT_KEY_LEFT: move_right(&cam); break;
         case GLUT_KEY_RIGHT: move_left(&cam); break;
-        case GLUT_KEY_UP: move_forward(&cam); break;
-        case GLUT_KEY_DOWN: move_backward(&cam); break;
+        case GLUT_KEY_UP: move_forward(&cam, w); break;
+        case GLUT_KEY_DOWN: move_backward(&cam, w); break;
     }
 
     glutPostRedisplay();

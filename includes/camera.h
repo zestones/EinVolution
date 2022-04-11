@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "./world.h"
 #include "./utils/position.h"
 #include "./utils/vector.h"
 
@@ -53,28 +54,28 @@ void move_left(camera *cam);
  * 
  * @param cam 
  */
-void move_forward(camera *cam);
+void move_forward(camera *cam, world w);
 
 /**
  * @brief move the camera backward
  * 
  * @param cam 
  */
-void move_backward(camera *cam);
+void move_backward(camera *cam, world w);
 
 /**
  * @brief move the camera up
  * 
  * @param cam 
  */
-void move_up(camera *cam);
+void move_up(camera *cam, world w);
 
 /**
  * @brief move the camera down
  * 
  * @param cam 
  */
-void move_down(camera *cam);
+void move_down(camera *cam, world w);
 
 /**
  * @brief Get the camera direction object

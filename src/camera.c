@@ -1,4 +1,3 @@
-#include <math.h>
 #include "../includes/camera.h"
 
 /**
@@ -59,41 +58,49 @@ void move_left(camera *cam) {
  * @brief move the camera
  * 
  * @param cam 
+ * @param w 
+ * @param direction 
  * @param speed 
  */
-static void move(camera *cam, vector direction, double speed) {
-    cam->eye = addition_vector(cam->eye, mult_vector(direction, speed));  
+static void move(camera *cam, world w, vector direction, double speed) {
+    position p = addition_vector(cam->eye, mult_vector(direction, speed));
+    if (!is_point_inside_cube(w.c, p)) return;
+    cam->eye = p;   
 }
 
 /**
  * @brief move the camera forward
  * 
  * @param cam 
+ * @param w 
  */
-void move_forward(camera *cam) { move(cam, cam->forward,cam->speed); }
+void move_forward(camera *cam, world w) { move(cam, w, cam->forward,cam->speed); }
 
 /**
  * @brief move the camera backward
  * 
  * @param cam 
+ * @param w 
  */
-void move_backward(camera *cam) { move(cam, cam->forward, -cam->speed); }
+void move_backward(camera *cam, world w) { move(cam, w, cam->forward, -cam->speed); }
 
 /**
  * @brief move the camera up
  * 
  * @param cam 
+ * @param w 
  */
-void move_up(camera *cam) { move(cam, cam->up, cam->speed); }
+void move_up(camera *cam, world w) { move(cam, w, cam->up, cam->speed); }
 
 /**
  * @brief move the camera down
  * 
  * @param cam 
+ * @param w 
  */
-void move_down(camera *cam) {
+void move_down(camera *cam, world w) {
     if (get_y(cam->eye) < 1) return;
-    move(cam, cam->up, -cam->speed);
+    move(cam, w, cam->up, -cam->speed);
 }
 
 /**

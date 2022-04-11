@@ -9,4 +9,8 @@
 #include "GL/glut.h"
 #include "GL/gl.h"
 
+
+#define K 8
+#define N 5
+
 #endif // GLOBAL
