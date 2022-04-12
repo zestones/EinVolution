@@ -14,6 +14,7 @@ box create_box(position p, double size) {
     }
 
     box b;
+    b.pos = p;
     b.length = 6;
     b.arr_face = (face *) malloc(b.length * sizeof(face));
     

@@ -8,11 +8,13 @@
  */
 house create_house(position p, double size) {
     box b = create_box(p, size);
-
+    
     set_y(&p, get_y(p) + size);
 
     pyramide py = create_pyramide(p, size);
+
     house h = concat_objects(2, b, py);
+    h.pos = p;
 
     return h;
 }

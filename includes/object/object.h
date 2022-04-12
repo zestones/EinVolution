@@ -10,6 +10,9 @@
 typedef struct object {
     face *arr_face;
     int length;
+  
+    position pos; // approximation of the position
+                  // the object is created from pos
 } object;
 
 

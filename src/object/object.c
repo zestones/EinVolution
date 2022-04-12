@@ -12,7 +12,6 @@ static int get_objects_size(int argc, va_list arg) {
 
     for (int i = 0; i < argc ; i++) {
         object tmp = va_arg(arg, object);
-
         length += tmp.length;
     }   
 

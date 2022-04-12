@@ -14,6 +14,7 @@ pyramide create_pyramide(position p, double size) {
     }
 
     pyramide py;
+    py.pos = p;
     py.length = 5;
     py.arr_face = (face *) malloc(py.length * sizeof(face));
         

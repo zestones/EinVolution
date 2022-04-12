@@ -2,6 +2,7 @@
 #define WORLD
 
 #include "./utils/cube.h"
+#include "./object/object.h"
 
 /**
  * @brief structure of the word
@@ -9,6 +10,8 @@
  */
 typedef struct world {
     cube c;
+    object *arr_object;
+    int length;
     // TODO : Add a second struct to list the object inside the world
 } world;
 
