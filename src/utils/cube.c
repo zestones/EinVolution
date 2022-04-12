@@ -79,6 +79,11 @@ static void draw_face_cube(position p0, position p1, position p2, position p3) {
     glEnd();
 }
 
+/**
+ * @brief print the cube
+ * 
+ * @param c 
+ */
 void print_cube(cube c) {
     printf("\n---------------------------\n");
     print_position(c.p1);
@@ -95,18 +100,18 @@ void print_cube(cube c) {
 void draw_cube(cube c) {
     position *point_cube = get_point_cube(c);
 
-    // * dessine face avant
+    // * draw front side
     draw_face_cube(point_cube[0], point_cube[1], point_cube[7], point_cube[2]);
     
-    // * dessine face arriere
+    // * draw back side
     draw_face_cube(point_cube[3], point_cube[6], point_cube[4], point_cube[5]);
 
-    // * dessine face droite
+    // * draw right side
     draw_face_cube(point_cube[1], point_cube[7], point_cube[4], point_cube[6]);
 
-    // * dessine face bas
+    // * draw down side
     draw_face_cube(point_cube[0], point_cube[1], point_cube[6], point_cube[3]);
 
-    // * dessine face haut
+    // * draw up side
     draw_face_cube(point_cube[2], point_cube[7], point_cube[4], point_cube[5]);
 }

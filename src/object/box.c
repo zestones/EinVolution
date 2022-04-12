@@ -1,5 +1,12 @@
 #include "../../includes/object/box.h"
 
+/**
+ * @brief Create a box object
+ * 
+ * @param p 
+ * @param size 
+ * @return box 
+ */
 box create_box(position p, double size) {
     if (size < 1) {
         fprintf(stderr, "Error ! The size must be positive !\n");
@@ -66,7 +73,11 @@ box create_box(position p, double size) {
     return b;
 }
 
-
+/**
+ * @brief draw the box object
+ * 
+ * @param b 
+ */
 void draw_box(box b) {
 
     for (int i = 0; i < b.length; i++) {

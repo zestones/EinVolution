@@ -3,10 +3,15 @@
 
 #include "./utils/cube.h"
 
+/**
+ * @brief structure of the word
+ * 
+ */
 typedef struct world {
     cube c;
     // TODO : Add a second struct to list the object inside the world
 } world;
+
 /**
  * @brief Create a world object
  * 

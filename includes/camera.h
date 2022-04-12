@@ -22,7 +22,9 @@ typedef struct {
     vector up; 
     vector right;
 
-    double angle_rotation;
+    double yaw_angle;
+    double pitch_angle;
+
     double speed;
 } camera;
 
@@ -36,18 +38,20 @@ typedef struct {
 camera create_camera(position eye, position look_at);
 
 /**
- * @brief move the camera to the right
+ * @brief rotate yaw angle
  * 
  * @param cam 
+ * @param angle 
  */
-void move_right(camera *cam);
+void yaw(camera *cam, double angle);
 
 /**
- * @brief move the camera to the left
+ * @brief rotate pitch angle 
  * 
  * @param cam 
+ * @param angle 
  */
-void move_left(camera *cam);
+void pitch(camera *cam, double angle);
 
 /**
  * @brief move the camera forward
@@ -76,6 +80,22 @@ void move_up(camera *cam, world w);
  * @param cam 
  */
 void move_down(camera *cam, world w);
+
+/**
+ * @brief move the camera right
+ * 
+ * @param cam 
+ * @param w 
+ */
+void move_right(camera *cam, world w);
+
+/**
+ * @brief move the camera left
+ * 
+ * @param cam 
+ * @param w 
+ */
+void move_left(camera *cam, world w);
 
 /**
  * @brief Get the camera direction object

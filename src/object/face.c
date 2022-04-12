@@ -1,6 +1,14 @@
 #include "../../includes/object/face.h"
 
-
+/**
+ * @brief Create a face object
+ * 
+ * @param argc 
+ * @param c 
+ * @param p 
+ * @param ... 
+ * @return face 
+ */
 face create_face(int argc, color c, position p, ...) {
     face f;
     f.points = (position *) malloc(argc * sizeof(position));
@@ -20,9 +28,29 @@ face create_face(int argc, color c, position p, ...) {
     return f;    
 }
 
+/**
+ * @brief Get the point face object
+ * 
+ * @param f 
+ * @param index 
+ * @return position 
+ */
 static position get_point_face(face f, int index) { return f.points[index]; }
+
+/**
+ * @brief Get the face by index object
+ * 
+ * @param f 
+ * @param index 
+ * @return face 
+ */
 face get_face_by_index(face *f, int index) { return f[index]; }
 
+/**
+ * @brief draw the face object
+ * 
+ * @param f 
+ */
 void draw_face(face f) {
     glColor3f(f.col.red, f.col.green, f.col.blue);
 

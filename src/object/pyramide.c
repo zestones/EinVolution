@@ -1,5 +1,12 @@
 #include "../../includes/object/pyramide.h"
 
+/**
+ * @brief Create a pyramide object
+ * 
+ * @param p 
+ * @param size 
+ * @return pyramide 
+ */
 pyramide create_pyramide(position p, double size) {
     if (size < 1) {
         fprintf(stderr, "Error ! The size must be positive !\n");
@@ -9,9 +16,7 @@ pyramide create_pyramide(position p, double size) {
     pyramide py;
     py.length = 5;
     py.arr_face = (face *) malloc(py.length * sizeof(face));
-    
-    printf("size : %f\n", size);
-    
+        
     // down side
     py.arr_face[0] = create_face(4,
         set_color(0, 1, 0),
@@ -56,7 +61,11 @@ pyramide create_pyramide(position p, double size) {
     return py;
 }
 
-
+/**
+ * @brief draw the pyramide object
+ * 
+ * @param p 
+ */
 void draw_pyramide(pyramide p) {
 
     glBegin(GL_QUADS);

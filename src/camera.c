@@ -17,41 +17,30 @@ camera create_camera(position eye, position look_at) {
     cam.up = create_vector(0, 1, 0);
     cam.right = create_vector(1, 0, 0);
 
-    cam.angle_rotation = 0.02;
+    cam.yaw_angle = 0.0;
+    cam.pitch_angle = 0.0;
+
     cam.speed = 0.05;
 
     return cam;
 }
 
 /**
- * @brief yaw angle
+ * @brief rotate yaw angle
  * 
  * @param cam 
  * @param angle 
  */
-static void yaw(camera *cam, double angle) {
+void yaw(camera *cam, double angle) {
     cam->right = unit_vector(addition_vector(mult_vector(cam->right, cos(angle)), mult_vector(cam->forward, sin(angle))));
-
     cam->forward = cross_product(cam->up, cam->right);
+
     cam->look_at = addition_vector(cam->eye, cam->forward);
 }
 
-/**
- * @brief move the camera to the right
- * 
- * @param cam 
- */
-void move_right(camera *cam) {
-    yaw(cam, cam->angle_rotation);
-}
-
-/**
- * @brief move the camera to the left
- * 
- * @param cam 
- */
-void move_left(camera *cam) {
-    yaw(cam, -cam->angle_rotation);
+void pitch(camera *cam, double angle) {
+    cam->forward = unit_vector(addition_vector(mult_vector(cam->forward, cos(angle)), mult_vector(cam->up, sin(angle))));
+    cam->up = cross_product(cam->right, cam->forward);
 }
 
 /**
@@ -64,8 +53,9 @@ void move_left(camera *cam) {
  */
 static void move(camera *cam, world w, vector direction, double speed) {
     position p = addition_vector(cam->eye, mult_vector(direction, speed));
+
     if (!is_point_inside_cube(w.c, p)) return;
-    cam->eye = p;   
+    cam->eye = p;
 }
 
 /**
@@ -91,6 +81,22 @@ void move_backward(camera *cam, world w) { move(cam, w, cam->forward, -cam->spee
  * @param w 
  */
 void move_up(camera *cam, world w) { move(cam, w, cam->up, cam->speed); }
+
+/**
+ * @brief move camera right
+ * 
+ * @param cam 
+ * @param w 
+ */
+void move_right(camera *cam, world w) { move(cam, w, cam->right, cam->speed); }
+
+/**
+ * @brief move camera left
+ * 
+ * @param cam 
+ * @param w 
+ */
+void move_left(camera *cam, world w) { move(cam, w, cam->right, -cam->speed); }
 
 /**
  * @brief move the camera down
