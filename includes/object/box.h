@@ -7,16 +7,13 @@
 #include "GL/glut.h"
 #include "GL/gl.h"
 
-#include "./face.h"
+#include "./object.h"
 
 /**
- * @brief structure of a box
+ * @brief definition of a box
  * 
  */
-typedef struct box {
-    face *arr_face;
-    int length;
-} box;
+typedef object box;
 
 /**
  * @brief Create a box object
@@ -26,12 +23,5 @@ typedef struct box {
  * @return box 
  */
 box create_box(position p, double size);
-
-/**
- * @brief draw the box object
- * 
- * @param b the box
- */
-void draw_box(box b);
 
 #endif // BOX

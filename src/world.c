@@ -17,6 +17,7 @@ world create_world(position p1, position p2, double size) {
 
     return w;
 }
+
 /**
  * @brief Set the world texture object
  * ! source : http://thepentamollisproject.blogspot.com/2018/02/setting-up-first-person-camera-in.html
@@ -55,8 +56,6 @@ static void set_world_texture(cube c) {
     glEnd();
 
     glDisable(GL_TEXTURE_2D);
-
-
 }
 
 /**

@@ -9,11 +9,14 @@
  * @param ... 
  * @return face 
  */
-face create_face(int argc, color c, position p, ...) {
+face create_face(int argc, TYPE type, color c, position p, ...) {
     face f;
+   
     f.points = (position *) malloc(argc * sizeof(position));
     f.length = argc;
-    f.col = c;
+   
+    f.color = c;
+    f.type = type;
 
     va_list arg;
     va_start(arg, p);
@@ -35,7 +38,7 @@ face create_face(int argc, color c, position p, ...) {
  * @param index 
  * @return position 
  */
-static position get_point_face(face f, int index) { return f.points[index]; }
+static position get_point_face(face this, int index) { return this.points[index]; }
 
 /**
  * @brief Get the face by index object
@@ -44,19 +47,23 @@ static position get_point_face(face f, int index) { return f.points[index]; }
  * @param index 
  * @return face 
  */
-face get_face_by_index(face *f, int index) { return f[index]; }
+face get_face_by_index(face *this, int index) { return this[index]; }
 
 /**
  * @brief draw the face object
  * 
  * @param f 
  */
-void draw_face(face f) {
-    glColor3f(f.col.red, f.col.green, f.col.blue);
+void draw_face(face this) {
+    glColor3f(this.color.red, this.color.green, this.color.blue);
+
+    glBegin(this.type);
 
     position pos;
-    for (int i = 0; i < f.length; i++) {
-        pos = get_point_face(f, i);
+    for (int i = 0; i < this.length; i++) {
+        pos = get_point_face(this, i);
         glVertex3f(get_x(pos), get_y(pos), get_z(pos));
     }
+
+    glEnd();
 }

@@ -75,9 +75,9 @@ static void Draw(void) {
     // ! Teste Objects
     /***************/
     draw_axes();
-    draw_box(test_box);
-    draw_pyramide(py);
-    draw_house(hou);
+    draw_object(test_box);
+    draw_object(py);
+    draw_object(hou);
     /***************/
     
     if (screen.key.IS_UP_KEY_UP) move_forward(&cam, w);

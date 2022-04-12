@@ -19,6 +19,7 @@ pyramide create_pyramide(position p, double size) {
         
     // down side
     py.arr_face[0] = create_face(4,
+        QUADS,
         set_color(0, 1, 0),
         set_position(get_x(p), get_y(p), get_z(p)),
         set_position(get_x(p) + size , get_y(p), get_z(p)),
@@ -28,6 +29,7 @@ pyramide create_pyramide(position p, double size) {
 
     // back side
     py.arr_face[1] = create_face(3,
+        TRIANGLES,
         set_color(0, 1, 0),
         set_position(get_x(p), get_y(p), get_z(p)),
         set_position(get_x(p) + size, get_y(p), get_z(p)),
@@ -36,6 +38,7 @@ pyramide create_pyramide(position p, double size) {
 
     // left side
     py.arr_face[2] = create_face(3,
+        TRIANGLES,
         set_color(0, 0, 0.9),
         set_position(get_x(p), get_y(p), get_z(p)),
         set_position(get_x(p), get_y(p), get_z(p) + size),
@@ -44,6 +47,7 @@ pyramide create_pyramide(position p, double size) {
     
     // front side 
     py.arr_face[3] = create_face(3,
+        TRIANGLES,
         set_color(1, 0, 0),
         set_position(get_x(p), get_y(p), get_z(p) + size),
         set_position(get_x(p) + size, get_y(p), get_z(p) + size),
@@ -52,6 +56,7 @@ pyramide create_pyramide(position p, double size) {
 
     // right side 
     py.arr_face[4] = create_face(3,
+        TRIANGLES,
         set_color(0.0, 0.5, 0.9),
         set_position(get_x(p) + size, get_y(p), get_z(p) + size),
         set_position(get_x(p) + size, get_y(p), get_z(p)),
@@ -59,27 +64,4 @@ pyramide create_pyramide(position p, double size) {
     );
    
     return py;
-}
-
-/**
- * @brief draw the pyramide object
- * 
- * @param p 
- */
-void draw_pyramide(pyramide p) {
-
-    glBegin(GL_QUADS);
-
-    draw_face(get_face_by_index(p.arr_face, 0));
-
-    glEnd();
-
-    for (int i = 1; i < p.length; i++) {
-        glBegin(GL_TRIANGLES);
-
-        draw_face(get_face_by_index(p.arr_face, i));
-        
-        glEnd();
-    }
-
 }

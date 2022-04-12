@@ -14,10 +14,7 @@
  * @brief structure of the house
  * 
  */
-typedef struct house {
-    box box; 
-    pyramide pyramide;
-} house;
+typedef struct object house;
 
 /**
  * @brief Create a house object

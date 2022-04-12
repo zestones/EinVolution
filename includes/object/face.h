@@ -12,13 +12,24 @@
 #include "../utils/color.h"
 
 /**
+ * @brief enum of the types of faces
+ * 
+ */
+typedef enum {
+    QUADS = GL_QUADS,
+    TRIANGLES = GL_TRIANGLES,
+    LINES = GL_LINES,
+} TYPE;
+
+/**
  * @brief structure of the face
  * 
  */
 typedef struct face {
     position *points;
     int length;
-    color col;
+    color color;
+    TYPE type;
 } face;
 
 /**
@@ -30,7 +41,7 @@ typedef struct face {
  * @param ... 
  * @return face 
  */
-face create_face(int argc, color c, position p, ...);
+face create_face(int argc, TYPE  type, color c, position p, ...);
 
 /**
  * @brief Get the face by index object
@@ -39,13 +50,13 @@ face create_face(int argc, color c, position p, ...);
  * @param index 
  * @return face 
  */
-face get_face_by_index(face *f, int index);
+face get_face_by_index(face *this, int index);
 
 /**
  * @brief draw the face object
  * 
  * @param f 
  */
-void draw_face(face f);
+void draw_face(face this);
 
 #endif // FACE
