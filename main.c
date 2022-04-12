@@ -80,6 +80,7 @@ static void Draw(void) {
     draw_object(hou);
     /***************/
     
+    if (!screen.key.IS_UP_KEY_UP && !screen.key.IS_UP_KEY_DOWN) move_forward(&cam, w);
     if (screen.key.IS_UP_KEY_UP) move_forward(&cam, w);
     if (screen.key.IS_UP_KEY_DOWN) move_backward(&cam, w);
     if (screen.key.IS_UP_KEY_LEFT) move_left(&cam, w);
@@ -128,8 +129,14 @@ static void Key(unsigned char key, int x, int y) {
  */
 static void special(int key, int x, int y) {
     switch (key) {
-        case GLUT_KEY_UP : screen.key.IS_UP_KEY_UP = true; break; 
-        case GLUT_KEY_DOWN : screen.key.IS_UP_KEY_DOWN = true; break; 
+        case GLUT_KEY_UP : 
+            screen.key.IS_UP_KEY_UP = true;
+            set_camera_speed(&cam, cam.fast);
+            break; 
+        case GLUT_KEY_DOWN : 
+            screen.key.IS_UP_KEY_DOWN = true; 
+            set_camera_speed(&cam, cam.fast);
+            break; 
         case GLUT_KEY_LEFT : screen.key.IS_UP_KEY_LEFT = true;  break; 
         case GLUT_KEY_RIGHT : screen.key.IS_UP_KEY_RIGHT = true; break; 
     }
@@ -144,8 +151,14 @@ static void special(int key, int x, int y) {
  */
 void SpecialUp(int key, int x, int y){ 
     switch(key){ 
-        case GLUT_KEY_UP : screen.key.IS_UP_KEY_UP = false; break; 
-        case GLUT_KEY_DOWN : screen.key.IS_UP_KEY_DOWN = false; break; 
+        case GLUT_KEY_UP : 
+            screen.key.IS_UP_KEY_UP = false; 
+            set_camera_speed(&cam, cam.slow);
+            break; 
+        case GLUT_KEY_DOWN : 
+            screen.key.IS_UP_KEY_DOWN = false;
+            set_camera_speed(&cam, cam.slow);
+            break; 
         case GLUT_KEY_LEFT : screen.key.IS_UP_KEY_LEFT = false;  break; 
         case GLUT_KEY_RIGHT : screen.key.IS_UP_KEY_RIGHT = false; break; 
     } 

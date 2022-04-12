@@ -20,7 +20,10 @@ camera create_camera(position eye, position look_at) {
     cam.yaw_angle = 0.0;
     cam.pitch_angle = 0.0;
 
-    cam.speed = 0.025;
+    cam.slow = 0.0125;
+    cam.fast = 0.025;
+
+    cam.speed = cam.slow;
 
     return cam;
 }
@@ -58,7 +61,7 @@ void pitch(camera *cam, double angle) {
 static void move(camera *cam, world w, vector direction, double speed) {
     position p = addition_vector(cam->eye, mult_vector(direction, speed));
 
-    if (!is_point_inside_cube(w.c, p)) return;
+    if (!is_point_inside_cube(w.cube, p)) return;
     cam->eye = p;
 }
 
@@ -125,3 +128,11 @@ vector get_camera_position(camera cam) { return cam.eye; }
  * @return vector 
  */
 vector get_camera_direction(camera cam) { return cam.forward; }
+
+/**
+ * @brief Set the camera speed object
+ * 
+ * @param cam 
+ * @param speed 
+ */
+void set_camera_speed(camera *cam, double speed) { cam->speed = speed; }

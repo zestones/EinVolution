@@ -50,7 +50,6 @@ object concat_objects(int argc, ...) {
     return obj;    
 }
 
-
 /**
  * @brief draw the box object
  * 

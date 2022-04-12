@@ -10,11 +10,11 @@
  */
 world create_world(position p1, position p2, double size) {
     world w;
-    w.c = create_cube(p1, p2, size);
-
-    // TODO : generate randomly, X object inside the world cube
-    // TODO : stock them inside a struct with an id, name, position
-
+    w.cube = create_cube(p1, p2, size);
+    
+    w.object.length = MAX_OBJECT;
+    w.object.arr_object = generate_world_object(w.cube.p2);
+   
     return w;
 }
 
@@ -58,6 +58,12 @@ static void set_world_texture(cube c) {
     glDisable(GL_TEXTURE_2D);
 }
 
+static void draw_world_object(world w) {
+    for (int i = 0; i < w.object.length; i++) {
+        draw_object(get_world_object_by_id(w.object, i));
+    }
+}
+
 /**
  * @brief draw the world cube
  * 
@@ -65,6 +71,7 @@ static void set_world_texture(cube c) {
  */
 void draw_world(world w) {
     
-    draw_cube(w.c); 
-    set_world_texture(w.c);
+    draw_cube(w.cube); 
+    set_world_texture(w.cube);
+    draw_world_object(w);
 }

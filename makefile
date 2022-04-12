@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -W -Wall
 LDLIBS = -lglut -lGLU -lGL -lm
 
-objects = face.o box.o pyramide.o object.o house.o
+objects = face.o box.o pyramide.o object.o house.o world_object.o
 utils = position.o vector.o cube.o color.o
 
 all: einvolution simple-clean
@@ -58,6 +58,9 @@ pyramide.o: ./src/object/pyramide.c
 
 object.o: ./src/object/object.c 
 	$(CC) $(CFLAGS) ./src/object/object.c -c
+
+world_object.o: ./src/object/world_object.c 
+	$(CC) $(CFLAGS) ./src/object/world_object.c -c
 
 
 

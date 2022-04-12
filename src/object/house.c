@@ -7,6 +7,11 @@
  * @return house 
  */
 house create_house(position p, double size) {
+    if (size < 1) {
+        fprintf(stderr, "Error ! The size must be positive !\n");
+        exit(EXIT_FAILURE);
+    }
+    
     box b = create_box(p, size);
     
     set_y(&p, get_y(p) + size);

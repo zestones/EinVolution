@@ -15,8 +15,6 @@ typedef struct object {
                   // the object is created from pos
 } object;
 
-
-
 /**
  * @brief concats object
  * 

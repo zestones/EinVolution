@@ -26,6 +26,8 @@ typedef struct {
     double pitch_angle;
 
     double speed;
+    double slow;
+    double fast;
 } camera;
 
 /**
@@ -112,5 +114,13 @@ vector get_camera_direction(camera cam);
  * @return vector 
  */
 vector get_camera_position(camera cam);
+
+/**
+ * @brief Set the camera speed object
+ * 
+ * @param cam 
+ * @param speed 
+ */
+void set_camera_speed(camera *cam, double speed);
 
 #endif // CAMERA
