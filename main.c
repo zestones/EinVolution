@@ -23,17 +23,16 @@ static house hou;
  * @brief Init the glut window
  */
 static void Init(void) {
+
+    // ! Create teste Object
+    /************************/
     test_box = create_box(set_position(5, 5, 0), 3);
     py = create_pyramide(set_position(2, 1, 10), 2);
     hou = create_house(set_position(0,0,0) , 2);
+    /************************/
 
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
 
-    // projection
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(60, 1, 1, 40);
-    
     // creation of the camera
     cam = create_camera(set_position(16, 5, 15), set_position(0, 1, 0));
 
@@ -80,7 +79,6 @@ static void Draw(void) {
     draw_pyramide(py);
     draw_house(hou);
     /***************/
-
     
     if (screen.key.IS_UP_KEY_UP) move_forward(&cam, w);
     if (screen.key.IS_UP_KEY_DOWN) move_backward(&cam, w);
@@ -96,7 +94,6 @@ static void Draw(void) {
         get_x(cam.up), get_y(cam.up), get_z(cam.up)
     );
 
-    glFlush();
     glutSwapBuffers();
 }
 
@@ -194,7 +191,9 @@ void reshape(int width, int height) {
 
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
+    
     glLoadIdentity();
+
     gluPerspective(60.0, (GLfloat) width / (GLfloat) height, 0.05, 300.0);
     glMatrixMode(GL_MODELVIEW);
 }
@@ -207,6 +206,7 @@ void reshape(int width, int height) {
  */
 void Timer(int v) {
     glutPostRedisplay();
+
     glutWarpPointer(screen.width / 2, screen.height / 2);
     glutTimerFunc(1000 / FPS, Timer, v);
 }
@@ -248,6 +248,7 @@ int main(int argc, char *argv[]) {
     // reshape the window
     glutReshapeFunc(reshape);
 
+    // refresh display
     glutTimerFunc(100, Timer, 0);
 
     // start the loop

@@ -20,7 +20,7 @@ camera create_camera(position eye, position look_at) {
     cam.yaw_angle = 0.0;
     cam.pitch_angle = 0.0;
 
-    cam.speed = 0.05;
+    cam.speed = 0.025;
 
     return cam;
 }
@@ -34,10 +34,14 @@ camera create_camera(position eye, position look_at) {
 void yaw(camera *cam, double angle) {
     cam->right = unit_vector(addition_vector(mult_vector(cam->right, cos(angle)), mult_vector(cam->forward, sin(angle))));
     cam->forward = cross_product(cam->up, cam->right);
-
-    cam->look_at = addition_vector(cam->eye, cam->forward);
 }
 
+/**
+ * @brief rotate pitch angle
+ * 
+ * @param cam 
+ * @param angle 
+ */
 void pitch(camera *cam, double angle) {
     cam->forward = unit_vector(addition_vector(mult_vector(cam->forward, cos(angle)), mult_vector(cam->up, sin(angle))));
     cam->up = cross_product(cam->right, cam->forward);
@@ -104,10 +108,7 @@ void move_left(camera *cam, world w) { move(cam, w, cam->right, -cam->speed); }
  * @param cam 
  * @param w 
  */
-void move_down(camera *cam, world w) {
-    if (get_y(cam->eye) < 1) return;
-    move(cam, w, cam->up, -cam->speed);
-}
+void move_down(camera *cam, world w) { move(cam, w, cam->up, -cam->speed); }
 
 /**
  * @brief Get the camera position object

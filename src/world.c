@@ -55,6 +55,8 @@ static void set_world_texture(cube c) {
     glEnd();
 
     glDisable(GL_TEXTURE_2D);
+
+
 }
 
 /**
