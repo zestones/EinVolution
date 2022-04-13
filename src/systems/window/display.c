@@ -19,8 +19,12 @@ static void draw_axes() {
 void Draw(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     draw_world(w);
+
+    // ! for dev
+    /***************/
     draw_axes();
-       
+    /**************/
+
     if (!screen.key.IS_UP_KEY_UP && !screen.key.IS_UP_KEY_DOWN) move_forward(&cam, w);
     if (screen.key.IS_UP_KEY_UP) move_forward(&cam, w);
     if (screen.key.IS_UP_KEY_DOWN) move_backward(&cam, w);

@@ -18,32 +18,38 @@
  * @param edge_size 
  * @return octree 
  */
-static octree generate_world_tree_bis(world w, int n, float x1, float y1, float z1, float x2, float y2, float z2, float edge_size) {
+static octree generate_world_tree_bis(world w, float x1, float y1, float z1, float x2, float y2, float z2, float edge_size) {
     
     // create the curent cube
     cube c = create_cube(set_position(x1, y1, z1), set_position(x2, y2, z2), edge_size);
     
     // get the number of object in the current cube
     int number = get_number_object(w.object, c);
+    print_cube(c);
 
     // if the density is not full create a cube 
-    if(number < OBJECT_DENSITY)
+    if(number <= OBJECT_DENSITY && number > 0) {
+        printf("DENSITY INF : (number : %d)\n", number);
         return construct_octree(FULL, c, empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree());
-   
-    // // stop the recursivity in case the depth is too big
-    // if(n >= MAX_DEPTH)
-    //     return construct_octree(EMPTY, c, empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree());
-     
+    }
+    // cube is empty
+    if(number == 0) {
+        printf("DENSITY EMPTY : (number : %d)\n", number);
+        return construct_octree(FULL, c, empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree());
+    } 
+
+    printf("DENSITY SUP : (number : %d)\n", number);
+
     // split the cube in 8 childs cube
-    return construct_octree(UNDETERMINATE, c,
-        generate_world_tree_bis(w, n + 1, x1, y1, z1, (x1 + x2) / 2, (y1 + y2) / 2, (z1 + z2) / 2,edge_size/2),
-        generate_world_tree_bis(w, n + 1, (x1 + x2) / 2, y1, z1, x2, (y1 + y2) / 2, (z1 + z2) / 2,edge_size/2),
-        generate_world_tree_bis(w, n + 1, (x1 + x2) / 2, (y1 + y2) / 2, z1, x2, y2, (z1 + z2) / 2,edge_size/2),
-        generate_world_tree_bis(w, n + 1, x1, (y1 + y2) / 2, z1, (x1 + x2) / 2, y2, (z1 + z2) / 2,edge_size/2),
-        generate_world_tree_bis(w, n + 1, x1, y1, (z1 + z2) / 2, (x1 + x2) / 2, (y1 + y2) / 2, z2,edge_size/2),
-        generate_world_tree_bis(w, n + 1, (x1 + x2) / 2, y1, (z1 + z2) / 2, x2, (y1 + y2) / 2, z2,edge_size/2),
-        generate_world_tree_bis(w, n + 1, (x1 + x2) / 2, (y1 + y2) / 2, (z1 + z2) / 2, x2, y2, z2,edge_size/2),
-        generate_world_tree_bis(w, n + 1, x1, (y1 + y2) / 2, (z1 + z2) / 2, (x1 + x2) / 2, y2, z2,edge_size/2)
+    return construct_octree(FULL, c,
+        generate_world_tree_bis(w, x1, y1, z1, (x1 + x2) / 2, (y1 + y2) / 2, (z1 + z2) / 2, edge_size/2),
+        generate_world_tree_bis(w, (x1 + x2) / 2, y1, z1, x2, (y1 + y2) / 2, (z1 + z2) / 2, edge_size/2),
+        generate_world_tree_bis(w, (x1 + x2) / 2, (y1 + y2) / 2, z1, x2, y2, (z1 + z2) / 2, edge_size/2),
+        generate_world_tree_bis(w, x1, (y1 + y2) / 2, z1, (x1 + x2) / 2, y2, (z1 + z2) / 2, edge_size/2),
+        generate_world_tree_bis(w, x1, y1, (z1 + z2) / 2, (x1 + x2) / 2, (y1 + y2) / 2, z2, edge_size/2),
+        generate_world_tree_bis(w, (x1 + x2) / 2, y1, (z1 + z2) / 2, x2, (y1 + y2) / 2, z2, edge_size/2),
+        generate_world_tree_bis(w, (x1 + x2) / 2, (y1 + y2) / 2, (z1 + z2) / 2, x2, y2, z2, edge_size/2),
+        generate_world_tree_bis(w, x1, (y1 + y2) / 2, (z1 + z2) / 2, (x1 + x2) / 2, y2, z2, edge_size/2)
     );
 }
 
@@ -59,8 +65,14 @@ octree generate_world_tree(cube c, world_object obj) {
 
     w.cube = c; 
     w.object = obj;
+    
+    for (int i = 0; i < obj.arr_object->length; i++) {
+        print_position(obj.arr_object->pos);
+    }
 
-    return generate_world_tree_bis(w, 0, w.cube.p1.x, w.cube.p1.y, w.cube.p1.z, w.cube.p2.x, w.cube.p2.y, w.cube.p2.z, w.cube.edge_size);
+    print_cube(c);
+
+    return generate_world_tree_bis(w, w.cube.p1.x, w.cube.p1.y, w.cube.p1.z, w.cube.p2.x, w.cube.p2.y, w.cube.p2.z, w.cube.edge_size);
 }
 
 /**

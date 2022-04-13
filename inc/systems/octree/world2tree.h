@@ -5,7 +5,7 @@
 #include "../../entities/world/world_object.h"
 
 
-#define OBJECT_DENSITY 3 // define the density of object/cube
+#define OBJECT_DENSITY 1 // define the density of object/cube
 
 /**
  * @brief 
