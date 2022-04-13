@@ -49,7 +49,7 @@ position *get_point_cube(cube c) {
  * @return int 
  */
 int is_point_inside_cube(cube c, position p) {
-    return (((c.p1.x <= p.x) && (p.x <= c.p2.x)) && ((c.p1.y <= p.y) && (p.y <= c.p2.x)) && ((c.p1.z <= p.z) && (p.z <= c.p2.z)));
+    return (((c.p1.x <= p.x) && (p.x <= c.p2.x)) && ((c.p1.y <= p.y) && (p.y <= c.p2.y)) && ((c.p1.z <= p.z) && (p.z <= c.p2.z)));
 }
 
 /**
