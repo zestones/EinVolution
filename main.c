@@ -1,11 +1,11 @@
-#include "./includes/global.h"
-#include "./includes/camera.h"
-#include "./includes/world.h"
-#include "./includes/object/face.h"
-#include "./includes/object/house.h"
-#include "./includes/object/box.h"
-#include "./includes/object/pyramide.h"
-#include "./includes/window.h"
+#include "./inc/global.h"
+#include "./inc/entities/camera.h"
+#include "./inc/entities/world/world.h"
+#include "./inc/systems/shape/face.h"
+#include "./inc/components/complex-shape/house.h"
+#include "./inc/components/primitive-shape/box.h"
+#include "./inc/components/primitive-shape/pyramide.h"
+#include "./inc/window.h"
 
 static window screen;
 static camera cam;
