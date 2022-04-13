@@ -3,15 +3,16 @@ CFLAGS = -W -Wall
 LDLIBS = -lglut -lGLU -lGL -lm
 
 entities = camera.o world.o world_object.o object.o
-systems = position.o vector.o cube.o color.o face.o
+systems = position.o vector.o color.o face.o
 components = house.o box.o pyramide.o
 window = display.o window.o mouse.o keyboard.o
+octree = cube.o octree.o world2tree.o
 
 
 all: einvolution simple-clean
 
-einvolution: main.o $(entities) $(systems) $(components) $(window)
-	$(CC) main.o $(entities) $(systems) $(components) $(window) $(LDLIBS) -o einvolution
+einvolution: main.o $(entities) $(systems) $(components) $(window) $(octree)
+	$(CC) main.o $(entities) $(systems) $(components) $(window) $(octree) $(LDLIBS) -o einvolution
 
 
 ##################################################
@@ -54,9 +55,6 @@ position.o: ./src/systems/geometry/position.c
 vector.o: ./src/systems/geometry/vector.c 
 	$(CC) $(CFLAGS) ./src/systems/geometry/vector.c -c
 
-cube.o: ./src/systems/cube.c 
-	$(CC) $(CFLAGS) ./src/systems/cube.c -c
-
 face.o: ./src/systems/shape/face.c 
 	$(CC) $(CFLAGS) ./src/systems/shape/face.c -c
 
@@ -75,6 +73,14 @@ mouse.o: ./src/systems/window/mouse.c
 keyboard.o: ./src/systems/window/keyboard.c 
 	$(CC) $(CFLAGS) ./src/systems/window/keyboard.c -c
 
+cube.o: ./src/systems/octree/cube.c 
+	$(CC) $(CFLAGS) ./src/systems/octree/cube.c -c
+
+octree.o: ./src/systems/octree/octree.c 
+	$(CC) $(CFLAGS) ./src/systems/octree/octree.c -c
+
+world2tree.o: ./src/systems/octree/world2tree.c 
+	$(CC) $(CFLAGS) ./src/systems/octree/world2tree.c -c
 
 
 ##################################################

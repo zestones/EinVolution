@@ -1,4 +1,4 @@
-#include "../../inc/systems/cube.h"
+#include "../../../inc/systems/octree/cube.h"
 
 /**
  * @brief Create a cube object

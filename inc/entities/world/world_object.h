@@ -2,7 +2,10 @@
 #define WORLD_OBJECT
 
 #include <time.h>
+
+#include "../../../inc/systems/octree/cube.h"
 #include "./object.h"
+
 
 #define MAX_OBJECT 15 // the maximum generated object 
 #define MAX_SIZE 4 // size maximum of the object
@@ -30,6 +33,15 @@ enum list_of_object {
  * @return object* 
  */
 object *generate_world_object(position pos);
+
+/**
+ * @brief Get the number object inside the cube
+ * 
+ * @param obj 
+ * @param c 
+ * @return int 
+ */
+int get_number_object(world_object obj, cube c);
 
 /**
  * @brief Get the world object by id

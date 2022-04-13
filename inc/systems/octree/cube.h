@@ -7,7 +7,7 @@
 #include "GL/glut.h"
 #include "GL/gl.h"
 
-#include "./geometry/position.h"
+#include "../geometry/position.h"
 
 #define N 5
 
