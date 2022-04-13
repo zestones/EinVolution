@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "./world/world.h"
-#include "../systems/geometry/position.h"
-#include "../systems/geometry/vector.h"
+#include "../world/world.h"
+#include "../../systems/geometry/position.h"
+#include "../../systems/geometry/vector.h"
 
 #define ANGLE ROTATION 0.02
 
@@ -24,6 +24,7 @@ typedef struct {
 
     double yaw_angle;
     double pitch_angle;
+    double roll_angle;
 
     double speed;
     double slow;
@@ -54,6 +55,14 @@ void yaw(camera *cam, double angle);
  * @param angle 
  */
 void pitch(camera *cam, double angle);
+
+/**
+ * @brief rotate roll angle
+ * 
+ * @param cam 
+ * @param angle 
+ */
+void roll(camera *cam, double angle);
 
 /**
  * @brief move the camera forward

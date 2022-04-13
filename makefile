@@ -30,8 +30,8 @@ main.o: main.c
 #                    ENTITIES                    #
 #               ----------------			     #
 
-camera.o: ./src/entities/camera.c 
-	$(CC) $(CFLAGS) ./src//entities/camera.c -c
+camera.o: ./src/entities/camera/camera.c 
+	$(CC) $(CFLAGS) ./src//entities/camera/camera.c -c
 
 world.o: ./src/entities/world/world.c 
 	$(CC) $(CFLAGS) ./src/entities/world/world.c -c

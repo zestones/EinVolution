@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "../../entities/camera.h"
+#include "../../entities/camera/camera.h"
 #include "../../entities/world/world.h"
 
 /**
