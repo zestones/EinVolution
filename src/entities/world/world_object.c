@@ -1,6 +1,7 @@
 #include "../../../inc/entities/world/world_object.h"
 #include "../../../inc/components/header_shape.h"
 
+
 /**
  * @brief generate the object in the world
  * 
@@ -39,6 +40,25 @@ object *generate_world_object(position pos) {
     }
 
     return arr_object;
+}
+
+/**
+ * @brief Get the number object inside the cube
+ * 
+ * @param obj 
+ * @param c 
+ * @return int 
+ */
+int get_number_object(world_object obj, cube c) {
+    
+    int count = 0;
+
+    for (int i = 0; i < obj.length; i++) {
+        object o = get_world_object_by_id(obj, i);
+        if (is_point_inside_cube(c, o.pos)) count ++;
+    }
+
+    return count;
 }
 
 /**

@@ -1,4 +1,4 @@
-#include "../../inc/systems/cube.h"
+#include "../../../inc/systems/octree/cube.h"
 
 /**
  * @brief Create a cube object
@@ -49,7 +49,7 @@ position *get_point_cube(cube c) {
  * @return int 
  */
 int is_point_inside_cube(cube c, position p) {
-    return (((c.p1.x <= p.x) && (p.x <= c.p2.x)) && ((c.p1.y <= p.y) && (p.y <= c.p2.x)) && ((c.p1.z <= p.z) && (p.z <= c.p2.z)));
+    return (((c.p1.x <= p.x) && (p.x <= c.p2.x)) && ((c.p1.y <= p.y) && (p.y <= c.p2.y)) && ((c.p1.z <= p.z) && (p.z <= c.p2.z)));
 }
 
 /**
@@ -61,9 +61,10 @@ int is_point_inside_cube(cube c, position p) {
  * @param p3 
  */
 static void draw_face_cube(position p0, position p1, position p2, position p3) {
-    glColor3f(0.9, 0.9, 0.9);
-
     glBegin(GL_LINES);
+
+        glColor3f(1, 0.0, 0.25);
+
         glVertex3f(p0.x, p0.y, p0.z);
         glVertex3f(p1.x, p1.y, p1.z);
         

@@ -14,6 +14,8 @@ world create_world(position p1, position p2, double size) {
     
     w.object.length = MAX_OBJECT;
     w.object.arr_object = generate_world_object(w.cube.p2);
+
+    w.tree = generate_world_tree(w.cube, w.object);
    
     return w;
 }
@@ -26,16 +28,18 @@ world create_world(position p1, position p2, double size) {
  */
 static void set_world_texture(cube c) {
 
-    position *point_cube = get_point_cube(c);
+    glColor3f(1.0, 1.0, 1.0);
 
+    position *point_cube = get_point_cube(c);
+    
     glEnable(GL_TEXTURE_2D);
     GLuint texture;
     glGenTextures(1, &texture);
 
     unsigned char texture_data[2][2][4] = 
         {
-            { { 0, 0, 0, 255 },  { 255, 255, 255, 255 } },
-            { { 255, 255, 255, 255 },   { 0, 0, 0, 255 } }
+            { { 0, 0, 0, 255 },  { 200, 200, 200, 200 } },
+            { { 200, 200, 200, 200 },   { 0, 0, 0, 255 } }
         };
 
     glBindTexture(GL_TEXTURE_2D, texture);
@@ -75,8 +79,13 @@ static void draw_world_object(world w) {
  * @param w 
  */
 void draw_world(world w) {
-    
-    draw_cube(w.cube); 
     set_world_texture(w.cube);
+    
+    // ! useless, the world cube is drawed by the draw_world_tree function
+    /****************/
+    draw_cube(w.cube);
+    /****************/
+    
     draw_world_object(w);
+    draw_world_tree(w.tree);
 }

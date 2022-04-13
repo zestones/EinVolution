@@ -19,13 +19,17 @@ static void draw_axes() {
 void Draw(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     draw_world(w);
+
+    // ! for dev
+    /***************/
     draw_axes();
-       
+    /**************/
+
     if (!screen.key.IS_UP_KEY_UP && !screen.key.IS_UP_KEY_DOWN) move_forward(&cam, w);
     if (screen.key.IS_UP_KEY_UP) move_forward(&cam, w);
     if (screen.key.IS_UP_KEY_DOWN) move_backward(&cam, w);
-    if (screen.key.IS_UP_KEY_LEFT) move_left(&cam, w);
-    if (screen.key.IS_UP_KEY_RIGHT) move_right(&cam, w);
+    if (screen.key.IS_UP_KEY_LEFT) roll(&cam, cam.roll_angle);
+    if (screen.key.IS_UP_KEY_RIGHT) roll(&cam, -cam.roll_angle);
     
     glLoadIdentity();
     vector look_at = addition_vector(get_camera_position(cam), get_camera_direction(cam));

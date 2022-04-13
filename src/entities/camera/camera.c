@@ -1,4 +1,4 @@
-#include "../../inc/entities/camera.h"
+#include "../../../inc/entities/camera/camera.h"
 
 /**
  * @brief Create a camera object
@@ -19,6 +19,7 @@ camera create_camera(position eye, position look_at) {
 
     cam.yaw_angle = 0.0;
     cam.pitch_angle = 0.0;
+    cam.roll_angle = 0.005;
 
     cam.slow = 0.0125;
     cam.fast = 0.025;
@@ -47,6 +48,17 @@ void yaw(camera *cam, double angle) {
  */
 void pitch(camera *cam, double angle) {
     cam->forward = unit_vector(addition_vector(mult_vector(cam->forward, cos(angle)), mult_vector(cam->up, sin(angle))));
+    cam->up = cross_product(cam->right, cam->forward);
+}
+
+/**
+ * @brief rotate roll angle
+ * 
+ * @param cam 
+ * @param angle 
+ */
+void roll(camera *cam, double angle) {
+    cam->right = unit_vector(addition_vector(mult_vector(cam->right, cos(angle)), mult_vector(cam->up, sin(angle))));
     cam->up = cross_product(cam->right, cam->forward);
 }
 
