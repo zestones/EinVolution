@@ -13,7 +13,7 @@ object *generate_world_object(position pos) {
 
     object *arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
     
-    for (int i = 0; i < MAX_OBJECT - 2; i++) {
+    for (int i = 0; i < MAX_OBJECT; i++) {
          
         double x = (double) rand() / (double) (RAND_MAX / get_x(pos)); 
         double y = (double) rand() / (double) (RAND_MAX / get_y(pos)); 
@@ -39,11 +39,6 @@ object *generate_world_object(position pos) {
         }
     }
 
-    // arr_object[MAX_OBJECT - 1] = create_box(set_position(0,0,0), 1);
-    // arr_object[MAX_OBJECT - 2] = create_pyramide(set_position(2,2,2), 1);
-
-    arr_object[MAX_OBJECT - 1] = create_pyramide(set_position(2, 5, 2), 1);
-    arr_object[MAX_OBJECT - 2] = create_pyramide(set_position(0, 5, 2), 1);
     return arr_object;
 }
 
@@ -61,7 +56,6 @@ int get_number_object(world_object obj, cube c) {
     for (int i = 0; i < obj.length; i++) {
         object o = get_world_object_by_id(obj, i);
         if (is_point_inside_cube(c, o.pos)) count ++;
-        printf("is_point_inside_cube(c, o.pos) : %d\n", is_point_inside_cube(c, o.pos));
     }
 
     return count;

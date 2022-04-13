@@ -9,7 +9,7 @@ static octree insert_child(octree A , octree fils);
  * @param c the cube
  * @param ... the childs
  * @return octree 
- */
+ */ 
 octree construct_octree(element e, cube c, ...) {
     octree racine = create_node(e);
     
