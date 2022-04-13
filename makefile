@@ -5,12 +5,13 @@ LDLIBS = -lglut -lGLU -lGL -lm
 entities = camera.o world.o world_object.o object.o
 systems = position.o vector.o cube.o color.o face.o
 components = house.o box.o pyramide.o
+window = display.o window.o mouse.o keyboard.o
 
 
 all: einvolution simple-clean
 
-einvolution: main.o $(entities) $(systems) $(components) 
-	$(CC) main.o $(entities) $(systems) $(components) $(LDLIBS) -o einvolution
+einvolution: main.o $(entities) $(systems) $(components) $(window)
+	$(CC) main.o $(entities) $(systems) $(components) $(window) $(LDLIBS) -o einvolution
 
 
 ##################################################
@@ -61,6 +62,18 @@ face.o: ./src/systems/shape/face.c
 
 color.o: ./src/systems/shape/color.c 
 	$(CC) $(CFLAGS) ./src/systems/shape/color.c -c
+
+window.o: ./src/systems/window/window.c 
+	$(CC) $(CFLAGS) ./src/systems/window/window.c -c
+
+display.o: ./src/systems/window/display.c 
+	$(CC) $(CFLAGS) ./src/systems/window/display.c -c
+
+mouse.o: ./src/systems/window/mouse.c 
+	$(CC) $(CFLAGS) ./src/systems/window/mouse.c -c
+
+keyboard.o: ./src/systems/window/keyboard.c 
+	$(CC) $(CFLAGS) ./src/systems/window/keyboard.c -c
 
 
 

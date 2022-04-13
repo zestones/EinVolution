@@ -1,8 +1,13 @@
 #ifndef CUBE_H
 #define CUBE_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "GL/glut.h"
+#include "GL/gl.h"
+
 #include "./geometry/position.h"
-#include "../global.h"
 
 #define N 5
 
