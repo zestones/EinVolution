@@ -13,13 +13,15 @@ camera create_camera(position eye, position look_at) {
     cam.eye = eye;
     cam.look_at = look_at;
 
-    cam.forward = create_vector(0, 0, -1);
+    cam.forward = create_vector(0, 0, 1);
     cam.up = create_vector(0, 1, 0);
     cam.right = create_vector(1, 0, 0);
 
     cam.yaw_angle = 0.0;
     cam.pitch_angle = 0.0;
     cam.roll_angle = 0.005;
+
+    cam.fovy = 60;
 
     cam.slow = 0.0125;
     cam.fast = 0.025;
@@ -144,11 +146,11 @@ vector get_camera_position(camera cam) { return cam.eye; }
 vector get_camera_direction(camera cam) { return cam.forward; }
 
 /**
- * @brief update the camera direction vector
+ * @brief update the camera look vector
  * 
  * @param cam 
  */
-void update_camera_direction(camera *cam) { 
+void update_camera_look(camera *cam) { 
     cam->look_at = addition_vector(get_camera_position(*cam), get_camera_direction(*cam));
 }
 

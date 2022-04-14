@@ -23,8 +23,8 @@ void Mouse(int x, int y) {
     yaw(&cam, cam.yaw_angle);
     pitch(&cam, cam.pitch_angle);
     
-    // update the camera direction
-    update_camera_direction(&cam);
+    // update the camera look
+    update_camera_look(&cam);
 
     // redisplay
     glutPostRedisplay();

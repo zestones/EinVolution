@@ -40,6 +40,11 @@ typedef struct node {
 
 typedef struct_node *octree;
 
+typedef struct tree_leaves {
+    world_object *arr_world_object;
+    int length;
+} tree_leaves;
+
 /**
  * @brief construct the octree
  * 

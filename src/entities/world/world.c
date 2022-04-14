@@ -14,9 +14,10 @@ world create_world(position p1, position p2, double size) {
     
     w.object.length = MAX_OBJECT;
     w.object.arr_object = generate_world_object(w.cube.p2);
-
+    
     w.tree = generate_world_tree(w.cube, w.object);
-   
+    w.tree_leaves = get_tree_leaves(w.tree);
+    
     return w;
 }
 
@@ -86,6 +87,8 @@ void draw_world(world w) {
     draw_cube(w.cube);
     /****************/
     
-    draw_world_object(w);
+    // ! to be replaced by draw_tree_leaves
+    // draw_world_object(w); // ! replace parameter with world object not WORLD  
+
     draw_world_tree(w.tree);
 }

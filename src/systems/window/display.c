@@ -13,12 +13,39 @@ static void draw_axes() {
     glEnd();
 }
 
+int is_cube_visible(cube c) {
+    position center = set_position(get_x(c.p2) / 2, get_y(c.p2) / 2, get_z(c.p2) / 2);
+
+    vector x = unit_vector(create_vector_from_positions(center, cam.eye));
+    vector u = unit_vector(cam.look_at);
+
+    // ! condition is cube visible here  
+    vector n = divide_vector(cross_product(u, x), scalar_product(u, x));
+    // ? ACOS ?
+    
+    return 1;
+}
+
+// ! teste function if work create new files
+static void draw_tree_leaves(tree_leaves leaves) {
+
+    for (int i = 0; i < leaves.length; i++) {
+        for (int j = 0; j < leaves.arr_world_object[i].length; j++) {
+            // TODO : is cube inside view
+            draw_object(leaves.arr_world_object[i].arr_object[j]);
+        }
+    }
+}
+
+
 /**
  * @brief Draw the glut window
  */
 void Draw(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     draw_world(w);
+
+    draw_tree_leaves(w.tree_leaves);    
 
     // ! for dev
     /***************/

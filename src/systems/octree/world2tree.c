@@ -1,6 +1,7 @@
 #include "../../../inc/systems/octree/world2tree.h"
 #include "../../../inc/entities/world/world.h"
 
+
 /**
  * @brief generate recursively the octree
  * 
@@ -20,7 +21,7 @@ static octree generate_world_tree_bis(world w, float x1, float y1, float z1, flo
     
     // get the number of object in the current cube
     int number = get_number_object(w.object, c);
-    world_object object;
+    world_object object; // ! better to save the object in the tree_leaves struct instead of the actual tree
 
     // if the density is not full create a cube 
     if (number <= OBJECT_DENSITY && number > 0) {
@@ -60,6 +61,42 @@ octree generate_world_tree(cube c, world_object obj) {
 
     return generate_world_tree_bis(w, w.cube.p1.x, w.cube.p1.y, w.cube.p1.z, w.cube.p2.x, w.cube.p2.y, w.cube.p2.z, w.cube.edge_size);
 }
+              
+                // ! DO IT IN THE CREATION OF THE TREE NOT AFTER IT
+// ! ************************************************************************ //
+static void set_tree_leaves_bis(octree tree, tree_leaves *leaves) {
+
+    for (int i = 0; i < K; i++) {
+        if (tree->child[i] == NULL) return;
+
+        octree leaf = tree->child[i];
+        if (leaf->val == FULL) {
+            leaves->arr_world_object[leaves->length].arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
+          
+            leaves->arr_world_object[leaves->length].arr_object = leaf->object.arr_object;
+            leaves->arr_world_object[leaves->length].length = leaf->object.length;
+
+            leaves->arr_world_object[leaves->length].cube = leaf->object.cube;
+
+            leaves->length++;
+        }
+        
+        set_tree_leaves_bis(leaf, leaves);
+    }
+}
+
+tree_leaves get_tree_leaves(octree tree) {
+    tree_leaves leaves;
+    leaves.arr_world_object = (world_object *) malloc(MAX_OBJECT * sizeof(world_object));
+    leaves.length = 0;
+
+    set_tree_leaves_bis(tree, &leaves);
+
+    return leaves;
+}
+
+// ! ************************************************************************ //
+
 
 /**
  * @brief draw recursivly the octree 
@@ -68,11 +105,11 @@ octree generate_world_tree(cube c, world_object obj) {
  */
 static void draw_world_tree_bis(octree A) {
   
-    for (int i = 0; i < K; i++){
-        if(A->child[i] == NULL) return;
+    for (int i = 0; i < K; i++) {
+        if (A->child[i] == NULL) return;
 
         octree child = A->child[i];
-        if(child->val == FULL) draw_cube(child->cube);
+        if (child->val == FULL) draw_cube(child->cube);
         
         draw_world_tree_bis(child);
     }

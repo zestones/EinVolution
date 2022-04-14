@@ -7,6 +7,7 @@
 #include <math.h>
 
 #include "./position.h"
+
 /**
  * @brief definition of a vector
  * 
@@ -22,6 +23,15 @@ typedef position vector;
  * @return vector 
  */
 vector create_vector(double i, double j, double k);
+
+/**
+ * @brief Create a vector from positions object
+ * 
+ * @param p1 
+ * @param p2 
+ * @return vector 
+ */
+vector create_vector_from_positions(position p1, position p2);
 
 /**
  * @brief scalar product of u and v
@@ -67,6 +77,7 @@ vector unit_vector(vector v);
  */
 vector mult_vector(vector v, double value);
 
+vector divide_vector(vector v, double value);
 
 /**
  * @brief cross product of u and v

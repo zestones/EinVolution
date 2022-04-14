@@ -11,6 +11,17 @@
 vector create_vector(double i, double j, double k) { return set_position(i, j, k); }
 
 /**
+ * @brief Create a vector from positions object
+ * 
+ * @param p1 
+ * @param p2 
+ * @return vector 
+ */
+vector create_vector_from_positions(position p1, position p2) {
+    return set_position(get_x(p2) - get_x(p1), get_y(p2) - get_y(p1), get_z(p2) - get_z(p1));
+}
+
+/**
  * @brief scalar product of u and v
  * 
  * @param u 
@@ -64,6 +75,11 @@ vector unit_vector(vector v) {
 vector mult_vector(vector v, double value) {
     return create_vector(get_x(v) * value, get_y(v) * value, get_z(v) * value);
 }
+
+vector divide_vector(vector v, double value) { 
+    return create_vector(get_x(v) / value, get_y(v) / value, get_z(v) / value);
+}
+
 
 /**
  * @brief cross product of u and v

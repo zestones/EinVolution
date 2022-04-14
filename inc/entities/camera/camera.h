@@ -24,6 +24,8 @@ typedef struct {
     double pitch_angle;
     double roll_angle;
 
+    double fovy;
+
     double speed;
     double slow;
     double fast;
@@ -127,7 +129,7 @@ vector get_camera_position(camera cam);
  * 
  * @param cam 
  */
-void update_camera_direction(camera *cam);
+void update_camera_look(camera *cam);
 
 /**
  * @brief Set the camera speed object
