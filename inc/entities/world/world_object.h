@@ -43,6 +43,8 @@ object *generate_world_object(position pos);
  */
 int get_number_object(world_object obj, cube c);
 
+world_object get_object_in_cube(world_object obj, cube c);
+
 /**
  * @brief Get the world object by id
  * 

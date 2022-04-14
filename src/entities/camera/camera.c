@@ -30,7 +30,7 @@ camera create_camera(position eye, position look_at) {
 }
 
 /**
- * @brief rotate yaw angle
+ * @brief yaw rotation
  * 
  * @param cam 
  * @param angle 
@@ -41,7 +41,7 @@ void yaw(camera *cam, double angle) {
 }
 
 /**
- * @brief rotate pitch angle
+ * @brief pitch rotation
  * 
  * @param cam 
  * @param angle 
@@ -52,7 +52,7 @@ void pitch(camera *cam, double angle) {
 }
 
 /**
- * @brief rotate roll angle
+ * @brief roll rotation
  * 
  * @param cam 
  * @param angle 
@@ -74,8 +74,10 @@ static void move(camera *cam, world w, vector direction, double speed) {
     position p = addition_vector(cam->eye, mult_vector(direction, speed));
 
     if (!is_point_inside_cube(w.cube, p)) return;
-    cam->eye = p;
+    cam->eye = p; 
 }
+
+
 
 /**
  * @brief move the camera forward
@@ -140,6 +142,15 @@ vector get_camera_position(camera cam) { return cam.eye; }
  * @return vector 
  */
 vector get_camera_direction(camera cam) { return cam.forward; }
+
+/**
+ * @brief update the camera direction vector
+ * 
+ * @param cam 
+ */
+void update_camera_direction(camera *cam) { 
+    cam->look_at = addition_vector(get_camera_position(*cam), get_camera_direction(*cam));
+}
 
 /**
  * @brief Set the camera speed object

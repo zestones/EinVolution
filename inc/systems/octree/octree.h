@@ -7,16 +7,19 @@
 #include <stdarg.h>
 #include <math.h>
 
+#include "../../entities/world/world_object.h"
 #include "../geometry/position.h"
 #include "./cube.h"
 
 #define K 8 // 8 childs
 
+// ! just for drawing
+/************************/
 #define UNDETERMINATE -1
 #define EMPTY 0
 #define FULL 1
+/***********************/
 
-#define MAX_DEPTH 6
 #define PRINT_SPACE 2
 
 typedef int element; // type of data 
@@ -26,10 +29,13 @@ typedef int element; // type of data
  * 
  */
 typedef struct node {
-    element val;
-    struct node *fils[K];
-    cube cube;
     int id;
+
+    element val;
+    struct node *child[K];
+
+    cube cube;
+    world_object object;
 } struct_node;
 
 typedef struct_node *octree;
@@ -42,7 +48,7 @@ typedef struct_node *octree;
  * @param ... 
  * @return octree 
  */
-octree construct_octree(element e, cube c, ...);
+octree construct_octree(element e, world_object object, cube c, ...);
 
 /**
  * @brief return an empty tree

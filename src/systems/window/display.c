@@ -32,11 +32,10 @@ void Draw(void) {
     if (screen.key.IS_UP_KEY_RIGHT) roll(&cam, -cam.roll_angle);
     
     glLoadIdentity();
-    vector look_at = addition_vector(get_camera_position(cam), get_camera_direction(cam));
-
+        
     gluLookAt(
         get_x(cam.eye), get_y(cam.eye), get_z(cam.eye), 
-        get_x(look_at), get_y(look_at), get_z(look_at), 
+        get_x(cam.look_at), get_y(cam.look_at), get_z(cam.look_at), 
         get_x(cam.up), get_y(cam.up), get_z(cam.up)
     );
 

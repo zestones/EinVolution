@@ -20,17 +20,20 @@ static octree generate_world_tree_bis(world w, float x1, float y1, float z1, flo
     
     // get the number of object in the current cube
     int number = get_number_object(w.object, c);
+    world_object object;
 
     // if the density is not full create a cube 
-    if (number <= OBJECT_DENSITY && number > 0)
-        return construct_octree(FULL, c, empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree());
-   
+    if (number <= OBJECT_DENSITY && number > 0) {
+        object = get_object_in_cube(w.object, c);
+        return construct_octree(FULL, object, c, empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree());
+    }
+
     // cube is empty
     if (!number) 
-        return construct_octree(EMPTY, c, empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree());
+        return construct_octree(EMPTY, object, c, empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree());
    
     // split the cube in 8 childs cube
-    return construct_octree(UNDETERMINATE, c,
+    return construct_octree(UNDETERMINATE, object, c,
         generate_world_tree_bis(w, x1, y1, z1, (x1 + x2) / 2, (y1 + y2) / 2, (z1 + z2) / 2, edge_size/2),
         generate_world_tree_bis(w, (x1 + x2) / 2, y1, z1, x2, (y1 + y2) / 2, (z1 + z2) / 2, edge_size/2),
         generate_world_tree_bis(w, (x1 + x2) / 2, (y1 + y2) / 2, z1, x2, y2, (z1 + z2) / 2, edge_size/2),
@@ -66,12 +69,12 @@ octree generate_world_tree(cube c, world_object obj) {
 static void draw_world_tree_bis(octree A) {
   
     for (int i = 0; i < K; i++){
-        if(A->fils[i] == NULL) return;
+        if(A->child[i] == NULL) return;
 
-        octree fils = A->fils[i];
-        if(fils->val == FULL) draw_cube(fils->cube);
+        octree child = A->child[i];
+        if(child->val == FULL) draw_cube(child->cube);
         
-        draw_world_tree_bis(fils);
+        draw_world_tree_bis(child);
     }
 }
 

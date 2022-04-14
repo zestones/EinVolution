@@ -8,8 +8,6 @@
 #include "../../systems/geometry/position.h"
 #include "../../systems/geometry/vector.h"
 
-#define ANGLE ROTATION 0.02
-
 /**
  * @brief structure of the camera
  * 
@@ -41,7 +39,7 @@ typedef struct {
 camera create_camera(position eye, position look_at);
 
 /**
- * @brief rotate yaw angle
+ * @brief yaw rotation
  * 
  * @param cam 
  * @param angle 
@@ -49,7 +47,7 @@ camera create_camera(position eye, position look_at);
 void yaw(camera *cam, double angle);
 
 /**
- * @brief rotate pitch angle 
+ * @brief pitch rotation 
  * 
  * @param cam 
  * @param angle 
@@ -57,7 +55,7 @@ void yaw(camera *cam, double angle);
 void pitch(camera *cam, double angle);
 
 /**
- * @brief rotate roll angle
+ * @brief roll rotation
  * 
  * @param cam 
  * @param angle 
@@ -123,6 +121,13 @@ vector get_camera_direction(camera cam);
  * @return vector 
  */
 vector get_camera_position(camera cam);
+
+/**
+ * @brief update the camera direction vector
+ * 
+ * @param cam 
+ */
+void update_camera_direction(camera *cam);
 
 /**
  * @brief Set the camera speed object
