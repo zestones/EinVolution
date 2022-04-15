@@ -9,11 +9,12 @@
 
 #include "../../entities/world/world_object.h"
 #include "../geometry/position.h"
+#include "./tree_leaves.h"
 #include "./cube.h"
 
 #define K 8 // 8 childs
 
-// ! just for drawing
+// ! for dev, drawing octree cube
 /************************/
 #define UNDETERMINATE -1
 #define EMPTY 0
@@ -35,15 +36,9 @@ typedef struct node {
     struct node *child[K];
 
     cube cube;
-    world_object object;
 } struct_node;
 
 typedef struct_node *octree;
-
-typedef struct tree_leaves {
-    world_object *arr_world_object;
-    int length;
-} tree_leaves;
 
 /**
  * @brief construct the octree
@@ -53,7 +48,7 @@ typedef struct tree_leaves {
  * @param ... 
  * @return octree 
  */
-octree construct_octree(element e, world_object object, cube c, ...);
+octree construct_octree(element e, cube c, ...);
 
 /**
  * @brief return an empty tree

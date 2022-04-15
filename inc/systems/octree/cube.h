@@ -8,6 +8,7 @@
 #include "GL/gl.h"
 
 #include "../geometry/position.h"
+#include "../geometry/vector.h"
 
 #define N 5
 

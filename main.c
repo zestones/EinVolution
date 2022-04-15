@@ -1,6 +1,7 @@
 #include "./inc/systems/window/window.h"
 
 window screen;
+frustum frust;
 camera cam;
 world w;
 
@@ -14,7 +15,13 @@ static void Init(void) {
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
 
     // creation of the camera
-    cam = create_camera(set_position(get_x(w.cube.p2) / 2, get_y(w.cube.p2) / 2, get_z(w.cube.p2) / 2), set_position(25, 1, 0));
+    cam = create_camera(
+        set_position(get_x(w.cube.p2) / 2, 
+        get_y(w.cube.p2) / 2, get_z(w.cube.p2) / 2), 
+        set_position(25, 1, 0)
+    );
+
+    frust = create_frustum_perspective(screen.width, screen.height);
     
     // ! uncomment / comment this line to mask the mouse cursor
     glutSetCursor(GLUT_CURSOR_NONE);
@@ -47,7 +54,7 @@ int main(int argc, char *argv[]) {
     glutDisplayFunc(Draw);
 
     // keyboard events
-    glutSpecialFunc(special);
+    glutSpecialFunc(Special);
     glutSpecialUpFunc(SpecialUp);     
 	glutKeyboardFunc(Key);
 

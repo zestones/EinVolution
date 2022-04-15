@@ -8,11 +8,7 @@
 
 #include "./position.h"
 
-/**
- * @brief definition of a vector
- * 
- */
-typedef position vector;
+typedef position vector; 
 
 /**
  * @brief Create a vector object
@@ -34,6 +30,16 @@ vector create_vector(double i, double j, double k);
 vector create_vector_from_positions(position p1, position p2);
 
 /**
+ * @brief Set the vector object
+ * 
+ * @param x 
+ * @param y 
+ * @param z 
+ * @return vector 
+ */
+vector set_vector(double x, double y, double z);
+
+/**
  * @brief scalar product of u and v
  * 
  * @param u 
@@ -51,6 +57,22 @@ double scalar_product(vector u, vector v);
  */
 vector addition_vector(vector v, vector u);
 
+/**
+ * @brief return the opposite vector
+ * 
+ * @param u 
+ * @return vector 
+ */
+vector inverse_vector(vector u);
+
+/**
+ * @brief substraction of v & u
+ * 
+ * @param v 
+ * @param u 
+ * @return vector 
+ */
+vector substraction_vector(vector v, vector u);
 
 /**
  * @brief length of the vector v
@@ -77,6 +99,13 @@ vector unit_vector(vector v);
  */
 vector mult_vector(vector v, double value);
 
+/**
+ * @brief division of v with a value
+ * 
+ * @param v 
+ * @param value 
+ * @return vector 
+ */
 vector divide_vector(vector v, double value);
 
 /**

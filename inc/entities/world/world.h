@@ -32,6 +32,13 @@ typedef struct world {
 world create_world(position p1, position p2, double size);
 
 /**
+ * @brief Set the world texture
+ * 
+ * @param c 
+ */
+void set_world_texture(cube c);
+
+/**
  * @brief draw the world cube
  * 
  * @param w 

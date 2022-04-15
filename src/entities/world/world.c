@@ -14,11 +14,24 @@ world create_world(position p1, position p2, double size) {
     
     w.object.length = MAX_OBJECT;
     w.object.arr_object = generate_world_object(w.cube.p2);
-    
-    w.tree = generate_world_tree(w.cube, w.object);
-    w.tree_leaves = get_tree_leaves(w.tree);
-    
+
+    // ! generate the tree_leaves dont need the whole tree
+    /***************************/    
+    w.tree = generate_world_tree(w.cube, w.object, &w.tree_leaves);
+    /****************************/
     return w;
+}
+
+
+static void set_world_face_texture(position p1, position p2, position p3, position p4) {
+    glBegin(GL_QUADS);
+     
+        glTexCoord2f(0.0, 0.0);   glVertex3f(get_x(p1), get_y(p1), get_z(p1));
+        glTexCoord2f(25.0, 0.0);  glVertex3f(get_x(p2), get_y(p2), get_z(p2));
+        glTexCoord2f(25.0, 25.0); glVertex3f(get_x(p3), get_y(p3), get_z(p3));
+        glTexCoord2f(0.0, 25.0);  glVertex3f(get_x(p4), get_y(p4), get_z(p4));
+
+    glEnd();
 }
 
 /**
@@ -27,7 +40,7 @@ world create_world(position p1, position p2, double size) {
  * 
  * @param c
  */
-static void set_world_texture(cube c) {
+void set_world_texture(cube c) {
 
     glColor3f(1.0, 1.0, 1.0);
 
@@ -50,45 +63,8 @@ static void set_world_texture(cube c) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-    glBegin(GL_QUADS);
-     
-        glTexCoord2f(0.0, 0.0);   glVertex3f(get_x(point_cube[0]), get_y(point_cube[0]), get_z(point_cube[0]));
-        glTexCoord2f(25.0, 0.0);  glVertex3f(get_x(point_cube[1]), get_y(point_cube[1]), get_z(point_cube[1]));
-        glTexCoord2f(25.0, 25.0); glVertex3f(get_x(point_cube[6]), get_y(point_cube[6]), get_z(point_cube[6]));
-        glTexCoord2f(0.0, 25.0);  glVertex3f(get_x(point_cube[3]), get_y(point_cube[3]), get_z(point_cube[3]));
-
-    glEnd();
+    
+    set_world_face_texture(point_cube[0], point_cube[1], point_cube[6], point_cube[3]);
 
     glDisable(GL_TEXTURE_2D);
-}
-
-/**
- * @brief draw the objects in the world
- * 
- * @param w 
- */
-static void draw_world_object(world w) {
-    for (int i = 0; i < w.object.length; i++) {
-        draw_object(get_world_object_by_id(w.object, i));
-    }
-}
-
-/**
- * @brief draw the world cube
- * 
- * @param w 
- */
-void draw_world(world w) {
-    set_world_texture(w.cube);
-    
-    // ! useless, the world cube is drawed by the draw_world_tree function
-    /****************/
-    draw_cube(w.cube);
-    /****************/
-    
-    // ! to be replaced by draw_tree_leaves
-    // draw_world_object(w); // ! replace parameter with world object not WORLD  
-
-    draw_world_tree(w.tree);
 }

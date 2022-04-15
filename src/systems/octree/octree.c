@@ -11,16 +11,13 @@ static octree insert_child(octree A , octree child);
  * @param ... 
  * @return octree 
  */
-octree construct_octree(element e, world_object object, cube c, ...) {
+octree construct_octree(element e, cube c, ...) {
     octree racine = create_node(e);
      
     va_list arg;
     va_start(arg, c);  
 
-    if (e == FULL) {
-        racine->cube = c;
-        racine->object = object;
-    }
+    if (e == FULL) racine->cube = c;
 
     for (int i = 1; i <= K; i++) {
         insert_child(racine, va_arg(arg, octree));

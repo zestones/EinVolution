@@ -8,6 +8,7 @@
 #include "../../systems/geometry/position.h"
 #include "../../systems/geometry/vector.h"
 
+
 /**
  * @brief structure of the camera
  * 
@@ -23,8 +24,6 @@ typedef struct {
     double yaw_angle;
     double pitch_angle;
     double roll_angle;
-
-    double fovy;
 
     double speed;
     double slow;

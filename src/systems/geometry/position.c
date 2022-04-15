@@ -1,6 +1,13 @@
 #include "../../../inc/systems/geometry/position.h"
 
-/** set les coordonnees  */
+/**
+ * @brief Set the position
+ * 
+ * @param x 
+ * @param y 
+ * @param z 
+ * @return position 
+ */
 position set_position(double x, double y, double z) {
 	position p;
    
@@ -8,6 +15,17 @@ position set_position(double x, double y, double z) {
     p.z = z;
 
 	return p;
+}
+
+/**
+ * @brief distance between 2 positions
+ * 
+ * @param p1 
+ * @param p2 
+ * @return double 
+ */
+double distance(position p1, position p2) {
+    return sqrt(pow(get_x(p2) - get_x(p1), 2) + pow(get_y(p2) - get_y(p1), 2) + pow(get_z(p2) - get_z(p1), 2));
 }
 
 /**

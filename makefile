@@ -2,11 +2,11 @@ CC = gcc
 CFLAGS = -W -Wall
 LDLIBS = -lglut -lGLU -lGL -lm
 
-entities = camera.o world.o world_object.o object.o
+entities = camera.o frustum.o plane.o world.o world_object.o object.o 
 systems = position.o vector.o color.o face.o
 components = house.o box.o pyramide.o
 window = display.o window.o mouse.o keyboard.o
-octree = cube.o octree.o world2tree.o
+octree = cube.o octree.o world2tree.o tree_leaves.o
 
 
 all: einvolution simple-clean
@@ -33,6 +33,9 @@ main.o: main.c
 camera.o: ./src/entities/camera/camera.c 
 	$(CC) $(CFLAGS) ./src//entities/camera/camera.c -c
 
+frustum.o: ./src/entities/camera/frustum.c 
+	$(CC) $(CFLAGS) ./src//entities/camera/frustum.c -c
+
 world.o: ./src/entities/world/world.c 
 	$(CC) $(CFLAGS) ./src/entities/world/world.c -c
 
@@ -42,6 +45,8 @@ world_object.o: ./src/entities/world/world_object.c
 object.o: ./src/entities/world/object.c 
 	$(CC) $(CFLAGS) ./src/entities/world/object.c -c
 
+plane.o: ./src/entities/camera/plane.c 
+	$(CC) $(CFLAGS) ./src/entities/camera/plane.c -c
 
 
 ##################################################
@@ -78,6 +83,9 @@ cube.o: ./src/systems/octree/cube.c
 
 octree.o: ./src/systems/octree/octree.c 
 	$(CC) $(CFLAGS) ./src/systems/octree/octree.c -c
+
+tree_leaves.o: ./src/systems/octree/tree_leaves.c 
+	$(CC) $(CFLAGS) ./src/systems/octree/tree_leaves.c -c
 
 world2tree.o: ./src/systems/octree/world2tree.c 
 	$(CC) $(CFLAGS) ./src/systems/octree/world2tree.c -c

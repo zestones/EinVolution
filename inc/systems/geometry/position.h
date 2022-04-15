@@ -2,6 +2,7 @@
 #define POSITION
 
 #include <stdio.h>
+#include <math.h>
 
 typedef struct {
     double x;
@@ -18,6 +19,15 @@ typedef struct {
  * @return position 
  */
 position set_position(double x, double y, double z);
+
+/** 
+ * @brief distance between 2 positions 
+ * 
+ * @param p1 
+ * @param p2 
+ * @return double 
+ */
+double distance(position p1, position p2);
 
 /**
  * @brief Get the x object

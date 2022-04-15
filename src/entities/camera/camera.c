@@ -1,5 +1,5 @@
 #include "../../../inc/entities/camera/camera.h"
-
+#include "../../../inc/systems/window/window.h"
 /**
  * @brief Create a camera object
  * 
@@ -20,8 +20,6 @@ camera create_camera(position eye, position look_at) {
     cam.yaw_angle = 0.0;
     cam.pitch_angle = 0.0;
     cam.roll_angle = 0.005;
-
-    cam.fovy = 60;
 
     cam.slow = 0.0125;
     cam.fast = 0.025;

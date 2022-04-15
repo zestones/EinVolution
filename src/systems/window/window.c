@@ -18,8 +18,11 @@ void reshape(int width, int height) {
     glMatrixMode(GL_PROJECTION);
     
     glLoadIdentity();
+    
+    double ratio = (GLfloat) width / (GLfloat) height;
+    update_frustum_perspective(&frust, ratio);
 
-    gluPerspective(60.0, (GLfloat) width / (GLfloat) height, 0.05, 300.0);
+    gluPerspective(frust.perspective.fovy, frust.perspective.ratio, frust.perspective.znear, frust.perspective.zfar);
     glMatrixMode(GL_MODELVIEW);
 }
 

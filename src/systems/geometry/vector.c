@@ -1,6 +1,23 @@
 #include "../../../inc/systems/geometry/vector.h"
 
 /**
+ * @brief Set the vector object
+ * 
+ * @param x 
+ * @param y 
+ * @param z 
+ * @return vector 
+ */
+vector set_vector(double x, double y, double z) {
+	vector v;
+   
+    v.x = x; v.y = y;
+    v.z = z;
+
+	return v;
+}
+
+/**
  * @brief Create a vector object
  * 
  * @param i 
@@ -8,7 +25,7 @@
  * @param k 
  * @return vector 
  */
-vector create_vector(double i, double j, double k) { return set_position(i, j, k); }
+vector create_vector(double i, double j, double k) { return set_vector(i, j, k); }
 
 /**
  * @brief Create a vector from positions object
@@ -18,7 +35,17 @@ vector create_vector(double i, double j, double k) { return set_position(i, j, k
  * @return vector 
  */
 vector create_vector_from_positions(position p1, position p2) {
-    return set_position(get_x(p2) - get_x(p1), get_y(p2) - get_y(p1), get_z(p2) - get_z(p1));
+    return set_vector(get_x(p2) - get_x(p1), get_y(p2) - get_y(p1), get_z(p2) - get_z(p1));
+}
+
+/**
+ * @brief return the opposite vector
+ * 
+ * @param u 
+ * @return vector 
+ */
+vector inverse_vector(vector u) {
+    return set_vector(-get_x(u), -get_y(u), -get_z(u));
 }
 
 /**
@@ -38,7 +65,18 @@ double scalar_product(vector u, vector v) { return u.x * v.x + u.y * v.y + u.z *
  * @return vector 
  */
 vector addition_vector(vector v, vector u) {
-    return set_position(v.x + u.x, v.y + u.y , v.z + u.z); 
+    return set_vector(v.x + u.x, v.y + u.y , v.z + u.z); 
+}
+
+/**
+ * @brief substraction of v & u
+ * 
+ * @param v 
+ * @param u 
+ * @return vector 
+ */
+vector substraction_vector(vector v, vector u) {
+    return set_vector(v.x - u.x, v.y - u.y , v.z - u.z); 
 }
 
 /**
@@ -76,6 +114,13 @@ vector mult_vector(vector v, double value) {
     return create_vector(get_x(v) * value, get_y(v) * value, get_z(v) * value);
 }
 
+/**
+ * @brief division of v with a value
+ * 
+ * @param v 
+ * @param value 
+ * @return vector 
+ */
 vector divide_vector(vector v, double value) { 
     return create_vector(get_x(v) / value, get_y(v) / value, get_z(v) / value);
 }
