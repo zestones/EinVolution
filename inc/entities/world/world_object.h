@@ -7,12 +7,16 @@
 #include "./object.h"
 
 
-#define MAX_OBJECT 10 // the maximum generated object 
-#define MAX_SIZE 4 // size maximum of the object
+#define MAX_OBJECT 20 // the maximum generated object 
+#define MAX_SIZE 4 // maximum size of the object
 
 typedef struct world_object {
     object *arr_object;
     int length;
+    
+    // ! used only by tree_leaves structure
+    cube cube;
+
 } world_object;
 
 /**
@@ -42,6 +46,8 @@ object *generate_world_object(position pos);
  * @return int 
  */
 int get_number_object(world_object obj, cube c);
+
+world_object get_object_in_cube(world_object obj, cube c);
 
 /**
  * @brief Get the world object by id

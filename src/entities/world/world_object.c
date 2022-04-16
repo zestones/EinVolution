@@ -12,7 +12,7 @@ object *generate_world_object(position pos) {
     srand(time(NULL));
 
     object *arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
-    
+     
     for (int i = 0; i < MAX_OBJECT; i++) {
          
         double x = (double) rand() / (double) (RAND_MAX / get_x(pos)); 
@@ -38,7 +38,7 @@ object *generate_world_object(position pos) {
                 break;
         }
     }
-
+    
     return arr_object;
 }
 
@@ -59,6 +59,33 @@ int get_number_object(world_object obj, cube c) {
     }
 
     return count;
+}
+
+/**
+ * @brief Get the object in cube
+ * 
+ * @param obj 
+ * @param c 
+ * @return world_object 
+ */
+world_object get_object_in_cube(world_object obj, cube c) {
+    
+    world_object cpy;
+    cpy.arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
+    
+    int k = 0;
+
+    for (int i = 0; i < obj.length; i++) {
+        object o = get_world_object_by_id(obj, i);
+       
+        if (is_point_inside_cube(c, o.pos)) {
+            cpy.arr_object[k++] = o;
+        }
+    }
+
+    cpy.length = k;
+
+    return cpy;
 }
 
 /**

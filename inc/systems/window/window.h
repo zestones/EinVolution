@@ -34,6 +34,7 @@ typedef struct window {
 
 // extern variable
 extern window screen;
+extern frustum frust;
 extern camera cam;
 extern world w;
 

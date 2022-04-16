@@ -1,24 +1,25 @@
 #include "../../../inc/systems/octree/octree.h"
 
-static octree insert_child(octree A , octree fils);
+static octree insert_child(octree A , octree child);
 
 /**
  * @brief construct the octree
  * 
- * @param e the root
- * @param c the cube
- * @param ... the childs
+ * @param e 
+ * @param object 
+ * @param c 
+ * @param ... 
  * @return octree 
- */ 
+ */
 octree construct_octree(element e, cube c, ...) {
     octree racine = create_node(e);
-    
+     
     va_list arg;
     va_start(arg, c);  
 
     if (e == FULL) racine->cube = c;
 
-    for(int i = 1; i <= K; i++) {
+    for (int i = 1; i <= K; i++) {
         insert_child(racine, va_arg(arg, octree));
     }
         
@@ -42,23 +43,23 @@ static int is_tree_empty(octree A) { return (A == empty_tree()); }
  * @param A 
  * @return octree 
  */
-static octree get_child_by_id(int index, octree A) { return A->fils[index]; }
+static octree get_child_by_id(int index, octree A) { return A->child[index]; }
 
 /**
  * @brief insert child  
  * 
  * @param A 
- * @param fils 
+ * @param child 
  * @return octree 
  */
-static octree insert_child(octree A , octree fils) {
-    if(is_tree_empty(A)) return fils;
-    else if(A->id >= K) {
+static octree insert_child(octree A , octree child) {
+    if (is_tree_empty(A)) return child;
+    else if (A->id >= K) {
         fprintf(stderr, "Error ! this node is full..\n --  %d --\n", get_tree_root(A));
         exit(EXIT_FAILURE);
     }
 
-    A->fils[A->id++] = fils;
+    A->child[A->id++] = child;
     
     return A;
 }
@@ -90,8 +91,8 @@ octree create_node(element e) {
     A->id = 0;
     A->val = e;     
        
-    for(int i = 0; i < K; i++)
-        A->fils[i] = empty_tree();
+    for (int i = 0; i < K; i++)
+        A->child[i] = empty_tree();
 
     return A;
 }
@@ -100,22 +101,22 @@ octree create_node(element e) {
  * @brief print the tree recursivly
  * 
  * @param A 
- * @param profondeur 
+ * @param depth 
  */
-static void print_tree_bis(octree A, int profondeur) {
+static void print_tree_bis(octree A, int depth) {
 
-    for (int i = 0; i < profondeur * PRINT_SPACE; i++) {
+    for (int i = 0; i < depth * PRINT_SPACE; i++) {
         fprintf(stdout, " ");
     }
 
     fprintf(stdout, "(%d)", get_tree_root(A));
     fprintf(stdout, "\n");
 
-    for(int i = 0; i < K; i++){
-        if(is_tree_empty(A->fils[i])) return;
+    for (int i = 0; i < K; i++){
+        if (is_tree_empty(A->child[i])) return;
 
-        octree fils = get_child_by_id(i, A); 
-        print_tree_bis(fils, profondeur + 1);
+        octree child = get_child_by_id(i, A); 
+        print_tree_bis(child, depth + 1);
         
         fprintf(stdout, "\n");
     }

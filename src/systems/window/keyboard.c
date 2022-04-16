@@ -8,6 +8,9 @@
  * @param y 
  */
 void Key(unsigned char key, int x, int y) {
+    
+    printf("Key: (x: %d, y: %d)\n", x, y);
+
     switch (key) {
         // escape
         case 27: exit(EXIT_SUCCESS);
@@ -29,7 +32,9 @@ void Key(unsigned char key, int x, int y) {
  * @param x 
  * @param y 
  */
-void special(int key, int x, int y) {
+void Special(int key, int x, int y) {
+    printf("Special: (x: %d, y: %d)\n", x, y);
+
     switch (key) {
         case GLUT_KEY_UP : 
             screen.key.IS_UP_KEY_UP = true;
@@ -45,13 +50,15 @@ void special(int key, int x, int y) {
 }
 
 /**
- * @brief handle released special key
+ * @brief handle released Special key
  * 
  * @param key 
  * @param x 
  * @param y 
  */
 void SpecialUp(int key, int x, int y) { 
+    printf("SpecialUp: x: %d, y: %d)\n", x, y);
+    
     switch(key){ 
         case GLUT_KEY_UP : 
             screen.key.IS_UP_KEY_UP = false; 

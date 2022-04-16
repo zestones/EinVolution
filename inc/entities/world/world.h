@@ -12,7 +12,13 @@
 typedef struct world {
     cube cube;
     world_object object;
+
+    // ! temp dont need the whole tree
     octree tree;
+    
+    // * Only need the leaves
+    tree_leaves tree_leaves;
+
 } world;
 
 /**
@@ -24,6 +30,13 @@ typedef struct world {
  * @return world 
  */
 world create_world(position p1, position p2, double size);
+
+/**
+ * @brief Set the world texture
+ * 
+ * @param c 
+ */
+void set_world_texture(cube c);
 
 /**
  * @brief draw the world cube

@@ -24,7 +24,7 @@ typedef struct keyboard {
 
 void SpecialUp(int key, int x, int y);
 
-void special(int key, int x, int y);
+void Special(int key, int x, int y);
 
 void Key(unsigned char key, int x, int y);
 

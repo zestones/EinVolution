@@ -1,6 +1,7 @@
 #include "./inc/systems/window/window.h"
 
 window screen;
+frustum frust;
 camera cam;
 world w;
 
@@ -10,25 +11,20 @@ world w;
  */
 static void Init(void) {
 
+    // create the world map
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
 
     // creation of the camera
-    cam = create_camera(set_position(16, 5, 15), set_position(0, 1, 0));
-
-    // position of the observater
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    
-    vector look_at = addition_vector(get_camera_position(cam), get_camera_direction(cam));
-
-    gluLookAt(
-        get_x(cam.eye), get_y(cam.eye), get_z(cam.eye), 
-        get_x(look_at), get_y(look_at), get_z(look_at), 
-        get_x(cam.up), get_y(cam.up), get_z(cam.up)
+    cam = create_camera(
+        set_position(get_x(w.cube.p2) / 2, 
+        get_y(w.cube.p2) / 2, get_z(w.cube.p2) / 2), 
+        set_position(25, 1, 0)
     );
 
-    // ! uncomment this line to mask the mouse cursor
-    // glutSetCursor(GLUT_CURSOR_NONE);
+    frust = create_frustum_perspective(screen.width, screen.height);
+    
+    // ! uncomment / comment this line to mask the mouse cursor
+    glutSetCursor(GLUT_CURSOR_NONE);
 }
 
 /**
@@ -58,7 +54,7 @@ int main(int argc, char *argv[]) {
     glutDisplayFunc(Draw);
 
     // keyboard events
-    glutSpecialFunc(special);
+    glutSpecialFunc(Special);
     glutSpecialUpFunc(SpecialUp);     
 	glutKeyboardFunc(Key);
 
