@@ -23,7 +23,7 @@ typedef struct object house;
  * @param size 
  * @return house 
  */
-house create_house(position p, double size);
+house create_house(position p, double width, double height, double depth);
 
 /**
  * @brief draw the house object

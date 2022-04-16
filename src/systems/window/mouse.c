@@ -16,8 +16,8 @@ void Mouse(int x, int y) {
     screen.mouse.dy = screen.center_y - get_y(screen.mouse.pos);
 
     // set the angle
-    cam.yaw_angle = screen.mouse.dx / 1000.0;
-    cam.pitch_angle = screen.mouse.dy / 1000.0;
+    cam.yaw_angle = screen.mouse.dx * screen.mouse.sensitivity;
+    cam.pitch_angle = screen.mouse.dy * screen.mouse.sensitivity;
 
     // rotate according to the movement
     yaw(&cam, cam.yaw_angle);

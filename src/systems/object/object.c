@@ -1,5 +1,5 @@
 #include "../../../inc/systems/object/object.h"
-
+#include "../../../inc/systems/geometry/vector.h"
 /**
  * @brief Get the objects size
  * 

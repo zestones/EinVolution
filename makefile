@@ -3,7 +3,7 @@ CFLAGS = -W -Wall
 LDLIBS = -lglut -lGLU -lGL -lm
 
 entities = camera.o frustum.o world.o world_object.o object.o 
-systems = position.o vector.o plane.o color.o face.o cube.o
+systems = position.o vector.o plane.o color.o face.o cube.o bounding_box.o
 components = house.o box.o pyramide.o
 window = display.o window.o mouse.o keyboard.o
 octree = octree.o world2tree.o tree_leaves.o
@@ -33,10 +33,10 @@ main.o: main.c
 # -------------------- CAMERA --------------------
 
 camera.o: ./src/entities/camera/camera.c 
-	$(CC) $(CFLAGS) ./src//entities/camera/camera.c -c
+	$(CC) $(CFLAGS) ./src/entities/camera/camera.c -c
 
 frustum.o: ./src/entities/camera/frustum.c 
-	$(CC) $(CFLAGS) ./src//entities/camera/frustum.c -c
+	$(CC) $(CFLAGS) ./src/entities/camera/frustum.c -c
 
 # -------------------- WORLD ---------------------
 
@@ -66,6 +66,9 @@ face.o: ./src/systems/shape/face.c
 
 cube.o: ./src/systems/shape/cube.c 
 	$(CC) $(CFLAGS) ./src/systems/shape/cube.c -c
+
+bounding_box.o: ./src/systems/shape/bounding_box.c 
+	$(CC) $(CFLAGS) ./src/systems/shape/bounding_box.c -c
 
 color.o: ./src/systems/shape/color.c 
 	$(CC) $(CFLAGS) ./src/systems/shape/color.c -c

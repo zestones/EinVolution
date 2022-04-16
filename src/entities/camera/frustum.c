@@ -96,9 +96,9 @@ int is_point_in_frustum(frustum frust, position p) {
 
 	for (int i = 0; i < Number_plan; i++) {
 		if (distance_to_plane(frust.plane[i], p) > 0)
-			return INSIDE;
+			return 1;
 	}
-	return OUTSIDE;
+	return 0;
 }
 
 /**
@@ -126,8 +126,8 @@ int is_cube_in_frustum(frustum frust, cube c) {
 			else number_inside++;
 		}
 
-		if (number_inside == point_length) return OUTSIDE;
+		if (number_inside == point_length) return 0;
 	}
 
-	return INSIDE;
+	return 1;
  }

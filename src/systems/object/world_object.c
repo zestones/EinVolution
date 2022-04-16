@@ -22,23 +22,25 @@ object *generate_world_object(position pos) {
         position p = set_position(x, y, z);
         
         int type_object = rand() % Number_of_object;
-        int size = (rand() % (MAX_SIZE - 1 + 1)) + 1;
+        int depth = (rand() % (MAX_SIZE - 1 + 1)) + 1;
+        int height = (rand() % (MAX_SIZE - 1 + 1)) + 1;
+        int width = (rand() % (MAX_SIZE - 1 + 1)) + 1;
 
         switch (type_object) {
             case House:
-                arr_object[i] = create_house(p, size);
+                arr_object[i] = create_house(p, width, height, depth);
                 break;
             case Pyramide:
-                arr_object[i] = create_pyramide(p, size);
+                arr_object[i] = create_pyramide(p, width, height, depth);
                 break;
             case Box:
-                arr_object[i] = create_box(p, size);
+                arr_object[i] = create_box(p, width, height, depth);
                 break;
             default:
                 break;
         }
     }
-    
+
     return arr_object;
 }
 

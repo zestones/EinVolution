@@ -1,4 +1,5 @@
 #include "../../../inc/systems/window/window.h"
+#include "../../../inc/components/header_shape.h"
 
 /**
  * @brief draw the field of view of the camera
@@ -13,8 +14,20 @@ static void draw_field_view(tree_leaves leaves) {
             object obj = get_world_object_by_id(get_tree_leaves_world_object(leaves, i), j);
             cube leaf_cube = get_tree_leaves_cube(leaves, i);
             
-            if (is_cube_in_frustum(frust, leaf_cube) == INSIDE)
+            if (is_cube_in_frustum(frust, leaf_cube)) {
                 draw_object(obj);
+                
+                // * check only the object inside the visible cube 
+                if (point_intersect_bounding_box(cam.eye, obj.bounding_box)) {
+                    // TODO : add action to warn the player
+                    printf("COLLISION\n");
+                    
+                    // ! for dev
+                    /*************/
+                    screen.key.IS_UP_KEY_DOWN = true;
+                    /*************/
+                }
+            }
         }
     }
 }
@@ -24,7 +37,7 @@ static void draw_field_view(tree_leaves leaves) {
  */
 void Draw(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
+
     // ! for dev
     /************************/
     draw_world_tree(w.tree);

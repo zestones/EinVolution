@@ -38,6 +38,12 @@ void Special(int key, int x, int y) {
     switch (key) {
         case GLUT_KEY_UP : 
             screen.key.IS_UP_KEY_UP = true;
+            
+            // ! for dev ?
+            /***************/
+            screen.key.IS_UP_KEY_DOWN = false; 
+            /***************/
+
             set_camera_speed(&cam, cam.fast);
             break; 
         case GLUT_KEY_DOWN : 

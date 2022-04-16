@@ -16,6 +16,6 @@ typedef object pyramide;
  * @param size 
  * @return pyramide 
  */
-pyramide create_pyramide(position p, double size);
+pyramide create_pyramide(position p, double width, double height, double depth);
 
 #endif // PYRAMIDE

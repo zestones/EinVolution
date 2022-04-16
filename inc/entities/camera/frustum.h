@@ -10,11 +10,6 @@
 // to convert angle in degree to radius 
 #define ANG2RAD M_PI / 180.0
 
-enum {
-    OUTSIDE,
-    INSIDE, // intersect is considered inside
-};
-
 /**
  * @brief structure for the glut function
  * 
@@ -37,6 +32,7 @@ typedef struct {
     double width;
     double height;
 } near_far;
+
 
 /**
  * @brief structure of the frustum

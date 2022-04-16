@@ -8,7 +8,6 @@
 #include "../../systems/geometry/position.h"
 #include "../../systems/geometry/vector.h"
 
-
 /**
  * @brief structure of the camera
  * 
@@ -28,7 +27,10 @@ typedef struct {
     double speed;
     double slow;
     double fast;
+
 } camera;
+
+void update_player(camera *cam);
 
 /**
  * @brief Create a camera object

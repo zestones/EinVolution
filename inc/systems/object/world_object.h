@@ -7,8 +7,8 @@
 #include "./object.h"
 
 
-#define MAX_OBJECT 20 // the maximum generated object 
-#define MAX_SIZE 4 // maximum size of the object
+#define MAX_OBJECT 35 // the maximum generated object 
+#define MAX_SIZE 5 // maximum size of the object
 
 typedef struct world_object {
     object *arr_object;

@@ -11,6 +11,9 @@ world w;
  */
 static void Init(void) {
 
+    // set the mouse sensitivity
+    screen.mouse.sensitivity = 0.001;
+
     // create the world map
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
 
