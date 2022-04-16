@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "./plane.h"
+#include "../../systems/geometry/plane.h"
 #include "../../systems/octree/cube.h"
 
 // to convert angle in degree to radius 

@@ -46,7 +46,8 @@ void Draw(void) {
     gluLookAt(
         get_x(cam.eye), get_y(cam.eye), get_z(cam.eye),
         get_x(cam.look_at), get_y(cam.look_at), get_z(cam.look_at),
-        get_x(cam.up), get_y(cam.up), get_z(cam.up));
+        get_x(cam.up), get_y(cam.up), get_z(cam.up)
+    );
 
     glutSwapBuffers();
 }
