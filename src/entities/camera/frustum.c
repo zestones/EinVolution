@@ -11,7 +11,7 @@ frustum create_frustum_perspective(int width, int height) {
     frustum frust;
 
 	// set the field of view
-    frust.fovy = 60;
+    frust.fovy = 180;
 
 	// set the znear and zfar plan
     frust.zfar = 300;
