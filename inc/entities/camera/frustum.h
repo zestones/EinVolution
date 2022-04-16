@@ -5,7 +5,7 @@
 #include <math.h>
 
 #include "../../systems/geometry/plane.h"
-#include "../../systems/octree/cube.h"
+#include "../../systems/shape/cube.h"
 
 // to convert angle in degree to radius 
 #define ANG2RAD M_PI / 180.0

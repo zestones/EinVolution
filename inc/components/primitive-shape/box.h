@@ -7,7 +7,7 @@
 #include "GL/glut.h"
 #include "GL/gl.h"
 
-#include "../../entities/world/object.h"
+#include "../../systems/object/object.h"
 
 /**
  * @brief definition of a box

@@ -1,4 +1,4 @@
-#include "../../../inc/entities/world/world_object.h"
+#include "../../../inc/systems/object/world_object.h"
 #include "../../../inc/components/header_shape.h"
 
 

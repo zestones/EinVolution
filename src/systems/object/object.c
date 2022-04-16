@@ -1,4 +1,4 @@
-#include "../../../inc/entities/world/object.h"
+#include "../../../inc/systems/object/object.h"
 
 /**
  * @brief Get the objects size

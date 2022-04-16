@@ -1,7 +1,7 @@
 #if !defined(PYRAMIDE)
 #define PYRAMIDE
 
-#include "../../entities/world/object.h"
+#include "../../systems/object/object.h"
 
 /**
  * @brief definition of a pyramide

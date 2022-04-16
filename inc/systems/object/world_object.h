@@ -3,7 +3,7 @@
 
 #include <time.h>
 
-#include "../../../inc/systems/octree/cube.h"
+#include "../../../inc/systems/shape/cube.h"
 #include "./object.h"
 
 

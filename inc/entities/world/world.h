@@ -1,9 +1,9 @@
 #if !defined(WORLD)
 #define WORLD
 
-#include "./object.h"
-#include "./world_object.h"
+#include "../../systems/object/object.h"
 #include "../../systems/octree/world2tree.h"
+#include "../../systems/object/world_object.h"
 
 /**
  * @brief structure of the word
