@@ -52,6 +52,46 @@ int is_point_inside_cube(cube c, position p) {
     return (((c.p1.x <= p.x) && (p.x <= c.p2.x)) && ((c.p1.y <= p.y) && (p.y <= c.p2.y)) && ((c.p1.z <= p.z) && (p.z <= c.p2.z)));
 }
 
+int is_cube_visible(position eye, vector forward, double fovy, cube c) {
+    
+    position *points_cube = get_point_cube(c);
+    int inf = 0; int sup = 0;
+
+    for (int i = 0; i < 8; i++) {
+        vector cube_to_eye = create_vector_from_positions(eye, points_cube[i]);
+        vector eye_to_cube = forward;
+
+        double sp = scalar_product(cube_to_eye, eye_to_cube);
+        double cp_length = vector_length(cross_product(cube_to_eye, eye_to_cube));
+
+        double angle = atan2(cp_length, sp);
+
+        double angle_degree = angle * 180 / M_PI;
+        printf("(angle : %f)\n", angle_degree);
+       
+        if (angle_degree <= fovy/2) {
+            printf("(arrete dedans: %d)\n", i);
+            return 1;
+        }
+        // TODO : find if the angle tested is in the outside to: (left or down) or (right or up) 
+        /******************/
+        if (angle_degree > fovy/2 && angle_degree < fovy) {
+            sup++;
+        }
+        else {
+            inf++;
+        }
+        /*****************/
+    }
+
+    printf("inf : %d , sup: %d\n", inf, sup);
+
+    if (inf == 8 || sup == 8) return 0;
+
+
+    return 1;
+}
+
 /**
  * @brief draw a face of the cube
  * 

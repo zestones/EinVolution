@@ -27,7 +27,7 @@ position set_position(double x, double y, double z);
  * @param p2 
  * @return double 
  */
-double distance(position p1, position p2);
+double distance_position(position p1, position p2);
 
 /**
  * @brief Get the x object

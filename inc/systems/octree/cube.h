@@ -49,6 +49,8 @@ position *get_point_cube(cube c);
  */
 int is_point_inside_cube(cube c, position p);
 
+int is_cube_visible(position eye, vector forward, double fovy, cube c);
+
 /**
  * @brief draw the cube
  * 

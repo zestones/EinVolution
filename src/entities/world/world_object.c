@@ -13,7 +13,7 @@ object *generate_world_object(position pos) {
 
     object *arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
      
-    for (int i = 0; i < MAX_OBJECT; i++) {
+    for (int i = 0; i < MAX_OBJECT - 2; i++) {
          
         double x = (double) rand() / (double) (RAND_MAX / get_x(pos)); 
         double y = (double) rand() / (double) (RAND_MAX / get_y(pos)); 
@@ -39,6 +39,9 @@ object *generate_world_object(position pos) {
         }
     }
     
+    arr_object[0] = create_box(set_position(2,2,2), 2);
+    arr_object[1] = create_box(set_position(22,2,22), 2);
+
     return arr_object;
 }
 

@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -W -Wall
 LDLIBS = -lglut -lGLU -lGL -lm
 
-entities = camera.o frustum.o plane.o world.o world_object.o object.o 
+entities = camera.o frustum.o world.o world_object.o object.o 
 systems = position.o vector.o color.o face.o
 components = house.o box.o pyramide.o
 window = display.o window.o mouse.o keyboard.o
@@ -44,9 +44,6 @@ world_object.o: ./src/entities/world/world_object.c
 
 object.o: ./src/entities/world/object.c 
 	$(CC) $(CFLAGS) ./src/entities/world/object.c -c
-
-plane.o: ./src/entities/camera/plane.c 
-	$(CC) $(CFLAGS) ./src/entities/camera/plane.c -c
 
 
 ##################################################

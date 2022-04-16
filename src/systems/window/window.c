@@ -22,7 +22,7 @@ void reshape(int width, int height) {
     double ratio = (GLfloat) width / (GLfloat) height;
     update_frustum_perspective(&frust, ratio);
 
-    gluPerspective(frust.perspective.fovy, frust.perspective.ratio, frust.perspective.znear, frust.perspective.zfar);
+    gluPerspective(frust.fovy, frust.ratio, frust.znear, frust.zfar);
     glMatrixMode(GL_MODELVIEW);
 }
 

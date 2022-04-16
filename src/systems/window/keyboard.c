@@ -9,7 +9,7 @@
  */
 void Key(unsigned char key, int x, int y) {
     
-    printf("Key: (x: %d, y: %d)\n", x, y);
+    // printf("Key: (x: %d, y: %d)\n", x, y);
 
     switch (key) {
         // escape
@@ -33,7 +33,7 @@ void Key(unsigned char key, int x, int y) {
  * @param y 
  */
 void Special(int key, int x, int y) {
-    printf("Special: (x: %d, y: %d)\n", x, y);
+    // printf("Special: (x: %d, y: %d)\n", x, y);
 
     switch (key) {
         case GLUT_KEY_UP : 
@@ -57,7 +57,7 @@ void Special(int key, int x, int y) {
  * @param y 
  */
 void SpecialUp(int key, int x, int y) { 
-    printf("SpecialUp: x: %d, y: %d)\n", x, y);
+    // printf("SpecialUp: x: %d, y: %d)\n", x, y);
     
     switch(key){ 
         case GLUT_KEY_UP : 

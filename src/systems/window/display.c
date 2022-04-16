@@ -1,20 +1,25 @@
 #include "../../../inc/systems/window/window.h"
 
-/**
- * @brief draw the field of view of the camera
- * 
- * @param leaves 
- */
+// IN DISPLAY
 static void draw_field_view(tree_leaves leaves) {
-    
-    for (int i = 0; i < leaves.length; i++) {
+
+    for (int i = 0; i < leaves.length - 1; i++) {
         for (int j = 0; j < leaves.arr_world_object[i].length; j++) {
           
             object obj = get_world_object_by_id(get_tree_leaves_world_object(leaves, i), j);
             cube leaf_cube = get_tree_leaves_cube(leaves, i);
             
-            if (is_cube_in_frustum(frust, leaf_cube) == INSIDE)
-                draw_object(obj);
+            if (is_cube_visible(cam.eye, cam.forward, frust.fovy, leaf_cube)) {
+                if (distance_position(cam.eye, leaf_cube.p1) <= frust.zfar 
+                || distance_position(cam.eye, leaf_cube.p2) <= frust.zfar) {
+                    draw_object(obj);
+                    printf("affiche !!\n");
+                } else {
+                    printf("(JE SUIS TROP LOIN PAS AFFICHER)\n");
+                }
+            } else {
+                printf("PAS AFFICHE !!\n");
+            }
         }
     }
 }
@@ -31,8 +36,6 @@ void Draw(void) {
     /************************/
 
     set_world_texture(w.cube);
-
-    update_frustum(&frust, cam.eye, cam.look_at, cam.up);
     draw_field_view(w.tree_leaves);
 
     if (!screen.key.IS_UP_KEY_UP && !screen.key.IS_UP_KEY_DOWN) move_forward(&cam, w);

@@ -24,7 +24,7 @@ position set_position(double x, double y, double z) {
  * @param p2 
  * @return double 
  */
-double distance(position p1, position p2) {
+double distance_position(position p1, position p2) {
     return sqrt(pow(get_x(p2) - get_x(p1), 2) + pow(get_y(p2) - get_y(p1), 2) + pow(get_z(p2) - get_z(p1), 2));
 }
 
