@@ -16,6 +16,13 @@
 
 #define FPS 60
 
+
+typedef enum {
+    MENU,
+    GAME, 
+    FREE_MODE
+} mode;
+
 /**
  * @brief structure of the window
  * 
@@ -26,6 +33,8 @@ typedef struct window {
 
     int center_x;
     int center_y;
+
+    mode mode;
     
     mouse mouse;
     keyboard key;
@@ -37,6 +46,18 @@ extern window screen;
 extern frustum frust;
 extern camera cam;
 extern world w;
+
+/**
+ * @brief Init the parameter of the menu screen
+ * 
+ */
+void Init_Menu_Parameter();
+
+/**
+ * @brief Init the parameter of the Game screen
+ * 
+ */
+void Init_Game_Parameter();
 
 /**
  * @brief reshape the window with the good proportion

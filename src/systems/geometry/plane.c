@@ -1,4 +1,4 @@
-#include "../../../inc/entities/camera/plane.h"
+#include "../../../inc/systems/geometry/plane.h"
 
 /**
  * @brief Create a plane object

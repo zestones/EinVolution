@@ -2,7 +2,7 @@
 #define WORLD_2_TREE
 
 #include "./octree.h"
-#include "../../entities/world/world_object.h"
+#include "../../systems/object/world_object.h"
 
 
 #define OBJECT_DENSITY 1 // define the density of object/cube

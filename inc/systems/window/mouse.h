@@ -16,6 +16,7 @@ typedef struct mouse {
     position pos;
     int dx; // distance between center of screen and mouse
     int dy;
+    double sensitivity;
 } mouse;
 
 /**

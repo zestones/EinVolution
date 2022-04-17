@@ -20,14 +20,61 @@ typedef struct keyboard {
     bool IS_UP_KEY_DOWN ; 
     bool IS_UP_KEY_LEFT; 
     bool IS_UP_KEY_RIGHT; 
+    
+    bool IS_UP_KEY_S; // left  -> menu
+    bool IS_UP_KEY_Z; // right -> menu
+
 } keyboard;
 
+/**
+ * @brief handle in game key events
+ * 
+ */
+void handle_game_key_events();
+
+/**
+ * @brief handle menu key events
+ * 
+ */
+void handle_menu_key_events();
+
+/**
+ * @brief handle key events
+ * callback function
+ * 
+ * @param key 
+ * @param x 
+ * @param y 
+ */
 void SpecialUp(int key, int x, int y);
 
+/**
+ * @brief change the speed parameter of the camera
+ * callback function
+ * 
+ * @param key 
+ * @param x 
+ * @param y 
+ */
 void Special(int key, int x, int y);
 
+/**
+ * @brief handle the keyup events 
+ * 
+ * @param key 
+ * @param x 
+ * @param y 
+ */
+void KeyUp(unsigned char key, int x, int y);
+
+/**
+ * @brief change the speed when the key is released
+ * callback function
+ * 
+ * @param key 
+ * @param x 
+ * @param y 
+ */
 void Key(unsigned char key, int x, int y);
-
-
 
 #endif // KEYBOARD

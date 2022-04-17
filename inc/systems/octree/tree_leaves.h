@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#include "../../entities/world/world_object.h"
+#include "../../systems/object/world_object.h"
 
 /**
  * @brief structure of the tree_leaves
@@ -14,6 +14,15 @@ typedef struct {
     world_object *arr_world_object;
     int length;
 } tree_leaves;
+
+/**
+ * @brief fill the structure tree_leaves 
+ * 
+ * @param leaves 
+ * @param world_obj 
+ * @param c 
+ */
+void construct_tree_leaves(tree_leaves *leaves, world_object world_obj, cube c);
 
 /**
  * @brief Get the tree leaves cube object

@@ -7,10 +7,10 @@
 #include <stdarg.h>
 #include <math.h>
 
-#include "../../entities/world/world_object.h"
+#include "../../systems/object/world_object.h"
+#include "../../systems/shape/cube.h"
 #include "../geometry/position.h"
 #include "./tree_leaves.h"
-#include "./cube.h"
 
 #define K 8 // 8 childs
 

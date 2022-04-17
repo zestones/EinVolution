@@ -19,7 +19,9 @@
 typedef struct {
 	position p1;
 	position p2;
-	float edge_size;
+	position center;
+
+	double edge_size;
 } cube;
 
 /**

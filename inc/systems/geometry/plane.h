@@ -1,8 +1,8 @@
 #if !defined(PLANE)
 #define PLANE
 
-#include "../../systems/geometry/position.h"
-#include "../../systems/geometry/vector.h"
+#include "./position.h"
+#include "./vector.h"
 
 // face of the plane
 enum {

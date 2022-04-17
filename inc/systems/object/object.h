@@ -2,6 +2,7 @@
 #define OBJECT
 
 #include "../../systems/shape/face.h"
+#include "../../systems/shape/bounding_box.h"
 
 /**
  * @brief structture of an object
@@ -13,6 +14,7 @@ typedef struct object {
   
     position pos; // approximation of the position
                   // the object is created from pos
+    bounding_box bounding_box;
 } object;
 
 /**

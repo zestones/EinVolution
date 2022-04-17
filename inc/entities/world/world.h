@@ -1,9 +1,9 @@
 #if !defined(WORLD)
 #define WORLD
 
-#include "./object.h"
-#include "./world_object.h"
+#include "../../systems/object/object.h"
 #include "../../systems/octree/world2tree.h"
+#include "../../systems/object/world_object.h"
 
 /**
  * @brief structure of the word
@@ -37,12 +37,5 @@ world create_world(position p1, position p2, double size);
  * @param c 
  */
 void set_world_texture(cube c);
-
-/**
- * @brief draw the world cube
- * 
- * @param w 
- */
-void draw_world(world w);
 
 #endif // WORLD

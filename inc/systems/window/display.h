@@ -9,9 +9,11 @@
 #include "../../entities/camera/camera.h"
 #include "../../entities/world/world.h"
 
+void Animate();
+
 /**
- * @brief Draw the glut window
+ * @brief Display the glut window
  */
-void Draw(void);
+void Display(void);
 
 #endif // DISPLAY

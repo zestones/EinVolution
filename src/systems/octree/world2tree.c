@@ -24,18 +24,8 @@ static octree generate_world_tree_bis(world w, tree_leaves *leaves, float x1, fl
 
     // if the density is not full create a cube 
     if (number <= OBJECT_DENSITY && number > 0) {
-        world_object obj;
-
-        obj = get_object_in_cube(w.object, c);
-
-        leaves->arr_world_object[leaves->length].arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
-        
-        leaves->arr_world_object[leaves->length].arr_object = obj.arr_object;
-        leaves->arr_world_object[leaves->length].length = obj.length;
-
-        leaves->arr_world_object[leaves->length].cube = c;
-
-        leaves->length++;
+        // save the current node
+        construct_tree_leaves(leaves, w.object, c);
 
         return construct_octree(FULL, c, empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree());
     }
@@ -44,7 +34,7 @@ static octree generate_world_tree_bis(world w, tree_leaves *leaves, float x1, fl
     if (!number) 
         return construct_octree(EMPTY, c, empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree(), empty_tree());
    
-    // split the cube in 8 childs cube
+    // split the current cube in 8 childs cube
     return construct_octree(UNDETERMINATE, c,
         generate_world_tree_bis(w, leaves, x1, y1, z1, (x1 + x2) / 2, (y1 + y2) / 2, (z1 + z2) / 2, edge_size/2),
         generate_world_tree_bis(w, leaves, (x1 + x2) / 2, y1, z1, x2, (y1 + y2) / 2, (z1 + z2) / 2, edge_size/2),
