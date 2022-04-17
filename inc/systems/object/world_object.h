@@ -27,6 +27,7 @@ enum list_of_object {
     House,
     Pyramide,
     Box,
+    Octahedron,
     Number_of_object
 };
 

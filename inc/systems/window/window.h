@@ -20,7 +20,8 @@
 typedef enum {
     MENU,
     GAME, 
-    FREE_MODE
+    FREE_MODE,
+    NEW_GAME
 } mode;
 
 /**
@@ -33,6 +34,8 @@ typedef struct window {
 
     int center_x;
     int center_y;
+
+    int time;
 
     mode mode;
     
@@ -57,7 +60,7 @@ void Init_Menu_Parameter();
  * @brief Init the parameter of the Game screen
  * 
  */
-void Init_Game_Parameter();
+void Init_Game_Parameter(int new_game);
 
 /**
  * @brief reshape the window with the good proportion

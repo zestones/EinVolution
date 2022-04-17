@@ -34,7 +34,9 @@ void reshape(int width, int height) {
  */
 void Timer(int v) {
     glutPostRedisplay();
-
     glutWarpPointer(screen.width / 2, screen.height / 2);
+    
+    screen.time += 1000 / FPS;
+
     glutTimerFunc(1000 / FPS, Timer, v);
 }

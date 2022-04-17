@@ -9,6 +9,7 @@
 #include "../../entities/camera/camera.h"
 #include "../../entities/world/world.h"
 
+
 void Animate();
 
 /**

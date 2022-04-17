@@ -42,13 +42,17 @@ void Key(unsigned char key, int x, int y) {
 
     // escape
     if (key == 27) exit(EXIT_SUCCESS);
-    if (key == 'm') Init_Menu_Parameter();
+    // m to pause and go to menu
+    if (key == 109) Init_Menu_Parameter();
+    // r to restart with a new world
+    if (key == 114) Init_Game_Parameter(NEW_GAME);
 
+    // disable othe key when in game
     if (screen.mode == GAME) return;
 
     switch (key) {
         // spacebar
-        case 32: Init_Game_Parameter(); break;
+        case 32: Init_Game_Parameter(!NEW_GAME); break;
         // 'f'
         case 102: 
             screen.mode = FREE_MODE;
@@ -65,6 +69,14 @@ void Key(unsigned char key, int x, int y) {
     glutPostRedisplay();
 }
 
+/**
+ * @brief handle released key events
+ * callback function
+ * 
+ * @param key 
+ * @param x 
+ * @param y 
+ */
 void KeyUp(unsigned char key, int x, int y) {
     // printf("KeyUp: %d (x: %d, y: %d)\n", key, x, y);
 

@@ -36,11 +36,14 @@ object *generate_world_object(position pos) {
             case Box:
                 arr_object[i] = create_box(p, width, height, depth);
                 break;
+            case Octahedron:
+                arr_object[i] = create_octahedron(p, width, height, depth);
+                break;
             default:
                 break;
         }
     }
-    
+
     return arr_object;
 }
 

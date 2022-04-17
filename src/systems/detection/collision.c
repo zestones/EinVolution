@@ -11,6 +11,8 @@ extern window screen;
  * @param obj 
  */
 void check_collision(position player, bounding_box obj) {
+    if (screen.mode != GAME) return;
+    
     // * check only the object inside the visible cube 
     if (point_intersect_bounding_box(player, obj)) {
         // TODO : add action to warn the player

@@ -1,6 +1,7 @@
 #include "../../../inc/systems/detection/player_view.h"
 #include "../../../inc/components/header_shape.h"
 #include "../../../inc/systems/window/window.h"
+#include <string.h>
 
 static void display_game_screen() {  
 
@@ -41,7 +42,7 @@ void Animate() {
     if (screen.mode != MENU) return;
 
     rotate_menu_screen(&cam);
-    
+        
     glutPostRedisplay();
 }
 

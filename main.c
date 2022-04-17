@@ -10,6 +10,7 @@ world w;
  * @brief Init the glut window
  */
 static void Init(void) {
+    screen.time = 0;
 
     // create the world map
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
@@ -24,7 +25,12 @@ static void Init(void) {
  * @brief Init the parameter of the Menu screen
  * 
  */
-void Init_Game_Parameter() {
+void Init_Game_Parameter(int new_game) {
+    if (new_game == NEW_GAME) {
+        Init();
+        return;
+    }
+
     screen.mode = GAME;
 
     // set the mouse sensitivity
@@ -77,9 +83,15 @@ int main(int argc, char *argv[]) {
     glutInit(&argc, argv);
 
     // init the window (dimensions, position, name)
-    glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
+    // ! for dev
+    /******************/
     glutInitWindowPosition(WIN_X, WIN_Y);
+    glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
+    /******************/
     glutCreateWindow("EinVolution");
+    
+    // ! to enable full screen
+    //glutFullScreen();
 
     // init the display mode
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
@@ -105,7 +117,7 @@ int main(int argc, char *argv[]) {
     glutReshapeFunc(reshape);
 
     // refresh display
-    glutTimerFunc(100, Timer, 0);
+    glutTimerFunc(100, Timer, screen.time);
 
     // start the loop
     glutMainLoop();

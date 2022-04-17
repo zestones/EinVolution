@@ -8,11 +8,7 @@
  * @return pyramide 
  */
 pyramide create_pyramide(position p, double width, double height, double depth) {
-    if (width <= 0 || depth <= 0 || height <= 0) {
-        fprintf(stderr, "Error ! The size must be positive !\n");
-        exit(EXIT_FAILURE);
-    }
-
+  
     pyramide py;
     py.pos = p;
 

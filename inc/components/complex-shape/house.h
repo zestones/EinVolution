@@ -25,11 +25,4 @@ typedef struct object house;
  */
 house create_house(position p, double width, double height, double depth);
 
-/**
- * @brief draw the house object
- * 
- */
-void draw_house();
-
-
 #endif // HOUSE
