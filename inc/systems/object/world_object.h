@@ -7,7 +7,7 @@
 #include "./object.h"
 
 
-#define MAX_OBJECT 35 // the maximum generated object 
+#define MAX_OBJECT 15 // the maximum generated object 
 #define MAX_SIZE 5 // maximum size of the object
 
 typedef struct world_object {
@@ -47,6 +47,13 @@ object *generate_world_object(position pos);
  */
 int get_number_object(world_object obj, cube c);
 
+/**
+ * @brief Get the object in cube
+ * 
+ * @param obj 
+ * @param c 
+ * @return world_object 
+ */
 world_object get_object_in_cube(world_object obj, cube c);
 
 /**

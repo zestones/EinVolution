@@ -11,13 +11,25 @@ world w;
  */
 static void Init(void) {
 
+    // create the world map
+    w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
+    
+    // hide the mouse cursor
+    glutSetCursor(GLUT_CURSOR_NONE);
+
+    Init_Menu_Parameter();
+}
+
+/**
+ * @brief Init the parameter of the Menu screen
+ * 
+ */
+void Init_Game_Parameter() {
+    screen.mode = GAME;
+
     // set the mouse sensitivity
     screen.mouse.sensitivity = 0.001;
 
-    // create the world map
-    w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
-
-    // creation of the camera
     cam = create_camera(
         set_position(get_x(w.cube.p2) / 2, 
         get_y(w.cube.p2) / 2, get_z(w.cube.p2) / 2), 
@@ -25,10 +37,33 @@ static void Init(void) {
     );
 
     frust = create_frustum_perspective(screen.width, screen.height);
-    
-    // ! uncomment / comment this line to mask the mouse cursor
-    glutSetCursor(GLUT_CURSOR_NONE);
+    update_frustum_perspective(&frust, frust.perspective.ratio);
+
+    glutPostRedisplay();
 }
+
+/**
+ * @brief Init the parameter of the Menu screen 
+ * 
+ */
+void Init_Menu_Parameter() {
+    screen.mode = MENU;
+
+    // creation of the camera
+    cam = create_camera(
+        set_position(get_x(w.cube.p2) * 2, get_y(w.cube.p2) / 2, get_z(w.cube.p2) * 2), 
+        set_position(-25, 0, -25)
+    );
+
+    set_camera_speed(&cam, cam.menu_speed);
+
+    // to make the whole world visible
+    frust.perspective.zfar = distance(cam.eye, w.cube.p1);
+    
+    frust = create_frustum_perspective(screen.width, screen.height);
+    update_frustum_perspective(&frust, frust.perspective.ratio);
+}
+
 
 /**
  * @brief Main function
@@ -54,13 +89,15 @@ int main(int argc, char *argv[]) {
     Init();
 
     // attach events functions
-    glutDisplayFunc(Draw);
+    glutDisplayFunc(Display);
+    glutIdleFunc(Animate);
 
     // keyboard events
     glutSpecialFunc(Special);
     glutSpecialUpFunc(SpecialUp);     
 	glutKeyboardFunc(Key);
-
+    glutKeyboardUpFunc(KeyUp);
+    
     // mouse events
     glutPassiveMotionFunc(Mouse);
 

@@ -102,7 +102,7 @@ int is_point_in_frustum(frustum frust, position p) {
 }
 
 /**
- * @brief check if the cube is in the frustum
+ * @brief check if a cube is in the frustum
  * 
  * @param frust 
  * @param c 
@@ -113,20 +113,20 @@ int is_cube_in_frustum(frustum frust, cube c) {
 	int number_outside, number_inside;
 
 	position *point_cube = get_point_cube(c);
-	int point_length = 8;
+	int points_length = 8;
 
 	// Test for each plane if the 8 points are outside
 	for(int i = 0; i < Number_plan; i++) {
 		number_outside = 0; number_inside = 0;
 	
-		for (int j = 0; j < point_length && (!number_inside || !number_outside); j++) {
+		for (int j = 0; j < points_length && (!number_inside || !number_outside); j++) {
 			if (distance_to_plane(frust.plane[i], point_cube[j]) < 0)
 				number_outside++;
 
 			else number_inside++;
 		}
 
-		if (number_inside == point_length) return 0;
+		if (number_inside == points_length) return 0;
 	}
 
 	return 1;

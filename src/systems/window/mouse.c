@@ -7,7 +7,8 @@
  * @param y 
  */
 void Mouse(int x, int y) {
-    
+    if (screen.mode != GAME) return;
+
     // set the pos of the mouse
     screen.mouse.pos = set_position(x, y, 0);
 

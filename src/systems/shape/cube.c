@@ -14,6 +14,12 @@ cube create_cube(position p1, position p2, double size) {
     c.p1 = p1; c.p2 = p2;
     c.edge_size = size;
 
+    c.center = set_position(
+        get_x(c.p1) + (get_x(c.p2) - get_x(c.p1)) / 2,
+        get_y(c.p1) + (get_y(c.p2) - get_y(c.p1)) / 2,
+        get_z(c.p1) + (get_z(c.p2) - get_z(c.p1)) / 2
+    );
+
     return c;
 }
 

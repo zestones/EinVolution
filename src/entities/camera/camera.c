@@ -1,5 +1,7 @@
 #include "../../../inc/entities/camera/camera.h"
 #include "../../../inc/systems/window/window.h"
+
+
 /**
  * @brief Create a camera object
  * 
@@ -13,7 +15,7 @@ camera create_camera(position eye, position look_at) {
     cam.eye = eye;
     cam.look_at = look_at;
 
-    cam.forward = create_vector(0, 0, 1);
+    cam.forward = create_vector(0, 0, -1);
     cam.up = create_vector(0, 1, 0);
     cam.right = create_vector(1, 0, 0);
 
@@ -21,10 +23,14 @@ camera create_camera(position eye, position look_at) {
     cam.pitch_angle = 0.0;
     cam.roll_angle = 0.005;
 
+    cam.menu_angle = 0.0;
+    cam.menu_rotation = 0.001;
+
     cam.slow = 0.0125;
     cam.fast = 0.025;
 
     cam.speed = cam.slow;
+    cam.menu_speed = 0.25;
 
     return cam;
 }
@@ -73,11 +79,9 @@ void roll(camera *cam, double angle) {
 static void move(camera *cam, world w, vector direction, double speed) {
     position p = addition_vector(cam->eye, mult_vector(direction, speed));
 
-    if (!is_point_inside_cube(w.cube, p)) return;
+    if (screen.mode == GAME && !is_point_inside_cube(w.cube, p)) return;
     cam->eye = p; 
 }
-
-
 
 /**
  * @brief move the camera forward
@@ -128,6 +132,16 @@ void move_left(camera *cam, world w) { move(cam, w, cam->right, -cam->speed); }
 void move_down(camera *cam, world w) { move(cam, w, cam->up, -cam->speed); }
 
 /**
+ * @brief rotate the cam for the menu screen
+ * 
+ * @param cam 
+ */
+void rotate_menu_screen(camera *cam) {
+    cam->menu_angle += cam->menu_rotation;
+    if (cam->menu_angle > 360 || cam->menu_angle < -360) cam->menu_angle = 0;
+}
+
+/**
  * @brief Get the camera position object
  * 
  * @param cam 
@@ -153,9 +167,20 @@ void update_camera_look(camera *cam) {
 }
 
 /**
+ * @brief update the camera position
+ * 
+ * @param cam 
+ * @param p 
+ */
+void update_camera_position(camera *cam, position p) { cam->eye = p; }
+
+/**
  * @brief Set the camera speed object
  * 
  * @param cam 
  * @param speed 
  */
-void set_camera_speed(camera *cam, double speed) { cam->speed = speed; }
+void set_camera_speed(camera *cam, double speed) { 
+    if (screen.mode == GAME) cam->speed = speed;
+    else cam->speed = cam->menu_speed;
+}

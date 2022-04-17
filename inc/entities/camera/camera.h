@@ -24,7 +24,12 @@ typedef struct {
     double pitch_angle;
     double roll_angle;
 
+    double menu_angle;
+    double menu_rotation;
+
+    double menu_speed;
     double speed;
+
     double slow;
     double fast;
 
@@ -110,6 +115,13 @@ void move_right(camera *cam, world w);
 void move_left(camera *cam, world w);
 
 /**
+ * @brief rotate the cam for menu screen
+ * 
+ * @param cam 
+ */
+void rotate_menu_screen(camera *cam);
+
+/**
  * @brief Get the camera direction object
  * 
  * @param cam 
@@ -131,6 +143,14 @@ vector get_camera_position(camera cam);
  * @param cam 
  */
 void update_camera_look(camera *cam);
+
+/**
+ * @brief update the camera position
+ * 
+ * @param cam 
+ * @param p 
+ */
+void update_camera_position(camera *cam, position p);
 
 /**
  * @brief Set the camera speed object

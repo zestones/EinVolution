@@ -16,6 +16,15 @@ typedef struct {
 } tree_leaves;
 
 /**
+ * @brief fill the structure tree_leaves 
+ * 
+ * @param leaves 
+ * @param world_obj 
+ * @param c 
+ */
+void construct_tree_leaves(tree_leaves *leaves, world_object world_obj, cube c);
+
+/**
  * @brief Get the tree leaves cube object
  * 
  * @param leaves 

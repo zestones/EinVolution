@@ -14,14 +14,13 @@ house create_house(position p, double width, double height, double depth) {
     
     box b = create_box(p, width, height/2, depth);
     
-    set_y(&p, get_y(p) + height/2);
+    position pos_py = p;
+    set_y(&pos_py, get_y(p) + height/2);
 
-    pyramide py = create_pyramide(p, width, height, depth);
-
+    pyramide py = create_pyramide(pos_py, width, height, depth);
     house h = concat_objects(2, b, py);
     
-    h.bounding_box = set_object_bounding_box(p, width, height + height/2, depth);
-
+    h.bounding_box = set_object_bounding_box(p, width, get_y(pos_py) + height * 2, depth);
     h.pos = p;
 
     return h;

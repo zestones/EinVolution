@@ -40,7 +40,7 @@ object *generate_world_object(position pos) {
                 break;
         }
     }
-
+    
     return arr_object;
 }
 

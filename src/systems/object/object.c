@@ -21,8 +21,8 @@ static int get_objects_size(int argc, va_list arg) {
 /**
  * @brief concats objects
  * 
- * @param argc 
- * @param ... 
+ * @param argc the number of parameters
+ * @param ... the list of object
  * @return object 
  */
 object concat_objects(int argc, ...) {

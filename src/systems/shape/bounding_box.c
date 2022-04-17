@@ -51,3 +51,18 @@ int box_intersect_bounding_box(bounding_box obj1, bounding_box obj2) {
         (get_z(obj1.pos_min) <= get_z(obj2.pos_max) && get_z(obj1.pos_max) >= get_z(obj2.pos_min))
     );
 }
+
+/**
+ * @brief print the bounding box values
+ * 
+ * @param this 
+ */
+void print_bounding_box(bounding_box this) {
+    printf("---------------------\n");
+    printf("width : %f | height : %f | depth : %f\n", this.width, this.height, this.depth);
+    printf("position min : \n");
+    print_position(this.pos_min);
+    printf("position max : \n");
+    print_position(this.pos_max);
+    printf("---------------------\n");
+}

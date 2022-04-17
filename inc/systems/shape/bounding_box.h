@@ -47,4 +47,11 @@ int point_intersect_bounding_box(position player, bounding_box bb);
  */
 int box_intersect_bounding_box(bounding_box obj1, bounding_box obj2);
 
+/**
+ * @brief print the bounding box values
+ * 
+ * @param this 
+ */
+void print_bounding_box(bounding_box this);
+
 #endif // BOUNDING_BOX
