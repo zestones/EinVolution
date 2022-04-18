@@ -82,5 +82,5 @@ void set_z(position *p, double z) { p->z = z; }
  * @param p 
  */
 void print_position(position p) {
-    printf("{x: %f, y: %f, z: %f,}\n", p.x, p.y, p.z);
+    fprintf(stdout, "{x: %f, y: %f, z: %f,}\n", p.x, p.y, p.z);
 }

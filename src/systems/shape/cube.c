@@ -116,9 +116,9 @@ void draw_cube(cube c) {
  * @param c 
  */
 void print_cube(cube c) {
-    printf("\n---------------------------\n");
+    fprintf(stdout, "\n---------------------------\n");
     print_position(c.p1);
     print_position(c.p2);
-    printf("taille arrete : %f\n", c.edge_size);
-    printf("\n---------------------------\n");
+    fprintf(stdout, "taille arrete : %f\n", c.edge_size);
+    fprintf(stdout, "\n---------------------------\n");
 }

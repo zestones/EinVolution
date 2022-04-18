@@ -16,12 +16,11 @@
 
 #define FPS 60
 
-
 typedef enum {
     MENU,
     GAME, 
     FREE_MODE,
-    NEW_GAME
+    NEW_GAME,
 } mode;
 
 /**
@@ -36,6 +35,7 @@ typedef struct window {
     int center_y;
 
     int time;
+    bool display_octree;
 
     mode mode;
     

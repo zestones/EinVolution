@@ -5,7 +5,7 @@ LDLIBS = -lglut -lGLU -lGL -lm
 entities = camera.o frustum.o world.o world_object.o object.o 
 systems = position.o vector.o plane.o color.o face.o cube.o bounding_box.o collision.o player_view.o
 components = house.o box.o pyramide.o octahedron.o
-window = display.o window.o mouse.o keyboard.o
+window = display.o window.o mouse.o key.o special.o multi_keys.o
 octree = octree.o world2tree.o tree_leaves.o
 
 
@@ -92,8 +92,15 @@ display.o: ./src/systems/window/display.c
 mouse.o: ./src/systems/window/mouse.c 
 	$(CC) $(CFLAGS) ./src/systems/window/mouse.c -c
 
-keyboard.o: ./src/systems/window/keyboard.c 
-	$(CC) $(CFLAGS) ./src/systems/window/keyboard.c -c
+key.o: ./src/systems/window/keyboard/key.c 
+	$(CC) $(CFLAGS) ./src/systems/window/keyboard/key.c -c
+
+special.o: ./src/systems/window/keyboard/special.c 
+	$(CC) $(CFLAGS) ./src/systems/window/keyboard/special.c -c
+
+multi_keys.o: ./src/systems/window/keyboard/multi_keys.c 
+	$(CC) $(CFLAGS) ./src/systems/window/keyboard/multi_keys.c -c
+
 
 # -------------------- OCTREE ----------------------
 

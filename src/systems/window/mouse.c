@@ -30,3 +30,20 @@ void Mouse(int x, int y) {
     // redisplay
     glutPostRedisplay();
 }
+
+/**
+ * @brief increase the mouse sensitivity
+ * 
+ * @param m 
+ */
+void increase_mouse_sensitivity(mouse *m) { m->sensitivity += SENSITIVITY_LEVEL; }
+
+/**
+ * @brief decrease the mouse sensitivity
+ * 
+ * @param m 
+ */
+void decrease_mouse_sensitivity(mouse *m) { 
+    if (m->sensitivity >= 2 * SENSITIVITY_LEVEL)
+        m->sensitivity -= SENSITIVITY_LEVEL; 
+}

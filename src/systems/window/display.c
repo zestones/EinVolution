@@ -12,7 +12,7 @@ static void display_game_screen() {
         get_x(cam.look_at), get_y(cam.look_at), get_z(cam.look_at),
         get_x(cam.up), get_y(cam.up), get_z(cam.up)
     );
-} 
+}
 
 static void display_menu_screen() {   
     position eye;
@@ -42,7 +42,7 @@ void Animate() {
     if (screen.mode != MENU) return;
 
     rotate_menu_screen(&cam);
-        
+            
     glutPostRedisplay();
 }
 
@@ -52,10 +52,7 @@ void Animate() {
 void Display(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // ! for dev
-    /************************/
-    draw_world_tree(w.tree);
-    /************************/
+    if (screen.display_octree) draw_world_tree(w.tree);
 
     set_world_texture(w.cube);
 

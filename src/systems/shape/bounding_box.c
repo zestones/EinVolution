@@ -58,11 +58,11 @@ int box_intersect_bounding_box(bounding_box obj1, bounding_box obj2) {
  * @param this 
  */
 void print_bounding_box(bounding_box this) {
-    printf("---------------------\n");
-    printf("width : %f | height : %f | depth : %f\n", this.width, this.height, this.depth);
-    printf("position min : \n");
+    fprintf(stdout, "---------------------\n");
+    fprintf(stdout, "width : %f | height : %f | depth : %f\n", this.width, this.height, this.depth);
+    fprintf(stdout, "position min : \n");
     print_position(this.pos_min);
-    printf("position max : \n");
+    fprintf(stdout, "position max : \n");
     print_position(this.pos_max);
-    printf("---------------------\n");
+    fprintf(stdout, "---------------------\n");
 }

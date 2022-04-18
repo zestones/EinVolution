@@ -8,6 +8,8 @@
 #include "../../entities/camera/camera.h"
 #include "../../entities/world/world.h"
 
+#define SENSITIVITY_LEVEL 0.001
+
 /**
  * @brief structure of the mouse
  * 
@@ -26,5 +28,19 @@ typedef struct mouse {
  * @param y 
  */
 void Mouse(int x, int y);
+
+/**
+ * @brief increase the mouse sensitivity
+ * 
+ * @param m 
+ */
+void increase_mouse_sensitivity(mouse *m);
+
+/**
+ * @brief decrease the mouse sensitivity
+ * 
+ * @param m 
+ */
+void decrease_mouse_sensitivity(mouse *m);
 
 #endif // MOUSE
