@@ -34,6 +34,10 @@ object concat_objects(int argc, ...) {
     obj.arr_face = (face *) malloc(obj.length * sizeof(face));
     va_end(arg);
 
+    obj.bb_complex_shape.length = argc;
+    obj.bb_complex_shape.arr_bound_box = (bounding_box *) malloc(obj.bb_complex_shape.length * sizeof(bounding_box));
+    obj.is_primitive = 0;
+
     va_start(arg, argc);
 
     int k = 0;
@@ -43,6 +47,8 @@ object concat_objects(int argc, ...) {
         for (int j = 0; j < tmp.length; j++) {
             obj.arr_face[k++] = tmp.arr_face[j];
         }
+
+        obj.bb_complex_shape.arr_bound_box[i] = tmp.bb_primitive_shape;
     } 
 
     va_end(arg); 

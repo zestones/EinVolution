@@ -30,6 +30,15 @@ position set_position(double x, double y, double z);
 double distance(position p1, position p2);
 
 /**
+ * @brief get pos min
+ * 
+ * @param p1 
+ * @param p2 
+ * @return position 
+ */
+position min_y_position(position p1, position p2);
+
+/**
  * @brief Get the x object
  * 
  * @param p 

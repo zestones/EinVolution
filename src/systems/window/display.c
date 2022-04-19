@@ -53,6 +53,7 @@ void Display(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     if (screen.display_octree) draw_world_tree(w.tree);
+    if (screen.display_bounding_box) draw_world_object_bounding_box(w.object);
 
     set_world_texture(w.cube);
 

@@ -18,7 +18,8 @@ box create_box(position p, double width, double height, double depth) {
     
     b.pos = p;
     
-    b.bounding_box = set_object_bounding_box(p, width, height, depth);
+    b.bb_primitive_shape = set_object_bounding_box(p, width, height, depth);
+    b.is_primitive = 1;
 
     b.length = 6;
     b.arr_face = (face *) malloc(b.length * sizeof(face));

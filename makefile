@@ -4,7 +4,7 @@ LDLIBS = -lglut -lGLU -lGL -lm
 
 entities = camera.o frustum.o world.o world_object.o object.o 
 systems = position.o vector.o plane.o color.o face.o cube.o bounding_box.o collision.o player_view.o
-components = house.o box.o pyramide.o octahedron.o
+components = house.o box.o pyramide.o octahedron.o tunnel.o
 window = display.o window.o mouse.o key.o special.o multi_keys.o
 octree = octree.o world2tree.o tree_leaves.o
 
@@ -138,6 +138,9 @@ house.o: ./src/components/complex-shape/house.c
 
 octahedron.o: ./src/components/complex-shape/octahedron.c 
 	$(CC) $(CFLAGS) ./src/components/complex-shape/octahedron.c -c
+
+tunnel.o: ./src/components/complex-shape/tunnel.c 
+	$(CC) $(CFLAGS) ./src/components/complex-shape/tunnel.c -c
 
 
 ##################################################

@@ -14,7 +14,10 @@ typedef struct object {
   
     position pos; // approximation of the position
                   // the object is created from pos
-    bounding_box bounding_box;
+
+    int is_primitive;
+    bounding_box bb_primitive_shape;
+    complex_bound_box bb_complex_shape;
 } object;
 
 /**
