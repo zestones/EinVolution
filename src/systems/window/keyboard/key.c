@@ -56,6 +56,8 @@ static void Partaged_Key(unsigned char key) {
         case 114: Init_Game_Parameter(NEW_GAME); break;
         // 'k' display the octree
         case 107: screen.display_octree = !screen.display_octree; break;
+        // 'b' display the bounding box arround the object
+        case 'b': screen.display_bounding_box = !screen.display_bounding_box;
     }
 }
 

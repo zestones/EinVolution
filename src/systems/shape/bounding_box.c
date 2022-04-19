@@ -53,6 +53,109 @@ int box_intersect_bounding_box(bounding_box obj1, bounding_box obj2) {
 }
 
 /**
+ * @brief Get the point bounding box
+ * 
+ * @param this 
+ * @return position* 
+ */
+position *get_point_bounding_box(bounding_box this) {
+     int i = 0;
+    
+    position *point_bounding_box = malloc(8 * sizeof(position));
+    // get the point of the cube
+    point_bounding_box[i++] = set_position(get_x(this.pos_min), get_y(this.pos_min), get_z(this.pos_min));
+    point_bounding_box[i++] = set_position(get_x(this.pos_min) + this.width, get_y(this.pos_min), get_z(this.pos_min));
+    point_bounding_box[i++] = set_position(get_x(this.pos_min), get_y(this.pos_min) + this.height, get_z(this.pos_min));
+    point_bounding_box[i++] = set_position(get_x(this.pos_min), get_y(this.pos_min), get_z(this.pos_min) + this.depth);
+
+    point_bounding_box[i++] = set_position(get_x(this.pos_max), get_y(this.pos_max), get_z(this.pos_max));
+    point_bounding_box[i++] = set_position(get_x(this.pos_max) - this.width, get_y(this.pos_max), get_z(this.pos_max));
+    point_bounding_box[i++] = set_position(get_x(this.pos_max), get_y(this.pos_max) - this.height, get_z(this.pos_max));
+    point_bounding_box[i++] = set_position(get_x(this.pos_max), get_y(this.pos_max), get_z(this.pos_max) - this.depth);
+    
+    return point_bounding_box;
+}
+
+/**
+ * @brief Get the bouding box min position
+ * 
+ * @param this 
+ * @return position 
+ */
+position get_bounding_box_min_position(bounding_box this) {
+    position *point_box = get_point_bounding_box(this);
+    position min = set_position(pow(2, N), pow(2, N), pow(2, N));
+    
+    for (int i = 0; i < 4; i++)
+       min = min_y_position(point_box[i], min);
+
+    return min;
+}
+
+/**
+ * @brief draw the face of the bounding box
+ * 
+ * @param p0 
+ * @param p1 
+ * @param p2 
+ * @param p3 
+ */
+static void draw_face_bounding_box(position p0, position p1, position p2, position p3) {
+    glBegin(GL_LINES);
+
+        glColor3f(1, 0.5, 0.25);
+
+        glVertex3f(p0.x, p0.y, p0.z);
+        glVertex3f(p1.x, p1.y, p1.z);
+        
+        glVertex3f(p1.x, p1.y, p1.z);
+        glVertex3f(p2.x, p2.y, p2.z);
+        
+        glVertex3f(p2.x, p2.y, p2.z);
+        glVertex3f(p3.x, p3.y, p3.z);
+
+        glVertex3f(p3.x, p3.y, p3.z);
+        glVertex3f(p0.x, p0.y, p0.z);
+        
+    glEnd();
+}
+
+/**
+ * @brief draw the bounding box
+ * 
+ * @param this 
+ */
+void draw_bounding_box(bounding_box this) {
+   position *point_bounding_box = get_point_bounding_box(this);
+
+    // * draw front side
+    draw_face_bounding_box(point_bounding_box[0], point_bounding_box[1], point_bounding_box[7], point_bounding_box[2]);
+    
+    // * draw back side
+    draw_face_bounding_box(point_bounding_box[3], point_bounding_box[6], point_bounding_box[4], point_bounding_box[5]);
+
+    // * draw right side
+    draw_face_bounding_box(point_bounding_box[1], point_bounding_box[7], point_bounding_box[4], point_bounding_box[6]);
+
+    // * draw down side
+    draw_face_bounding_box(point_bounding_box[0], point_bounding_box[1], point_bounding_box[6], point_bounding_box[3]);
+
+    // * draw up side
+    draw_face_bounding_box(point_bounding_box[2], point_bounding_box[7], point_bounding_box[4], point_bounding_box[5]);
+}
+
+/**
+ * @brief draw the bounding box of a complex shape 
+ * 
+ * @param this 
+ * @param length 
+ */
+void draw_complex_shape_bounding_box(bounding_box *this, int length) {
+    for (int i = 0; i < length; i++)
+        draw_bounding_box(this[i]);
+}
+
+/**
  * @brief print the bounding box values
  * 
  * @param this 

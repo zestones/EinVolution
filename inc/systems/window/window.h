@@ -36,6 +36,7 @@ typedef struct window {
 
     int time;
     bool display_octree;
+    bool display_bounding_box;
 
     mode mode;
     

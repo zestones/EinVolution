@@ -29,6 +29,20 @@ double distance(position p1, position p2) {
 }
 
 /**
+ * @brief get the position with the y min
+ * 
+ * @param p1 
+ * @param p2 
+ * @return position 
+ */
+position min_y_position(position p1, position p2) {
+	if (get_y(p1) < get_y(p2))
+		return p1;
+	
+	return p2;	
+}
+
+/**
  * @brief Get the x object
  * 
  * @param p 

@@ -20,7 +20,6 @@ house create_house(position p, double width, double height, double depth) {
     pyramide py = create_pyramide(pos_py, width, height, depth);
     house h = concat_objects(2, b, py);
     
-    h.bounding_box = set_object_bounding_box(p, width, get_y(pos_py) + height * 2, depth);
     h.pos = p;
 
     return h;

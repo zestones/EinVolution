@@ -1,9 +1,9 @@
 #if !defined(COLLISION)
 #define COLLISION
 
-#include "../shape/bounding_box.h"
+#include "../object/object.h"
 
 
-void check_collision(position player, bounding_box obj);
+void check_collision(position player, object obj);
 
 #endif // COLLISION

@@ -15,11 +15,11 @@ void draw_field_view(position eye, frustum frust, tree_leaves leaves) {
             
             if (is_cube_in_frustum(frust, leaf_cube)) {
                 draw_object(obj);
-                check_collision(eye, obj.bounding_box);
+                check_collision(eye, obj);
             }
             else {
                 if (distance(leaf_cube.center, eye) < DISTANCE_DETECTION) {
-                    check_collision(eye, obj.bounding_box);
+                    check_collision(eye, obj);
                 }
             }
         }

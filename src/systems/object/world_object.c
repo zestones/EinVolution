@@ -39,6 +39,9 @@ object *generate_world_object(position pos) {
             case Octahedron:
                 arr_object[i] = create_octahedron(p, width, height, depth);
                 break;
+            case Tunnel:
+                arr_object[i] = create_tunnel(p, width, height, depth);
+                break;
             default:
                 break;
         }
@@ -101,3 +104,17 @@ world_object get_object_in_cube(world_object obj, cube c) {
  * @return object 
  */
 object get_world_object_by_id(world_object obj, int index) { return obj.arr_object[index]; }
+
+/**
+ * @brief draw world object bounding box
+ * 
+ * @param obj 
+ */
+void draw_world_object_bounding_box(world_object obj) {
+    for (int i = 0; i < obj.length; i++) {
+        if (obj.arr_object[i].is_primitive)
+            draw_bounding_box(obj.arr_object[i].bb_primitive_shape);
+        else 
+            draw_complex_shape_bounding_box(obj.arr_object[i].bb_complex_shape.arr_bound_box, obj.arr_object[i].bb_complex_shape.length);            
+    }
+}

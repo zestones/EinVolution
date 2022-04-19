@@ -7,7 +7,7 @@
 #include "./object.h"
 
 
-#define MAX_OBJECT 15 // the maximum generated object 
+#define MAX_OBJECT 10 // the maximum generated object 
 #define MAX_SIZE 5 // maximum size of the object
 
 typedef struct world_object {
@@ -20,7 +20,7 @@ typedef struct world_object {
 } world_object;
 
 /**
- * @brief the list of the object
+ * @brief enum the list of the object
  * 
  */
 enum list_of_object {
@@ -28,8 +28,18 @@ enum list_of_object {
     Pyramide,
     Box,
     Octahedron,
+    Tunnel,
     Number_of_object
 };
+
+
+/**
+ * @brief draw the bounding box arround all the object
+ * 
+ * @param object 
+ */
+void draw_world_object_bounding_box(world_object object);
+
 
 /**
  * @brief generate the object in the world

@@ -12,6 +12,7 @@ world w;
 static void Init(void) {
     screen.time = 0;
     screen.display_octree = false;
+    screen.display_bounding_box = false;
 
     // create the world map
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
