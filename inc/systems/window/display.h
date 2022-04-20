@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#include "../../entities/missile/missile.h"
 #include "../../entities/camera/frustum.h"
 #include "../../entities/camera/camera.h"
 #include "../../entities/world/world.h"

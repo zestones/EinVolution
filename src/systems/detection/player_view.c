@@ -1,4 +1,6 @@
 #include "../../../inc/systems/detection/player_view.h"
+#include "../../../inc/systems/window/window.h"
+
 
 /**
  * @brief draw the field of view of the camera
@@ -15,13 +17,14 @@ void draw_field_view(position eye, frustum frust, tree_leaves leaves) {
             
             if (is_cube_in_frustum(frust, leaf_cube)) {
                 draw_object(obj);
-                check_collision(eye, obj);
+                check_player_collision(eye, obj);
             }
             else {
                 if (distance(leaf_cube.center, eye) < DISTANCE_DETECTION) {
-                    check_collision(eye, obj);
+                    check_player_collision(eye, obj);
                 }
             }
+            check_missile_collision(pm, obj);
         }
     }
 }

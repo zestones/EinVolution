@@ -12,6 +12,11 @@ static void display_game_screen() {
         get_x(cam.look_at), get_y(cam.look_at), get_z(cam.look_at),
         get_x(cam.up), get_y(cam.up), get_z(cam.up)
     );
+
+    for (int i = 0; i < pm.length; i++) {
+        draw_missile(pm.arr_missile[i]);
+        move_missile_forward(&pm.arr_missile[i], w);
+    }
 }
 
 static void display_menu_screen() {   
@@ -42,7 +47,7 @@ void Animate() {
     if (screen.mode != MENU) return;
 
     rotate_menu_screen(&cam);
-            
+           
     glutPostRedisplay();
 }
 
@@ -50,7 +55,7 @@ void Animate() {
  * @brief Display the glut window
  */
 void Display(void) {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 
     if (screen.display_octree) draw_world_tree(w.tree);
     if (screen.display_bounding_box) draw_world_object_bounding_box(w.object);

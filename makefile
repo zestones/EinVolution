@@ -2,8 +2,8 @@ CC = gcc
 CFLAGS = -W -Wall
 LDLIBS = -lglut -lGLU -lGL -lm
 
-entities = camera.o frustum.o world.o world_object.o object.o 
-systems = position.o vector.o plane.o color.o face.o cube.o bounding_box.o collision.o player_view.o
+entities = camera.o frustum.o world.o missile.o
+systems = position.o vector.o plane.o color.o face.o cube.o bounding_box.o collision.o player_view.o world_object.o object.o
 components = house.o box.o pyramide.o octahedron.o tunnel.o
 window = display.o window.o mouse.o key.o special.o multi_keys.o
 octree = octree.o world2tree.o tree_leaves.o
@@ -42,6 +42,11 @@ frustum.o: ./src/entities/camera/frustum.c
 
 world.o: ./src/entities/world/world.c 
 	$(CC) $(CFLAGS) ./src/entities/world/world.c -c
+
+# -------------------- WORLD ---------------------
+
+missile.o: ./src/entities/missile/missile.c 
+	$(CC) $(CFLAGS) ./src/entities/missile/missile.c -c
 
 
 ##################################################

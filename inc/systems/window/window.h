@@ -49,6 +49,7 @@ typedef struct window {
 extern window screen;
 extern frustum frust;
 extern camera cam;
+extern player_missile pm;
 extern world w;
 
 /**

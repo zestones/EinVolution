@@ -2,8 +2,23 @@
 #define COLLISION
 
 #include "../object/object.h"
+#include "../../../inc/systems/window/window.h"
 
 
-void check_collision(position player, object obj);
+/**
+ * @brief check missile collision
+ * 
+ * @param pm 
+ * @param this 
+ */
+void check_missile_collision(player_missile pm, object this);
+
+/**
+ * @brief check player collision
+ * 
+ * @param player 
+ * @param this 
+ */
+void check_player_collision(position player, object this);
 
 #endif // COLLISION

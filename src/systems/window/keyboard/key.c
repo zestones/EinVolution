@@ -12,6 +12,8 @@ static void In_Game_Key(unsigned char key) {
         case 43: increase_mouse_sensitivity(&screen.mouse); break;
         // '-' decrease sensitivity
         case 45: decrease_mouse_sensitivity(&screen.mouse); break;
+        // 'spacebar' create a missile
+        case 32: update_player_missile(&pm, cam.eye, cam.forward); break;
     }
 }
 
@@ -23,8 +25,8 @@ static void In_Game_Key(unsigned char key) {
 static void In_Menu_Key(unsigned char key) {
     
     switch (key) {
-        // spacebar launch the game
-        case 32: Init_Game_Parameter(!NEW_GAME); break;
+        // enter launch the game
+        case 13: Init_Game_Parameter(!NEW_GAME); break;
         // 'f' to navigate in the world
         case 102: 
             screen.mode = FREE_MODE;
@@ -57,7 +59,7 @@ static void Partaged_Key(unsigned char key) {
         // 'k' display the octree
         case 107: screen.display_octree = !screen.display_octree; break;
         // 'b' display the bounding box arround the object
-        case 'b': screen.display_bounding_box = !screen.display_bounding_box;
+        case 98: screen.display_bounding_box = !screen.display_bounding_box;
     }
 }
 

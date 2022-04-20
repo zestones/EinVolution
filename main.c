@@ -3,6 +3,7 @@
 window screen;
 frustum frust;
 camera cam;
+player_missile pm;
 world w;
 
 
@@ -32,6 +33,9 @@ void Init_Game_Parameter(int new_game) {
         Init();
         return;
     }
+
+    // pm.arr_missile = (missile *) malloc(MAX_MISSILE * sizeof(missile));
+    pm.length = 0;
 
     screen.mode = GAME;
 
