@@ -19,10 +19,9 @@ void draw_field_view(position eye, frustum frust, tree_leaves leaves) {
                 draw_object(obj);
                 check_player_collision(eye, obj);
             }
-            else {
-                if (distance(leaf_cube.center, eye) < DISTANCE_DETECTION) {
-                    check_player_collision(eye, obj);
-                }
+            // if move backward + cube near check collision 
+            else if (screen.key.IS_UP_KEY_DOWN && distance(leaf_cube.center, eye) < DISTANCE_DETECTION) {
+                check_player_collision(eye, obj);
             }
             check_missile_collision(pm, obj);
         }
