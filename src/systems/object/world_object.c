@@ -45,6 +45,7 @@ object *generate_world_object(position pos) {
             default:
                 break;
         }
+        arr_object[i].index = i;
     }
 
     return arr_object;
@@ -53,16 +54,16 @@ object *generate_world_object(position pos) {
 /**
  * @brief Get the number object inside the cube
  * 
- * @param obj 
+ * @param this 
  * @param c 
  * @return int 
  */
-int get_number_object(world_object obj, cube c) {
+int get_number_object(world_object this, cube c) {
     
     int count = 0;
 
-    for (int i = 0; i < obj.length; i++) {
-        object o = get_world_object_by_id(obj, i);
+    for (int i = 0; i < this.length; i++) {
+        object o = get_world_object_by_id(this, i);
         if (is_point_inside_cube(c, o.pos)) count ++;
     }
 
@@ -72,19 +73,19 @@ int get_number_object(world_object obj, cube c) {
 /**
  * @brief Get the object in cube
  * 
- * @param obj 
+ * @param this 
  * @param c 
  * @return world_object 
  */
-world_object get_object_in_cube(world_object obj, cube c) {
+world_object get_object_in_cube(world_object this, cube c) {
     
     world_object cpy;
     cpy.arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
     
     int k = 0;
 
-    for (int i = 0; i < obj.length; i++) {
-        object o = get_world_object_by_id(obj, i);
+    for (int i = 0; i < this.length; i++) {
+        object o = get_world_object_by_id(this, i);
        
         if (is_point_inside_cube(c, o.pos)) {
             cpy.arr_object[k++] = o;
@@ -99,22 +100,23 @@ world_object get_object_in_cube(world_object obj, cube c) {
 /**
  * @brief Get the world object by id
  * 
- * @param obj 
+ * @param this 
  * @param index 
  * @return object 
  */
-object get_world_object_by_id(world_object obj, int index) { return obj.arr_object[index]; }
+object get_world_object_by_id(world_object this, int index) { return this.arr_object[index]; }
 
 /**
- * @brief draw world object bounding box
+ * @brief remove an object from the world
  * 
- * @param obj 
+ * @param this 
+ * @param index 
  */
-void draw_world_object_bounding_box(world_object obj) {
-    for (int i = 0; i < obj.length; i++) {
-        if (obj.arr_object[i].is_primitive)
-            draw_bounding_box(obj.arr_object[i].bb_primitive_shape);
-        else 
-            draw_complex_shape_bounding_box(obj.arr_object[i].bb_complex_shape.arr_bound_box, obj.arr_object[i].bb_complex_shape.length);            
-    }
+void remove_object_from_world(world_object *this, int index) {
+    int i = 0;
+    while (i < this->length && index != this->arr_object[i].index) i++;
+
+    this->length -= 1;
+    for (int j = i; j < this->length; j++) 
+        this->arr_object[j] = this->arr_object[j + 1];
 }

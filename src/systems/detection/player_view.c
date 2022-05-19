@@ -2,6 +2,16 @@
 #include "../../../inc/systems/window/window.h"
 
 
+collision_infos create_object_collision_infos(object obj, int index_world_object, int index_object) {
+    collision_infos c;
+   
+    c.index_world_object = index_world_object;
+    c.index_object = index_object;
+    c.object = obj;
+    
+    return c;
+}
+
 /**
  * @brief draw the field of view of the camera
  * 
@@ -23,7 +33,8 @@ void draw_field_view(position eye, frustum frust, tree_leaves leaves) {
             else if (screen.key.IS_UP_KEY_DOWN && distance(leaf_cube.center, eye) < DISTANCE_DETECTION) {
                 check_player_collision(eye, obj);
             }
-            check_missile_collision(pm, obj);
+
+            check_missile_collision(pm, create_object_collision_infos(obj, i, j));
         }
     }
 }

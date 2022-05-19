@@ -37,23 +37,41 @@ object concat_objects(int argc, ...) {
     obj.bb_complex_shape.length = argc;
     obj.bb_complex_shape.arr_bound_box = (bounding_box *) malloc(obj.bb_complex_shape.length * sizeof(bounding_box));
     obj.is_primitive = 0;
+    
+    obj.health = 0;
 
     va_start(arg, argc);
 
     int k = 0;
-    for (int i = 0; i < argc ; i++) {
+    for (int i = 0; i < argc; i++) {
         object tmp = va_arg(arg, object);
 
         for (int j = 0; j < tmp.length; j++) {
             obj.arr_face[k++] = tmp.arr_face[j];
         }
 
+        obj.health += tmp.health;
         obj.bb_complex_shape.arr_bound_box[i] = tmp.bb_primitive_shape;
-    } 
+    }
 
     va_end(arg); 
 
     return obj;    
+}
+
+/**
+ * @brief update the health point of the object
+ * 
+ * @param this 
+ * @param health_point 
+ */
+void update_object_health(object *this, double health_point) { 
+    // ! for dev
+    /************************/
+    printf("object health : %f\n", this->health);
+    printf("damage : %f\n", health_point);
+    /************************/
+    this->health += health_point;
 }
 
 /**

@@ -21,6 +21,6 @@ house create_house(position p, double width, double height, double depth) {
     house h = concat_objects(2, b, py);
     
     h.pos = p;
-
+        
     return h;
 }

@@ -21,6 +21,8 @@ box create_box(position p, double width, double height, double depth) {
     b.bb_primitive_shape = set_object_bounding_box(p, width, height, depth);
     b.is_primitive = 1;
 
+    b.health = BOX_HEALTH;
+
     b.length = 6;
     b.arr_face = (face *) malloc(b.length * sizeof(face));
     

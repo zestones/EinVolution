@@ -32,15 +32,6 @@ enum list_of_object {
     Number_of_object
 };
 
-
-/**
- * @brief draw the bounding box arround all the object
- * 
- * @param object 
- */
-void draw_world_object_bounding_box(world_object object);
-
-
 /**
  * @brief generate the object in the world
  * 
@@ -66,6 +57,14 @@ int get_number_object(world_object obj, cube c);
  * @return world_object 
  */
 world_object get_object_in_cube(world_object obj, cube c);
+
+/**
+ * @brief remove object from the world 
+ * 
+ * @param this 
+ * @param index 
+ */
+void remove_object_from_world(world_object *this, int index);
 
 /**
  * @brief Get the world object by id

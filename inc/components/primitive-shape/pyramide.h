@@ -3,6 +3,8 @@
 
 #include "../../systems/object/object.h"
 
+#define PYRAMIDE_HEALTH 15
+
 /**
  * @brief definition of a pyramide
  * 

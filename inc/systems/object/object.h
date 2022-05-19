@@ -15,7 +15,10 @@ typedef struct object {
     position pos; // approximation of the position
                   // the object is created from pos
 
+    double health;
     int is_primitive;
+    int index; // for removing the object
+
     bounding_box bb_primitive_shape;
     complex_bound_box bb_complex_shape;
 } object;
@@ -28,6 +31,14 @@ typedef struct object {
  * @return object 
  */
 object concat_objects(int argc, ...);
+
+/**
+ * @brief update the health point of the object
+ * 
+ * @param this 
+ * @param health_point 
+ */
+void update_object_health(object *this, double health_point);
 
 /**
  * @brief draw the object
