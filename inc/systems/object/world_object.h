@@ -7,7 +7,7 @@
 #include "./object.h"
 
 
-#define MAX_OBJECT 10 // the maximum generated object 
+#define MAX_OBJECT 2 // the maximum generated object 
 #define MAX_SIZE 5 // maximum size of the object
 
 typedef struct world_object {
@@ -29,6 +29,7 @@ enum list_of_object {
     Box,
     Octahedron,
     Tunnel,
+    Tree,
     Number_of_object
 };
 

@@ -1,7 +1,14 @@
 #include "../../../inc/systems/detection/player_view.h"
 #include "../../../inc/systems/window/window.h"
 
-
+/**
+ * @brief Create a object collision infos object
+ * 
+ * @param obj 
+ * @param index_world_object 
+ * @param index_object 
+ * @return collision_infos 
+ */
 collision_infos create_object_collision_infos(object obj, int index_world_object, int index_object) {
     collision_infos c;
    

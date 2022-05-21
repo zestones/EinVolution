@@ -4,11 +4,16 @@
 #include "../object/object.h"
 #include "../../../inc/systems/window/window.h"
 
+/**
+ * @brief stucture that contain the information of the 
+ * object tested for collision
+ * 
+ */
 typedef struct {
     
-    int index_world_object;
-    int index_object;
-    object object;
+    int index_world_object; // index of the world object array
+    int index_object; // index of the object in the world object array
+    object object; // the object
 
 } collision_infos;
 

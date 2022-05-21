@@ -12,15 +12,19 @@ typedef struct object {
     face *arr_face;
     int length;
   
+    double health;
+    int index; // for removing the object
+
+    int is_primitive;
+    bounding_box bb_primitive_shape;
+    complex_bound_box bb_complex_shape;
+    
     position pos; // approximation of the position
                   // the object is created from pos
 
-    double health;
-    int is_primitive;
-    int index; // for removing the object
-
-    bounding_box bb_primitive_shape;
-    complex_bound_box bb_complex_shape;
+    double width;
+    double height;
+    double depth;
 } object;
 
 /**

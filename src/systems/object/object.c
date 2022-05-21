@@ -80,7 +80,6 @@ void update_object_health(object *this, double health_point) {
  * @param b 
  */
 void draw_object(object this) {
-    for (int i = 0; i < this.length; i++) {
+    for (int i = 0; i < this.length; i++)
         draw_face(get_face_by_index(this.arr_face, i));
-    }
 }
