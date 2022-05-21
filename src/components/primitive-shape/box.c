@@ -91,28 +91,3 @@ box create_box(position p, double width, double height, double depth) {
 
     return b;
 }
-
-/**
- * @brief Get the point box object
- * 
- * @param this 
- * @return position* 
- */
-position *get_point_box(box this) {
-    int i = 0;
-    
-    position *point_box = malloc(8 * sizeof(position));
-    position p2 = set_position(get_x(this.pos) + this.width, get_y(this.pos) + this.height, get_z(this.pos) + this.depth);
-    // get the point of the cube
-    point_box[i++] = set_position(get_x(this.pos), get_y(this.pos), get_z(this.pos));
-    point_box[i++] = set_position(get_x(this.pos) + this.width, get_y(this.pos), get_z(this.pos));
-    point_box[i++] = set_position(get_x(this.pos), get_y(this.pos) + this.height, get_z(this.pos));
-    point_box[i++] = set_position(get_x(this.pos), get_y(this.pos), get_z(this.pos) + this.depth);
-	point_box[i++] = set_position(get_x(p2), get_y(p2),get_z(p2));
-    
-    point_box[i++] = set_position(get_x(p2) - this.width, get_y(p2), get_z(p2));
-    point_box[i++] = set_position(get_x(p2), get_y(p2) - this.height, get_z(p2));
-    point_box[i] = set_position(get_x(p2), get_y(p2), get_z(p2) - this.depth);
-    
-    return point_box;
-}

@@ -26,12 +26,4 @@ typedef object box;
  */
 box create_box(position p, double width, double height, double depth);
 
-/**
- * @brief Get the point box object
- * 
- * @param this 
- * @return position* 
- */
-position *get_point_box(box this);
-
 #endif // BOX
