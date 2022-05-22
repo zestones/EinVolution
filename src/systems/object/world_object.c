@@ -42,15 +42,16 @@ object *generate_world_object(position pos) {
             case Tunnel:
                 arr_object[i] = create_tunnel(p, width, height, depth);
                 break;
+            case Tree:
+                set_y(&p, 0);
+                arr_object[i] = create_tree(p, width, height, depth);
+                break;
             default:
                 break;
         }
         arr_object[i].index = i;
     }
     
-    arr_object[0] = create_tree(set_position(10, 0, 22), 5, 10, 6);
-    arr_object[1] = create_tree(set_position(25, 0, 5), 3, 10, 4);
-
     return arr_object;
 }
 
