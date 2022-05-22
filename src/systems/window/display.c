@@ -1,4 +1,5 @@
 #include "../../../inc/systems/detection/player_view.h"
+#include "../../../inc/systems/text/player_infos.h"
 #include "../../../inc/components/header_shape.h"
 #include "../../../inc/systems/window/window.h"
 #include <string.h>

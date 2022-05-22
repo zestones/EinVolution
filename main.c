@@ -5,7 +5,7 @@ frustum frust;
 camera cam;
 player_missile pm;
 world w;
-int player_health = 5;
+int player_health = 0;
 
 /**
  * @brief Init the glut window
@@ -14,6 +14,7 @@ static void Init(void) {
     screen.time = 0;
     screen.display_octree = false;
     screen.display_bounding_box = false;
+    player_health = 5;
 
     // create the world map
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
@@ -97,7 +98,7 @@ int main(int argc, char *argv[]) {
     glutCreateWindow("EinVolution");
     
     // ! to enable full screen
-    //glutFullScreen();
+    // glutFullScreen();
 
     // init the display mode
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);

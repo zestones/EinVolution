@@ -3,7 +3,7 @@ CFLAGS = -W -Wall
 LDLIBS = -lglut -lGLU -lGL -lm
 
 entities = camera.o frustum.o world.o missile.o
-systems = position.o vector.o plane.o color.o face.o cube.o bounding_box.o collision.o player_view.o world_object.o object.o
+systems = position.o vector.o plane.o color.o face.o cube.o bounding_box.o collision.o player_view.o world_object.o object.o player_infos.o
 components = house.o box.o pyramide.o octahedron.o tunnel.o tree.o
 window = display.o window.o mouse.o key.o special.o multi_keys.o
 octree = octree.o world2tree.o tree_leaves.o
@@ -125,6 +125,11 @@ player_view.o: ./src/systems/detection/player_view.c
 
 collision.o: ./src/systems/detection/collision.c 
 	$(CC) $(CFLAGS) ./src/systems/detection/collision.c -c
+
+# -------------------- TEXT ---------------------------
+
+player_infos.o: ./src/systems/text/player_infos.c 
+	$(CC) $(CFLAGS) ./src/systems/text/player_infos.c -c
 
 
 ##################################################
