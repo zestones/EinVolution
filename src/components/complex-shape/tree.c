@@ -9,12 +9,12 @@
  */
 tree create_tree(position p, double width, double height, double depth) {
     if (width <= 0 || depth <= 0 || height <= 0) {
-        fprintf(stderr, "Error ! The size must be positive !\n");
+        fprintf(stderr, "Error ! The size of the tree must be positive !\n");
+        fprintf(stderr, "width : %f , height: %f , depth: %f \n", width, height, depth);
         exit(EXIT_FAILURE);
     }
     
     tree t;
-    t.pos = p;
 
     t.width = width;
     t.height = height;
@@ -58,6 +58,7 @@ tree create_tree(position p, double width, double height, double depth) {
     box top_leaves = create_box(cpy_pos_y, t.width - (2 * outside_leaves_size), outside_leaves_size, t.depth - (2 * outside_leaves_size));
 
     t = concat_objects(7, trunk, center_leaves, front_leaves, back_leaves, right_leaves, left_leaves, top_leaves);
-
+    t.pos = p;
+    
     return t;
 }

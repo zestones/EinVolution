@@ -10,6 +10,7 @@
  */
 object *generate_world_object(position pos) {
     srand(time(NULL));
+    int MIN = 1;
 
     object *arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
      
@@ -22,10 +23,10 @@ object *generate_world_object(position pos) {
         position p = set_position(x, y, z);
         
         int type_object = rand() % Number_of_object;
-        int depth = (rand() % (MAX_SIZE - 1 + 1)) + 1;
-        int height = (rand() % (MAX_SIZE - 1 + 1)) + 1;
-        int width = (rand() % (MAX_SIZE - 1 + 1)) + 1;
-
+        double width = MIN + rand() % (MAX_SIZE + 1 - MIN);
+        double height = MIN + rand() % (MAX_SIZE + 1 - MIN);
+        double depth = MIN + rand() % (MAX_SIZE + 1 - MIN);
+        
         switch (type_object) {
             case House:
                 arr_object[i] = create_house(p, width, height, depth);
@@ -51,7 +52,7 @@ object *generate_world_object(position pos) {
         }
         arr_object[i].index = i;
     }
-    
+
     return arr_object;
 }
 

@@ -8,14 +8,8 @@
  * @return box 
  */
 box create_box(position p, double width, double height, double depth) {
-    if (width <= 0 || depth <= 0 || height <= 0) {
-        fprintf(stderr, "Error ! The size must be positive !\n");
-        fprintf(stderr, "width : %f , height: %f , depth: %f \n", width, height, depth);
-        exit(EXIT_FAILURE);
-    }
 
-    box b;
-    
+    box b; 
     b.pos = p;
     
     b.width = width;

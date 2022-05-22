@@ -8,7 +8,7 @@
  * @return pyramide 
  */
 pyramide create_pyramide(position p, double width, double height, double depth) {
-  
+
     pyramide py;
     py.pos = p;
 
