@@ -17,4 +17,10 @@ void draw_field_view(position eye, frustum frust, tree_leaves leaves);
  */
 void draw_player_health();
 
+/**
+ * @brief Draw the timer on the screen
+ * 
+ */
+void draw_timer();
+
 #endif // PLAYER_VIEW
