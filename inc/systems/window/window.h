@@ -16,6 +16,10 @@
 
 #define FPS 60
 
+#define PLAYER_DANGER_HEALTH 2
+
+extern int player_health;
+
 typedef enum {
     MENU,
     GAME, 
