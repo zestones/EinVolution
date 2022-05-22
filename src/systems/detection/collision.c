@@ -52,6 +52,16 @@ void check_missile_collision(player_missile pm, collision_infos c) {
 }
 
 /**
+ * @brief update the player health
+ * 
+ * @param health 
+ */
+static void update_player_health(int health) { 
+    if (health <= 0) exit(EXIT_SUCCESS);
+    player_health = health;
+}
+
+/**
  * @brief check collision of primitive shape
  * 
  * @param player 
@@ -59,11 +69,12 @@ void check_missile_collision(player_missile pm, collision_infos c) {
  */
 static void primitive_object_collision(position player, bounding_box this) {
     if (point_intersect_bounding_box(player, this)) {           
-        // ! for dev
-        /*************/
-        printf("COLLISION\n");
-        screen.key.IS_UP_KEY_DOWN = !screen.key.IS_UP_KEY_DOWN;
-        /*************/
+            // ! for dev
+            /*************/
+            printf("COLLISION\n");
+            screen.key.IS_UP_KEY_DOWN = !screen.key.IS_UP_KEY_DOWN;
+            /*************/
+            update_player_health(player_health - 1);
     }
 }
 

@@ -70,7 +70,10 @@ void Display(void) {
     // ! change background color
     // glClearColor(0.5, 0.25, 0.35, 1.0);
     
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    draw_player_health();
+    draw_timer();
 
     if (screen.display_octree) draw_world_tree(w.tree);
     if (screen.display_bounding_box) draw_world_object_bounding_box(w.tree_leaves);

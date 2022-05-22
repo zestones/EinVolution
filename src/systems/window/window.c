@@ -1,6 +1,5 @@
 #include "../../../inc/systems/window/window.h"
 
-
 /**
  * @brief reshape the window with the good proportion
  * 

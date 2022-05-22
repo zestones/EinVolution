@@ -5,7 +5,7 @@ frustum frust;
 camera cam;
 player_missile pm;
 world w;
-
+int player_health = 5;
 
 /**
  * @brief Init the glut window
