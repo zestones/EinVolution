@@ -9,13 +9,16 @@ extern window screen;
  * @param obj 
  * @return int 
  */
-static int missile_primitive_object_collision(missile m, bounding_box obj) {
-    if (box_intersect_bounding_box(obj, m.box.bb_primitive_shape)) {
+static int missile_primitive_object_collision(missile m, bounding_box bb, collision_infos c) {
+    if (box_intersect_bounding_box(bb, m.box.bb_primitive_shape)) {
 
         // TODO : Delete missile + object
         printf("MISSILE -- COLLISION \n");
         remove_missile(&m);
-        
+                
+        update_object_health(&w.tree_leaves.arr_world_object[c.index_world_object].arr_object[c.index_object], m.damage);
+        if (c.object.health <= 0) remove_object_from_world(&w.tree_leaves.arr_world_object[c.index_world_object], c.object.index);
+
         return 1;
     }   
 
@@ -28,10 +31,10 @@ static int missile_primitive_object_collision(missile m, bounding_box obj) {
  * @param m 
  * @param obj 
  */
-static void missile_complex_object_collision(missile m, object obj) {
+static void missile_complex_object_collision(missile m, collision_infos c) {
     
-    for (int i = 0; i < obj.bb_complex_shape.length; i++) {
-        if (missile_primitive_object_collision(m, obj.bb_complex_shape.arr_bound_box[i])) break;
+    for (int i = 0; i < c.object.bb_complex_shape.length; i++) {
+        if (missile_primitive_object_collision(m, c.object.bb_complex_shape.arr_bound_box[i], c)) break;
     }         
 }
 
@@ -41,10 +44,10 @@ static void missile_complex_object_collision(missile m, object obj) {
  * @param pm 
  * @param this 
  */
-void check_missile_collision(player_missile pm, object this) {
+void check_missile_collision(player_missile pm, collision_infos c) {
     for (int i = 0; i < pm.length; i++) {
-        if (this.is_primitive) missile_primitive_object_collision(pm.arr_missile[i], this.bb_primitive_shape);
-        else missile_complex_object_collision(pm.arr_missile[i], this);
+        if (c.object.is_primitive) missile_primitive_object_collision(pm.arr_missile[i], c.object.bb_primitive_shape, c);
+        else missile_complex_object_collision(pm.arr_missile[i], c);
     }
 }
 
@@ -56,11 +59,11 @@ void check_missile_collision(player_missile pm, object this) {
  */
 static void primitive_object_collision(position player, bounding_box this) {
     if (point_intersect_bounding_box(player, this)) {           
-            // ! for dev
-            /*************/
-            printf("COLLISION\n");
-            screen.key.IS_UP_KEY_DOWN = !screen.key.IS_UP_KEY_DOWN;
-            /*************/
+        // ! for dev
+        /*************/
+        printf("COLLISION\n");
+        screen.key.IS_UP_KEY_DOWN = !screen.key.IS_UP_KEY_DOWN;
+        /*************/
     }
 }
 

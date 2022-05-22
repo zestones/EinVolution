@@ -9,6 +9,8 @@
 
 #include "../../systems/object/object.h"
 
+#define BOX_HEALTH 10
+
 /**
  * @brief definition of a box
  * 

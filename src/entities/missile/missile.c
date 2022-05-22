@@ -23,6 +23,7 @@ missile create_missile(position p, vector forward) {
     m.pos = addition_vector(p, mult_vector(m.forward, m.speed));
 
     m.id = pm.length;
+    m.damage = MISSILE_DAMAGE;
 
     return m;
 }

@@ -17,7 +17,7 @@ static void Init(void) {
 
     // create the world map
     w = create_world(set_position(0, 0, 0), set_position(pow(2, N), pow(2, N), pow(2, N)), pow(2, N));
-    
+
     // hide the mouse cursor
     glutSetCursor(GLUT_CURSOR_NONE);
 

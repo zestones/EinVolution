@@ -10,6 +10,7 @@
  */
 object *generate_world_object(position pos) {
     srand(time(NULL));
+    int MIN = 1;
 
     object *arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
      
@@ -22,10 +23,10 @@ object *generate_world_object(position pos) {
         position p = set_position(x, y, z);
         
         int type_object = rand() % Number_of_object;
-        int depth = (rand() % (MAX_SIZE - 1 + 1)) + 1;
-        int height = (rand() % (MAX_SIZE - 1 + 1)) + 1;
-        int width = (rand() % (MAX_SIZE - 1 + 1)) + 1;
-
+        double width = MIN + rand() % (MAX_SIZE + 1 - MIN);
+        double height = MIN + rand() % (MAX_SIZE + 1 - MIN);
+        double depth = MIN + rand() % (MAX_SIZE + 1 - MIN);
+        
         switch (type_object) {
             case House:
                 arr_object[i] = create_house(p, width, height, depth);
@@ -42,9 +43,14 @@ object *generate_world_object(position pos) {
             case Tunnel:
                 arr_object[i] = create_tunnel(p, width, height, depth);
                 break;
+            case Tree:
+                set_y(&p, 0);
+                arr_object[i] = create_tree(p, width, height, depth);
+                break;
             default:
                 break;
         }
+        arr_object[i].index = i;
     }
 
     return arr_object;
@@ -53,16 +59,16 @@ object *generate_world_object(position pos) {
 /**
  * @brief Get the number object inside the cube
  * 
- * @param obj 
+ * @param this 
  * @param c 
  * @return int 
  */
-int get_number_object(world_object obj, cube c) {
+int get_number_object(world_object this, cube c) {
     
     int count = 0;
 
-    for (int i = 0; i < obj.length; i++) {
-        object o = get_world_object_by_id(obj, i);
+    for (int i = 0; i < this.length; i++) {
+        object o = get_world_object_by_id(this, i);
         if (is_point_inside_cube(c, o.pos)) count ++;
     }
 
@@ -72,19 +78,19 @@ int get_number_object(world_object obj, cube c) {
 /**
  * @brief Get the object in cube
  * 
- * @param obj 
+ * @param this 
  * @param c 
  * @return world_object 
  */
-world_object get_object_in_cube(world_object obj, cube c) {
+world_object get_object_in_cube(world_object this, cube c) {
     
     world_object cpy;
     cpy.arr_object = (object *) malloc(MAX_OBJECT * sizeof(object));
     
     int k = 0;
 
-    for (int i = 0; i < obj.length; i++) {
-        object o = get_world_object_by_id(obj, i);
+    for (int i = 0; i < this.length; i++) {
+        object o = get_world_object_by_id(this, i);
        
         if (is_point_inside_cube(c, o.pos)) {
             cpy.arr_object[k++] = o;
@@ -99,22 +105,23 @@ world_object get_object_in_cube(world_object obj, cube c) {
 /**
  * @brief Get the world object by id
  * 
- * @param obj 
+ * @param this 
  * @param index 
  * @return object 
  */
-object get_world_object_by_id(world_object obj, int index) { return obj.arr_object[index]; }
+object get_world_object_by_id(world_object this, int index) { return this.arr_object[index]; }
 
 /**
- * @brief draw world object bounding box
+ * @brief remove an object from the world
  * 
- * @param obj 
+ * @param this 
+ * @param index 
  */
-void draw_world_object_bounding_box(world_object obj) {
-    for (int i = 0; i < obj.length; i++) {
-        if (obj.arr_object[i].is_primitive)
-            draw_bounding_box(obj.arr_object[i].bb_primitive_shape);
-        else 
-            draw_complex_shape_bounding_box(obj.arr_object[i].bb_complex_shape.arr_bound_box, obj.arr_object[i].bb_complex_shape.length);            
-    }
+void remove_object_from_world(world_object *this, int index) {
+    int i = 0;
+    while (i < this->length && index != this->arr_object[i].index) i++;
+
+    this->length -= 1;
+    for (int j = i; j < this->length; j++) 
+        this->arr_object[j] = this->arr_object[j + 1];
 }

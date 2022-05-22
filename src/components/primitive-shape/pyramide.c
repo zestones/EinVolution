@@ -8,12 +8,14 @@
  * @return pyramide 
  */
 pyramide create_pyramide(position p, double width, double height, double depth) {
-  
+
     pyramide py;
     py.pos = p;
 
     py.bb_primitive_shape = set_object_bounding_box(p, width, height * 2, depth);
     py.is_primitive = 1;
+
+    py.health = PYRAMIDE_HEALTH;
 
     py.length = 5;
     py.arr_face = (face *) malloc(py.length * sizeof(face));
