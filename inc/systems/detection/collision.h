@@ -10,8 +10,9 @@
  * 
  * @param pm 
  * @param this 
+ * @return int 
  */
-void check_missile_collision(player_missile pm, object this);
+int has_missile_collision(player_missile pm, object this);
 
 /**
  * @brief check player collision

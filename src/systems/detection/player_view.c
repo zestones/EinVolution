@@ -11,7 +11,7 @@ void draw_field_view(position eye, frustum frust, tree_leaves leaves) {
     
     for (int i = 0; i < leaves.length; i++) {
         for (int j = 0; j < leaves.arr_world_object[i].length; j++) {
-          
+
             object obj = get_world_object_by_id(get_tree_leaves_world_object(leaves, i), j);
             cube leaf_cube = get_tree_leaves_cube(leaves, i);
             
@@ -19,11 +19,17 @@ void draw_field_view(position eye, frustum frust, tree_leaves leaves) {
                 draw_object(obj);
                 check_player_collision(eye, obj);
             }
+            
             // if move backward + cube near check collision 
             else if (screen.key.IS_UP_KEY_DOWN && distance(leaf_cube.center, eye) < DISTANCE_DETECTION) {
                 check_player_collision(eye, obj);
             }
-            check_missile_collision(pm, obj);
+            
+            // if missile collision, remove object
+            if (has_missile_collision(pm, obj)) {
+                remove_world_object_by_id(get_tree_leaves_world_object(leaves, i), j);
+                break;
+            }
         }
     }
 }

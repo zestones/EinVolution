@@ -118,3 +118,18 @@ void draw_world_object_bounding_box(world_object obj) {
             draw_complex_shape_bounding_box(obj.arr_object[i].bb_complex_shape.arr_bound_box, obj.arr_object[i].bb_complex_shape.length);            
     }
 }
+
+
+/**
+ * @brief Remove the world object by id
+ * 
+ * @param obj 
+ * @param index 
+ */
+void remove_world_object_by_id(world_object obj, int index) {
+    object *arr_obj = obj.arr_object;
+    for (int i = index; i < arr_obj->length - 1; i++) {
+        arr_obj[i] = arr_obj[i + 1];
+    }
+    arr_obj->length -= 1;
+}

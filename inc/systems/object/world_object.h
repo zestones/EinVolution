@@ -76,5 +76,12 @@ world_object get_object_in_cube(world_object obj, cube c);
  */
 object get_world_object_by_id(world_object obj, int index);
 
+/**
+ * @brief Remove the world object by id
+ * 
+ * @param obj 
+ * @param index 
+ */
+void remove_world_object_by_id(world_object obj, int index);
 
 #endif // WORLD_OBJECT

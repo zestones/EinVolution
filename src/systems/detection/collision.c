@@ -9,7 +9,7 @@ extern window screen;
  * @param obj 
  * @return int 
  */
-static int missile_primitive_object_collision(missile m, bounding_box obj) {
+static int has_missile_primitive_object_collision(missile m, bounding_box obj) {
     if (box_intersect_bounding_box(obj, m.box.bb_primitive_shape)) {
 
         // TODO : Delete missile + object
@@ -27,12 +27,15 @@ static int missile_primitive_object_collision(missile m, bounding_box obj) {
  * 
  * @param m 
  * @param obj 
+ * @return int 
  */
-static void missile_complex_object_collision(missile m, object obj) {
-    
+static int has_missile_complex_object_collision(missile m, object obj) {
+    int has_collision = 0;
     for (int i = 0; i < obj.bb_complex_shape.length; i++) {
-        if (missile_primitive_object_collision(m, obj.bb_complex_shape.arr_bound_box[i])) break;
-    }         
+        if (has_collision) break;
+        has_collision = has_missile_primitive_object_collision(m, obj.bb_complex_shape.arr_bound_box[i]);
+    } 
+    return has_collision;       
 }
 
 /**
@@ -40,12 +43,18 @@ static void missile_complex_object_collision(missile m, object obj) {
  * 
  * @param pm 
  * @param this 
+ * @return int 
  */
-void check_missile_collision(player_missile pm, object this) {
+int has_missile_collision(player_missile pm, object this) {
+    int has_collision = 0;
     for (int i = 0; i < pm.length; i++) {
-        if (this.is_primitive) missile_primitive_object_collision(pm.arr_missile[i], this.bb_primitive_shape);
-        else missile_complex_object_collision(pm.arr_missile[i], this);
+        if (has_collision) break;
+
+        has_collision = (this.is_primitive)
+        ? has_missile_primitive_object_collision(pm.arr_missile[i], this.bb_primitive_shape)
+        : has_missile_complex_object_collision(pm.arr_missile[i], this);
     }
+    return has_collision;
 }
 
 /**
