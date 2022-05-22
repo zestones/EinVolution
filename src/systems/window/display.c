@@ -3,6 +3,10 @@
 #include "../../../inc/systems/window/window.h"
 #include <string.h>
 
+/**
+ * @brief display the game screen
+ * 
+ */
 static void display_game_screen() {  
 
     handle_game_key_events();
@@ -19,6 +23,10 @@ static void display_game_screen() {
     }
 }
 
+/**
+ * @brief display the menu screen
+ * 
+ */
 static void display_menu_screen() {   
     position eye;
     position look_at;
@@ -43,6 +51,10 @@ static void display_menu_screen() {
     );
 }
 
+/**
+ * @brief animate the menu screen
+ * 
+ */
 void Animate() {
     if (screen.mode != MENU) return;
 
@@ -64,7 +76,7 @@ void Display(void) {
     draw_timer();
 
     if (screen.display_octree) draw_world_tree(w.tree);
-    if (screen.display_bounding_box) draw_world_object_bounding_box(w.object);
+    if (screen.display_bounding_box) draw_world_object_bounding_box(w.tree_leaves);
 
     set_world_texture(w.cube);
 

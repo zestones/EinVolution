@@ -8,6 +8,7 @@
 
 #define MAX_MISSILE 5
 #define MISSILE_SIZE 0.5
+#define MISSILE_DAMAGE -1
 
 /**
  * @brief structure of a missile
@@ -19,7 +20,8 @@ typedef struct {
     vector forward; 
     vector right;
     vector up;
-   
+    
+    double damage;
     double speed;
     int id;
 

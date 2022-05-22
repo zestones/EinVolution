@@ -19,6 +19,7 @@ world create_world(position p1, position p2, double size) {
     /***************************/    
     w.tree = generate_world_tree(w.cube, w.object, &w.tree_leaves);
     /****************************/
+
     return w;
 }
 

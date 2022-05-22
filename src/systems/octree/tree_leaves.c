@@ -44,3 +44,22 @@ cube get_tree_leaves_cube(tree_leaves leaves, int index) {
 world_object get_tree_leaves_world_object(tree_leaves leaves, int index) {
     return leaves.arr_world_object[index];
 }
+
+/**
+ * @brief draw world object bounding box
+ * 
+ * @param leaves 
+ */
+void draw_world_object_bounding_box(tree_leaves leaves) {
+     for (int i = 0; i < leaves.length; i++) {
+        for (int j = 0; j < leaves.arr_world_object[i].length; j++) {
+          
+            object obj = get_world_object_by_id(get_tree_leaves_world_object(leaves, i), j);
+
+            if (obj.is_primitive)
+                draw_bounding_box(obj.bb_primitive_shape);
+            else 
+                draw_complex_shape_bounding_box(obj.bb_complex_shape.arr_bound_box, obj.bb_complex_shape.length);            
+        }
+    }
+}

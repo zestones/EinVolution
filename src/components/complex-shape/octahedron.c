@@ -10,6 +10,12 @@
  * @return octahedron 
  */
 octahedron create_octahedron(position p, double width, double height, double depth) {
+    if (width <= 0 || depth <= 0 || height <= 0) {
+        fprintf(stderr, "Error ! The size of the octahedron must be positive !\n");
+        fprintf(stderr, "width : %f , height: %f , depth: %f \n", width, height, depth);
+        exit(EXIT_FAILURE);
+    }
+
     if ((get_y(p) - height/2) <= 0) set_y(&p, height);
     
     pyramide py = create_pyramide(p, width/2, height/2, depth/2);

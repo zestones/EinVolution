@@ -8,7 +8,8 @@
  */
 house create_house(position p, double width, double height, double depth) {
     if (width <= 0 || depth <= 0 || height <= 0) {
-        fprintf(stderr, "Error ! The size must be positive !\n");
+        fprintf(stderr, "Error ! The size of the house must be positive !\n");
+        fprintf(stderr, "width : %f , height: %f , depth: %f \n", width, height, depth);
         exit(EXIT_FAILURE);
     }
     
@@ -21,6 +22,6 @@ house create_house(position p, double width, double height, double depth) {
     house h = concat_objects(2, b, py);
     
     h.pos = p;
-
+        
     return h;
 }

@@ -8,18 +8,18 @@
  * @return box 
  */
 box create_box(position p, double width, double height, double depth) {
-    if (width <= 0 || depth <= 0 || height <= 0) {
-        fprintf(stderr, "Error ! The size must be positive !\n");
-        fprintf(stderr, "width : %f , height: %f , depth: %f \n", width, height, depth);
-        exit(EXIT_FAILURE);
-    }
 
-    box b;
-    
+    box b; 
     b.pos = p;
     
+    b.width = width;
+    b.height = height;
+    b.depth = depth;
+
     b.bb_primitive_shape = set_object_bounding_box(p, width, height, depth);
     b.is_primitive = 1;
+
+    b.health = BOX_HEALTH;
 
     b.length = 6;
     b.arr_face = (face *) malloc(b.length * sizeof(face));

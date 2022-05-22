@@ -42,4 +42,11 @@ cube get_tree_leaves_cube(tree_leaves leaves, int index);
  */
 world_object get_tree_leaves_world_object(tree_leaves leaves, int index);
 
+/**
+ * @brief draw world object bounding box
+ * 
+ * @param leaves 
+ */
+void draw_world_object_bounding_box(tree_leaves leaves);
+
 #endif // TREE_LEAVES
