@@ -57,7 +57,10 @@ void check_missile_collision(player_missile pm, collision_infos c) {
  * @param health 
  */
 static void update_player_health(int health) { 
-    if (health <= 0) exit(EXIT_SUCCESS);
+    if (health <= 0) {
+        Init_Game_Parameter(NEW_GAME);
+        return;
+    }
     player_health = health;
 }
 
