@@ -3,8 +3,8 @@
 /**
  * @brief Get the objects size
  * 
- * @param argc 
- * @param arg 
+ * @param argc : the number of arguments
+ * @param arg : the list of argument va_list
  * @return int 
  */
 static int get_objects_size(int argc, va_list arg) {
@@ -62,8 +62,8 @@ object concat_objects(int argc, ...) {
 /**
  * @brief update the health point of the object
  * 
- * @param this 
- * @param health_point 
+ * @param this : the object
+ * @param health_point : the bonus/malus of health point 
  */
 void update_object_health(object *this, double health_point) { 
     // ! for dev
@@ -75,20 +75,46 @@ void update_object_health(object *this, double health_point) {
 }
 
 /**
+ * @brief Set the primitive object color
+ * 
+ * @param this : the object
+ * @param c : the color
+ */
+static void set_primitive_object_color(object *this, const color *c) {
+    for (int i = 0; i < this->length; i++)
+        update_face_color(&this->arr_face[i], c[i]);
+}
+
+/**
+ * @brief Set the complex object color
+ * 
+ * @param this : the object
+ * @param c : the color
+ */
+static void set_complex_object_color(object *this, const color *c) {
+    int k = 0;
+
+    for (int i = 0; i < this->length; i++) {
+        update_face_color(&this->arr_face[i], c[k++]);
+        if (k == MAX_FACE) k = 0;
+    }
+}
+
+/**
  * @brief Set the object color
  * 
- * @param this 
- * @param c 
+ * @param this : the object
+ * @param c : the color
  */
-void set_object_color(object this, const color *c) {
-    for (int i = 0; i < this.length; i++)
-        update_face_color(&this.arr_face[i], c[i]);
+void set_object_color(object *this, const color *c) {
+    if (this->is_primitive) set_primitive_object_color(this, c);
+    else set_complex_object_color(this, c);
 }
 
 /**
  * @brief draw the box object
  * 
- * @param b 
+ * @param this : the object
  */
 void draw_object(object this) {
     for (int i = 0; i < this.length; i++)

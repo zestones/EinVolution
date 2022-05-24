@@ -3,7 +3,7 @@
 /**
  * @brief In game Key events
  * 
- * @param key 
+ * @param key : the key
  */
 static void In_Game_Key(unsigned char key) {
     
@@ -20,7 +20,7 @@ static void In_Game_Key(unsigned char key) {
 /**
  * @brief In menu Key events
  * 
- * @param key 
+ * @param key : the key
  */
 static void In_Menu_Key(unsigned char key) {
     
@@ -47,7 +47,7 @@ static void In_Menu_Key(unsigned char key) {
  * @brief Parrtaged key events 
  * between Menu & Game
  * 
- * @param key 
+ * @param key : the key
  */
 static void Partaged_Key(unsigned char key) {
     
@@ -89,9 +89,9 @@ void Key(unsigned char key, int x, int y) {
  * @brief handle released key events
  * callback function
  * 
- * @param key 
- * @param x 
- * @param y 
+ * @param key : the key
+ * @param x : the coords x
+ * @param y : the coords y
  */
 void KeyUp(unsigned char key, int x, int y) {
     // printf("KeyUp: %d (x: %d, y: %d)\n", key, x, y);

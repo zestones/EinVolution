@@ -3,13 +3,14 @@
 /**
  * @brief reshape the window with the good proportion
  * 
- * @param width 
- * @param height 
+ * @param width : the screen width
+ * @param height  : the sreen height
  */
 void reshape(int width, int height) {
     screen.width = width;
     screen.height = height;
 
+    // calculate the center of the screen
     screen.center_x = screen.width / 2;
     screen.center_y = screen.height / 2;
 
@@ -29,7 +30,7 @@ void reshape(int width, int height) {
  * @brief Refresh the display periodically 
  * according to the FPS value (in window.h)
  * 
- * @param v 
+ * @param v : the time
  */
 void Timer(int v) {
     glutPostRedisplay();

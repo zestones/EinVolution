@@ -28,6 +28,7 @@ static void Init(void) {
 /**
  * @brief Init the parameter of the Menu screen
  * 
+ * @param new_game : the new game argument
  */
 void Init_Game_Parameter(int new_game) {
     if (new_game == NEW_GAME) {
@@ -35,9 +36,7 @@ void Init_Game_Parameter(int new_game) {
         return;
     }
 
-    // pm.arr_missile = (missile *) malloc(MAX_MISSILE * sizeof(missile));
     pm.length = 0;
-
     screen.mode = GAME;
 
     // set the mouse sensitivity

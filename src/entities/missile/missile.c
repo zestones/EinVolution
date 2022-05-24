@@ -1,6 +1,8 @@
 #include "../../../inc/entities/missile/missile.h"
 #include "../../../inc/systems/window/window.h"
 
+extern const color violet[];
+
 /**
  * @brief Create a missile object
  * 
@@ -13,6 +15,7 @@ missile create_missile(position p, vector forward) {
     
     set_y(&p, get_y(p) - MISSILE_SIZE);
     m.box = create_box(p, MISSILE_SIZE, MISSILE_SIZE, MISSILE_SIZE);
+    set_object_color(&m.box, violet);
 
     m.forward = forward;
     m.up = create_vector(0, 1, 0);
@@ -36,6 +39,7 @@ missile create_missile(position p, vector forward) {
  */
 static void update_missile_position(missile *m, position p) {
     m->box = create_box(p, MISSILE_SIZE, MISSILE_SIZE, MISSILE_SIZE);
+    set_object_color(&m->box, violet);
 }
 
 /**

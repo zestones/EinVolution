@@ -4,6 +4,11 @@
 #include "../../systems/shape/face.h"
 #include "../../systems/shape/bounding_box.h"
 
+#define DANGEROUS_LEVEL_HEALTH 10
+#define CRITIC_LEVEL_HEALTH 5
+
+#define MAX_FACE 5
+
 /**
  * @brief structture of an object
  * 
@@ -50,7 +55,7 @@ void update_object_health(object *this, double health_point);
  * @param this 
  * @param c 
  */
-void set_object_color(object this, const color *c);
+void set_object_color(object *this, const color *c);
 
 /**
  * @brief draw the object

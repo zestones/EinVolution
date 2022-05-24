@@ -17,7 +17,6 @@ typedef struct {
 
 } collision_infos;
 
-
 /**
  * @brief check missile collision
  * 
