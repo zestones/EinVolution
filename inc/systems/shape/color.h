@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 /**
  * @brief structur of the color
  * 
@@ -14,12 +15,13 @@ typedef struct color {
     double blue;
 } color;
 
+
 /**
  * @brief Set the color object
  * 
- * @param r 
- * @param g 
- * @param b 
+ * @param r : the red value
+ * @param g : the green value
+ * @param b : the blue value
  * @return color 
  */
 color set_color(double r, double g, double b);
@@ -27,7 +29,7 @@ color set_color(double r, double g, double b);
 /**
  * @brief print the color
  * 
- * @param c 
+ * @param c : the color
  */
 void print_color(color c);
 

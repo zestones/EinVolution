@@ -2,12 +2,13 @@
 #include "../../../inc/systems/detection/player_view.h"
 #include "../../../inc/systems/window/window.h"
 
+
 /**
  * @brief Create a object collision infos object
  * 
- * @param obj 
- * @param index_world_object 
- * @param index_object 
+ * @param obj : the object
+ * @param index_world_object : the index of the world object
+ * @param index_object : the index of the object
  * @return collision_infos 
  */
 collision_infos create_object_collision_infos(object obj, int index_world_object, int index_object) {
@@ -23,7 +24,9 @@ collision_infos create_object_collision_infos(object obj, int index_world_object
 /**
  * @brief draw the field of view of the camera
  * 
- * @param leaves 
+ * @param eye : the position of the player
+ * @param frust : the frustum
+ * @param leaves : the leaves
  */
 void draw_field_view(position eye, frustum frust, tree_leaves leaves) {
     

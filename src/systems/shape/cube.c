@@ -1,11 +1,12 @@
 #include "../../../inc/systems/shape/cube.h"
 
+
 /**
  * @brief Create a cube object
  * 
- * @param p1 
- * @param p2 
- * @param size 
+ * @param p1 : the position of the point left down
+ * @param p2  : the position opposed to p1
+ * @param size : the size 
  * @return cube 
  */
 cube create_cube(position p1, position p2, double size) {
@@ -13,7 +14,8 @@ cube create_cube(position p1, position p2, double size) {
     
     c.p1 = p1; c.p2 = p2;
     c.edge_size = size;
-
+    
+    // calculate the center of the cube 
     c.center = set_position(
         get_x(c.p1) + (get_x(c.p2) - get_x(c.p1)) / 2,
         get_y(c.p1) + (get_y(c.p2) - get_y(c.p1)) / 2,
@@ -26,13 +28,13 @@ cube create_cube(position p1, position p2, double size) {
 /**
  * @brief Get the point cube object
  * 
- * @param c 
+ * @param c : the cube 
  * @return position* 
  */
 position *get_point_cube(cube c) {
-    int i = 0;
-    
+    int i = 0; 
     position *point_cube = malloc(8 * sizeof(position));
+
     // get the point of the cube
     point_cube[i++] = set_position(c.p1.x, c.p1.y, c.p1.z);
     point_cube[i++] = set_position(c.p1.x + c.edge_size, c.p1.y, c.p1.z);
@@ -50,8 +52,8 @@ position *get_point_cube(cube c) {
 /**
  * @brief check if p is inside the cube 
  * 
- * @param c 
- * @param p 
+ * @param c : the cube 
+ * @param p : the point tested
  * @return int 
  */
 int is_point_inside_cube(cube c, position p) {
@@ -61,10 +63,10 @@ int is_point_inside_cube(cube c, position p) {
 /**
  * @brief draw a face of the cube
  * 
- * @param p0 
- * @param p1 
- * @param p2 
- * @param p3 
+ * @param p0 : the first position
+ * @param p1 : the second position
+ * @param p2 : the third position
+ * @param p3 : the fourth position
  */
 static void draw_face_cube(position p0, position p1, position p2, position p3) {
     glBegin(GL_LINES);
@@ -89,7 +91,7 @@ static void draw_face_cube(position p0, position p1, position p2, position p3) {
 /**
  * @brief draw the cube
  * 
- * @param c 
+ * @param c the cube
  */
 void draw_cube(cube c) {
     position *point_cube = get_point_cube(c);
@@ -113,7 +115,7 @@ void draw_cube(cube c) {
 /**
  * @brief print the cube
  * 
- * @param c 
+ * @param c : the cube
  */
 void print_cube(cube c) {
     fprintf(stdout, "\n---------------------------\n");

@@ -3,16 +3,17 @@
 
 
 /**
- * @brief generate recursively the octree
+ * @brief generate recursively the world tree
  * 
- * @param w the world
- * @param x1 
- * @param y1 
- * @param z1 
- * @param x2 
- * @param y2 
- * @param z2 
- * @param edge_size 
+ * @param w : the world
+ * @param leaves : the leaves
+ * @param x1 : the coords x of the first position of the cube 
+ * @param y1 : the coords y of the first position of the cube
+ * @param z1 : the coords z of the first position of the cube
+ * @param x2 : the coords x of the second position of the cube
+ * @param y2 : the coords y of the second position of the cube
+ * @param z2 : the coords z of the second position of the cube
+ * @param edge_size : the size of the cube edge
  * @return octree 
  */
 static octree generate_world_tree_bis(world w, tree_leaves *leaves, float x1, float y1, float z1, float x2, float y2, float z2, float edge_size) {
@@ -50,9 +51,9 @@ static octree generate_world_tree_bis(world w, tree_leaves *leaves, float x1, fl
 /**
  * @brief generate the world tree
  *
- * @param c 
- * @param obj 
- * @param leaves 
+ * @param c : the cube
+ * @param obj : the world object
+ * @param leaves : the leaves
  * @return octree 
  */
 octree generate_world_tree(cube c, world_object obj, tree_leaves *leaves) {
@@ -71,7 +72,7 @@ octree generate_world_tree(cube c, world_object obj, tree_leaves *leaves) {
 /**
  * @brief draw recursivly the octree 
  * 
- * @param A 
+ * @param A : the octree
  */
 static void draw_world_tree_bis(octree A) {
   
@@ -88,6 +89,6 @@ static void draw_world_tree_bis(octree A) {
 /**
  * @brief draw the octree
  * 
- * @param k 
+ * @param k : the octree
  */
 void draw_world_tree(octree k) { draw_world_tree_bis(k); }

@@ -10,7 +10,10 @@
 #include "../../entities/camera/camera.h"
 #include "../../entities/world/world.h"
 
-
+/**
+ * @brief animate the menu screen
+ * 
+ */
 void Animate();
 
 /**

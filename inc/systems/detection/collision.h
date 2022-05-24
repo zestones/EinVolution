@@ -17,20 +17,20 @@ typedef struct {
 
 } collision_infos;
 
-
 /**
  * @brief check missile collision
  * 
- * @param pm 
- * @param this 
+ * @param pm : the array of missle launched 
+ * @param c : the object information to check the collision 
  */
 void check_missile_collision(player_missile pm, collision_infos c);
 
 /**
- * @brief check player collision
+ * @brief check if there is a collision 
+ * between the player and the objects 
  * 
- * @param player 
- * @param this 
+ * @param player : the position of the player
+ * @param this  : the object
  */
 void check_player_collision(position player, object this);
 

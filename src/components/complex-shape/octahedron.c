@@ -1,12 +1,15 @@
 #include "../../../inc/components/complex-shape/octahedron.h"
 
+
+extern const color brown[];
+
 /**
  * @brief Create a octahedron object
  * 
- * @param p 
- * @param width 
- * @param height 
- * @param depth 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return octahedron 
  */
 octahedron create_octahedron(position p, double width, double height, double depth) {
@@ -20,8 +23,9 @@ octahedron create_octahedron(position p, double width, double height, double dep
     
     pyramide py = create_pyramide(p, width/2, height/2, depth/2);
     pyramide py_down = create_pyramide(p, width/2, -height/2, depth/2);
-
     
+    set_object_color(&py_down, brown);
+
     position min = get_bounding_box_min_position(py_down.bb_primitive_shape);
     py_down.bb_primitive_shape = set_object_bounding_box(min, width/2, height, depth/2);
 

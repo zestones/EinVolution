@@ -1,11 +1,14 @@
 #include "../../../inc/entities/missile/missile.h"
 #include "../../../inc/systems/window/window.h"
 
+
+extern const color violet[];
+
 /**
  * @brief Create a missile object
  * 
- * @param p 
- * @param forward 
+ * @param p : the position
+ * @param forward : the direction
  * @return missile 
  */
 missile create_missile(position p, vector forward) {
@@ -13,6 +16,7 @@ missile create_missile(position p, vector forward) {
     
     set_y(&p, get_y(p) - MISSILE_SIZE);
     m.box = create_box(p, MISSILE_SIZE, MISSILE_SIZE, MISSILE_SIZE);
+    set_object_color(&m.box, violet);
 
     m.forward = forward;
     m.up = create_vector(0, 1, 0);
@@ -31,17 +35,18 @@ missile create_missile(position p, vector forward) {
 /**
  * @brief update the missile position
  * 
- * @param m 
- * @param p 
+ * @param m : the missile
+ * @param p : the position
  */
 static void update_missile_position(missile *m, position p) {
     m->box = create_box(p, MISSILE_SIZE, MISSILE_SIZE, MISSILE_SIZE);
+    set_object_color(&m->box, violet);
 }
 
 /**
  * @brief remove missile from player missile
  * 
- * @param m 
+ * @param m : the missile 
  */
 void remove_missile(missile *m) {
     int i = 0;
@@ -55,10 +60,10 @@ void remove_missile(missile *m) {
 /**
  * @brief move the missile with a direction
  * 
- * @param m 
- * @param w 
- * @param direction 
- * @param speed 
+ * @param m : the missile
+ * @param w : the world
+ * @param direction : the direction
+ * @param speed : the speed
  */
 static void move(missile *m, world w, vector direction, double speed) {
     position p = addition_vector(m->pos, mult_vector(direction, speed));
@@ -75,17 +80,17 @@ static void move(missile *m, world w, vector direction, double speed) {
 /**
  * @brief move the missile forward
  * 
- * @param m 
- * @param w 
+ * @param m : the missile
+ * @param w : the world
  */
 void move_missile_forward(missile *m, world w) { move(m, w, m->forward, m->speed); }
 
 /**
  * @brief update the missile launched 
  * 
- * @param pm 
- * @param p 
- * @param forward 
+ * @param pm : the player missile i.e the array of the missile launched by the player
+ * @param p : the position
+ * @param forward : the direction
  */
 void update_player_missile(player_missile *pm, position p, vector forward) {
     if (pm->length >= MAX_MISSILE) return;
@@ -95,7 +100,7 @@ void update_player_missile(player_missile *pm, position p, vector forward) {
 /**
  * @brief draw the missile
  * 
- * @param m 
+ * @param m : the missile
  */
 void draw_missile(missile m) { 
     draw_object(m.box); 

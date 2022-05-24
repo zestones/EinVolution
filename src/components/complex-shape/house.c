@@ -1,9 +1,13 @@
 #include "../../../inc/components/complex-shape/house.h"
+
+
 /**
  * @brief Create a house object
  * 
- * @param p 
- * @param size 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return house 
  */
 house create_house(position p, double width, double height, double depth) {
@@ -14,7 +18,7 @@ house create_house(position p, double width, double height, double depth) {
     }
     
     box b = create_box(p, width, height/2, depth);
-    
+
     position pos_py = p;
     set_y(&pos_py, get_y(p) + height/2);
 

@@ -21,25 +21,26 @@ typedef struct mouse {
     double sensitivity;
 } mouse;
 
+
 /**
  * @brief Handle mouse events
  * 
- * @param x 
- * @param y 
+ * @param x : the coords x of the mouse
+ * @param y : the coords y of the mouse
  */
 void Mouse(int x, int y);
 
 /**
  * @brief increase the mouse sensitivity
  * 
- * @param m 
+ * @param m : the mouse
  */
 void increase_mouse_sensitivity(mouse *m);
 
 /**
  * @brief decrease the mouse sensitivity
  * 
- * @param m 
+ * @param m : the mouse
  */
 void decrease_mouse_sensitivity(mouse *m);
 

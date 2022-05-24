@@ -1,10 +1,16 @@
 #include "../../../inc/components/complex-shape/tree.h"
+#include "../../../inc/systems/shape/texture.h"
+
+
+extern const color brown[];
 
 /**
  * @brief Create a tree object
  * 
- * @param p 
- * @param size 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return tree 
  */
 tree create_tree(position p, double width, double height, double depth) {
@@ -22,6 +28,8 @@ tree create_tree(position p, double width, double height, double depth) {
 
     // create the trunk
     box trunk = create_box(p, t.width/6, t.height/2, t.depth/6);
+    set_object_color(&trunk, brown);
+
     position cpy_pos_z = p;
 
     set_x(&cpy_pos_z, (get_x(p) - t.width/2) + trunk.width/2);

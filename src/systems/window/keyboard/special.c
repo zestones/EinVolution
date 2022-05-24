@@ -5,9 +5,9 @@
  * @brief change the speed parameter of the camera
  * callback function
  * 
- * @param key 
- * @param x 
- * @param y 
+ * @param key : the key pressed 
+ * @param x : the cords x
+ * @param y  : the cords y
  */
 void Special(int key, int x, int y) {
     // printf("Special: %d (x: %d, y: %d)\n", key, x, y);
@@ -36,9 +36,9 @@ void Special(int key, int x, int y) {
  * @brief change the speed when the key is released
  * callback function
  * 
- * @param key 
- * @param x 
- * @param y 
+ * @param key : the key released 
+ * @param x : the coords x
+ * @param y : the coords y
  */
 void SpecialUp(int key, int x, int y) { 
     // printf("SpecialUp: x: %d, y: %d)\n", x, y);

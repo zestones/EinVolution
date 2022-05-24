@@ -39,12 +39,12 @@ void handle_game_key_events();
 void handle_menu_key_events();
 
 /**
- * @brief handle key events
+ * @brief change the speed when the key is released
  * callback function
  * 
- * @param key 
- * @param x 
- * @param y 
+ * @param key : the key released 
+ * @param x : the coords x
+ * @param y : the coords y
  */
 void SpecialUp(int key, int x, int y);
 
@@ -52,28 +52,29 @@ void SpecialUp(int key, int x, int y);
  * @brief change the speed parameter of the camera
  * callback function
  * 
- * @param key 
- * @param x 
- * @param y 
+ * @param key : the key pressed 
+ * @param x : the cords x
+ * @param y  : the cords y
  */
 void Special(int key, int x, int y);
 
 /**
- * @brief handle the keyup events 
+ * @brief handle released key events
+ * callback function
  * 
- * @param key 
- * @param x 
- * @param y 
+ * @param key : the key
+ * @param x : the coords x
+ * @param y : the coords y
  */
 void KeyUp(unsigned char key, int x, int y);
 
 /**
- * @brief change the speed when the key is released
+ * @brief handle key events
  * callback function
  * 
- * @param key 
- * @param x 
- * @param y 
+ * @param key : the key
+ * @param x : the coords x
+ * @param y : the coords y
  */
 void Key(unsigned char key, int x, int y);
 

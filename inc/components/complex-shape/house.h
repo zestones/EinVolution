@@ -19,8 +19,10 @@ typedef struct object house;
 /**
  * @brief Create a house object
  * 
- * @param p 
- * @param size 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return house 
  */
 house create_house(position p, double width, double height, double depth);

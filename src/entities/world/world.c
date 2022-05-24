@@ -1,11 +1,12 @@
 #include "../../../inc/entities/world/world.h"
 
+
 /**
  * @brief Create a world object
  * 
- * @param p1 
- * @param p2 
- * @param size 
+ * @param p1 : the first position
+ * @param p2 : the second position
+ * @param size : the edge size
  * @return world 
  */
 world create_world(position p1, position p2, double size) {
@@ -23,7 +24,14 @@ world create_world(position p1, position p2, double size) {
     return w;
 }
 
-
+/**
+ * @brief Set the world face texture
+ * 
+ * @param p1 : the first position
+ * @param p2 : the second position 
+ * @param p3 : the third position 
+ * @param p4 : the fourth position
+ */
 static void set_world_face_texture(position p1, position p2, position p3, position p4) {
     glBegin(GL_QUADS);
      
@@ -39,9 +47,13 @@ static void set_world_face_texture(position p1, position p2, position p3, positi
  * @brief Set the world texture object
  * ! source : http://thepentamollisproject.blogspot.com/2018/02/setting-up-first-person-camera-in.html
  * 
- * @param c
+ * @param c : the cube
  */
 void set_world_texture(cube c) {
+    // ! for dev 
+    /*************/
+    draw_cube(c);
+    /*************/
 
     glColor3f(1.0, 1.0, 1.0);
 

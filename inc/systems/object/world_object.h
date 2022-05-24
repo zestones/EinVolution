@@ -36,7 +36,7 @@ enum list_of_object {
 /**
  * @brief generate the object in the world
  * 
- * @param w 
+ * @param pos 
  * @return object* 
  */
 object *generate_world_object(position pos);
@@ -44,8 +44,8 @@ object *generate_world_object(position pos);
 /**
  * @brief Get the number object inside the cube
  * 
- * @param obj 
- * @param c 
+ * @param this : the world object
+ * @param c : the cube
  * @return int 
  */
 int get_number_object(world_object obj, cube c);
@@ -53,25 +53,25 @@ int get_number_object(world_object obj, cube c);
 /**
  * @brief Get the object in cube
  * 
- * @param obj 
- * @param c 
+ * @param this : the world object
+ * @param c : the cube
  * @return world_object 
  */
 world_object get_object_in_cube(world_object obj, cube c);
 
 /**
- * @brief remove object from the world 
+ * @brief remove an object from the world
  * 
- * @param this 
- * @param index 
+ * @param this : the world object
+ * @param index : the index of the object inside the world object array 
  */
 void remove_object_from_world(world_object *this, int index);
 
 /**
  * @brief Get the world object by id
  * 
- * @param w 
- * @param index 
+ * @param this : the world object
+ * @param index : the index of the object in the world object array
  * @return object 
  */
 object get_world_object_by_id(world_object obj, int index);

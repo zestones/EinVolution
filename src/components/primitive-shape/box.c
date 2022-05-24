@@ -1,10 +1,13 @@
 #include "../../../inc/components/primitive-shape/box.h"
 
+
 /**
  * @brief Create a box object
  * 
- * @param p 
- * @param size 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return box 
  */
 box create_box(position p, double width, double height, double depth) {
@@ -27,7 +30,7 @@ box create_box(position p, double width, double height, double depth) {
     // down side
     b.arr_face[0] = create_face(4,
         QUADS,
-        set_color(0.8, 0.5, 0.9),
+        set_color(0.3, 0.3, 1),
         set_position(get_x(p), get_y(p), get_z(p)),
         set_position(get_x(p) + width , get_y(p), get_z(p)),
         set_position(get_x(p) + width , get_y(p), get_z(p) + depth),
@@ -37,7 +40,7 @@ box create_box(position p, double width, double height, double depth) {
     // front side
     b.arr_face[1] = create_face(4,
         QUADS,
-        set_color(1, 0, 0),
+        set_color(0.1, 0.1, 1),
         set_position(get_x(p), get_y(p), get_z(p) + depth),
         set_position(get_x(p) + width, get_y(p), get_z(p) + depth),
         set_position(get_x(p) + width, get_y(p) + height, get_z(p) + depth),
@@ -47,7 +50,7 @@ box create_box(position p, double width, double height, double depth) {
     // back side
     b.arr_face[2] = create_face(4,
         QUADS,
-        set_color(0, 1, 0),
+        set_color(0.8, 0.8, 1),
         set_position(get_x(p), get_y(p), get_z(p)),
         set_position(get_x(p) + width, get_y(p), get_z(p)),
         set_position(get_x(p) + width, get_y(p) + height, get_z(p)),
@@ -57,7 +60,7 @@ box create_box(position p, double width, double height, double depth) {
     // right side
     b.arr_face[3] = create_face(4,
         QUADS,
-        set_color(0, 0, 1),
+        set_color(0.5, 0.5, 1),
         set_position(get_x(p) + width, get_y(p), get_z(p)),
         set_position(get_x(p) + width, get_y(p), get_z(p) + depth),
         set_position(get_x(p) + width, get_y(p) + height, get_z(p) + depth),
@@ -67,16 +70,17 @@ box create_box(position p, double width, double height, double depth) {
     // left side
     b.arr_face[4] = create_face(4,
         QUADS,
-        set_color(0.8, 0.5, 0.9),
+        set_color(0.5, 0.5, 1),
         set_position(get_x(p), get_y(p), get_z(p)),
         set_position(get_x(p), get_y(p), get_z(p) + depth),
         set_position(get_x(p), get_y(p) + height, get_z(p) + depth),
         set_position(get_x(p), get_y(p) + height, get_z(p))
     );
 
+    // up side
     b.arr_face[5] = create_face(4,
         QUADS,
-        set_color(0.8, 0.5, 0.9),
+        set_color(0.3, 0.3, 1),
         set_position(get_x(p), get_y(p) + height, get_z(p)),
         set_position(get_x(p) + width, get_y(p) + height, get_z(p)),
         set_position(get_x(p) + width, get_y(p) + height, get_z(p) + depth),

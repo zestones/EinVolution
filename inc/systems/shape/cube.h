@@ -24,12 +24,13 @@ typedef struct {
 	double edge_size;
 } cube;
 
+
 /**
  * @brief Create a cube object
  * 
- * @param p1 
- * @param p2 
- * @param size 
+ * @param p1 : the position of the point left down
+ * @param p2  : the position opposed to p1
+ * @param size : the size 
  * @return cube 
  */
 cube create_cube(position p1, position p2, double size);
@@ -37,16 +38,16 @@ cube create_cube(position p1, position p2, double size);
 /**
  * @brief Get the point cube object
  * 
- * @param c 
+ * @param c : the cube 
  * @return position* 
  */
 position *get_point_cube(cube c);
 
 /**
- * @brief checj if p is inside the cube
+ * @brief check if p is inside the cube 
  * 
- * @param c 
- * @param p 
+ * @param c : the cube 
+ * @param p : the point tested
  * @return int 
  */
 int is_point_inside_cube(cube c, position p);
@@ -54,14 +55,14 @@ int is_point_inside_cube(cube c, position p);
 /**
  * @brief draw the cube
  * 
- * @param c 
+ * @param c the cube
  */
 void draw_cube(cube c);
 
 /**
  * @brief print the cube
  * 
- * @param c 
+ * @param c : the cube
  */
 void print_cube(cube c);
 

@@ -43,15 +43,15 @@ typedef struct_node *octree;
 /**
  * @brief construct the octree
  * 
- * @param e 
- * @param c 
- * @param ... 
+ * @param e : the element
+ * @param c : the cube
+ * @param ... : the child
  * @return octree 
  */
 octree construct_octree(element e, cube c, ...);
 
 /**
- * @brief return an empty tree
+ * @brief return an empty tree 
  * 
  * @return octree 
  */
@@ -60,7 +60,7 @@ octree empty_tree();
 /**
  * @brief Get the tree root
  * 
- * @param A 
+ * @param A : the octree
  * @return element 
  */
 element get_tree_root(octree A);
@@ -68,7 +68,7 @@ element get_tree_root(octree A);
 /**
  * @brief Create a node
  * 
- * @param e 
+ * @param e : the element of the node
  * @return octree 
  */
 octree create_node(element e);
@@ -76,7 +76,7 @@ octree create_node(element e);
 /**
  * @brief print the tree
  * 
- * @param A 
+ * @param A : the octree
  */
 void print_tree(octree A);
 

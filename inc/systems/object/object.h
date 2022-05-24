@@ -4,6 +4,11 @@
 #include "../../systems/shape/face.h"
 #include "../../systems/shape/bounding_box.h"
 
+#define DANGEROUS_LEVEL_HEALTH 10
+#define CRITIC_LEVEL_HEALTH 5
+
+#define MAX_FACE 5
+
 /**
  * @brief structture of an object
  * 
@@ -28,10 +33,10 @@ typedef struct object {
 } object;
 
 /**
- * @brief concats object
+ * @brief concats objects
  * 
- * @param argc 
- * @param ... 
+ * @param argc the number of parameters
+ * @param ... the list of object
  * @return object 
  */
 object concat_objects(int argc, ...);
@@ -39,15 +44,23 @@ object concat_objects(int argc, ...);
 /**
  * @brief update the health point of the object
  * 
- * @param this 
- * @param health_point 
+ * @param this : the object
+ * @param health_point : the bonus/malus of health point 
  */
 void update_object_health(object *this, double health_point);
 
 /**
- * @brief draw the object
+ * @brief Set the object color
  * 
- * @param object the box
+ * @param this : the object
+ * @param c : the color
+ */
+void set_object_color(object *this, const color *c);
+
+/**
+ * @brief draw the box object
+ * 
+ * @param this : the object
  */
 void draw_object(object this);
 

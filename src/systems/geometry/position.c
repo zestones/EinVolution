@@ -1,11 +1,12 @@
 #include "../../../inc/systems/geometry/position.h"
 
+
 /**
  * @brief Set the position
  * 
- * @param x 
- * @param y 
- * @param z 
+ * @param x : the coords x
+ * @param y : the coords y
+ * @param z : the coords z
  * @return position 
  */
 position set_position(double x, double y, double z) {
@@ -20,8 +21,8 @@ position set_position(double x, double y, double z) {
 /**
  * @brief distance between 2 positions
  * 
- * @param p1 
- * @param p2 
+ * @param p1 : the first position
+ * @param p2 : the second position
  * @return double 
  */
 double distance(position p1, position p2) {
@@ -31,8 +32,8 @@ double distance(position p1, position p2) {
 /**
  * @brief get the position with the y min
  * 
- * @param p1 
- * @param p2 
+ * @param p1 : the first position 
+ * @param p2 : the second position
  * @return position 
  */
 position min_y_position(position p1, position p2) {
@@ -45,7 +46,7 @@ position min_y_position(position p1, position p2) {
 /**
  * @brief Get the x object
  * 
- * @param p 
+ * @param p : the position
  * @return double 
  */
 double get_x(position p) { return p.x; }
@@ -53,7 +54,7 @@ double get_x(position p) { return p.x; }
 /**
  * @brief Get the y object
  * 
- * @param p 
+ * @param p : the position
  * @return double 
  */
 double get_y(position p) { return p.y; }
@@ -61,7 +62,7 @@ double get_y(position p) { return p.y; }
 /**
  * @brief Get the z object
  * 
- * @param p 
+ * @param p : the position
  * @return double 
  */
 double get_z(position p) { return p.z; }
@@ -69,31 +70,31 @@ double get_z(position p) { return p.z; }
 /**
  * @brief Set the x object
  * 
- * @param p 
- * @param x 
+ * @param p : the position
+ * @param x : the coords x
  */
 void set_x(position *p, double x) { p->x = x; }
 
 /**
  * @brief Set the y object
  * 
- * @param p 
- * @param y 
+ * @param p : the position
+ * @param y : th coords y
  */
 void set_y(position *p, double y) { p->y = y; }
 
 /**
  * @brief Set the z object
  * 
- * @param p 
- * @param z 
+ * @param p : the position
+ * @param z : the coords z
  */
 void set_z(position *p, double z) { p->z = z; }
 
 /**
  * @brief print the position
  * 
- * @param p 
+ * @param p : the position
  */
 void print_position(position p) {
     fprintf(stdout, "{x: %f, y: %f, z: %f,}\n", p.x, p.y, p.z);
