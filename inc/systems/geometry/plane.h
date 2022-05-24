@@ -24,22 +24,23 @@ typedef struct {
     double d;
 } plane;
 
+
 /**
  * @brief Create a plane object
  * 
- * @param p1 
- * @param p2 
- * @param p3 
+ * @param p1 : the first position
+ * @param p2 : the second position 
+ * @param p3 : the third position 
  * @return plane 
  */
 plane create_plane(position p1, position p2, position p3);
 
 /**
- * @brief calculate the distance between
- * the plane and the position u
+ * @brief return the distance between the plane
+ * and the position of u
  * 
- * @param p 
- * @param u 
+ * @param p : the plane
+ * @param u : the position
  * @return double 
  */
 double distance_to_plane(plane p, vector u);
@@ -47,7 +48,7 @@ double distance_to_plane(plane p, vector u);
 /**
  * @brief print the plane
  * 
- * @param p 
+ * @param p : the plane
  */
 void print_plane(plane p);
 

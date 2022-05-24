@@ -5,8 +5,8 @@
 /**
  * @brief Create a camera object
  * 
- * @param eye 
- * @param look_at 
+ * @param eye : the position of the camera
+ * @param look_at : the look at position
  * @return camera 
  */
 camera create_camera(position eye, position look_at) {
@@ -38,8 +38,8 @@ camera create_camera(position eye, position look_at) {
 /**
  * @brief yaw rotation
  * 
- * @param cam 
- * @param angle 
+ * @param cam : the camera
+ * @param angle : the angle
  */
 void yaw(camera *cam, double angle) {
     cam->right = unit_vector(addition_vector(mult_vector(cam->right, cos(angle)), mult_vector(cam->forward, sin(angle))));
@@ -49,8 +49,8 @@ void yaw(camera *cam, double angle) {
 /**
  * @brief pitch rotation
  * 
- * @param cam 
- * @param angle 
+ * @param cam : the camera
+ * @param angle : the angle
  */
 void pitch(camera *cam, double angle) {
     cam->forward = unit_vector(addition_vector(mult_vector(cam->forward, cos(angle)), mult_vector(cam->up, sin(angle))));
@@ -60,8 +60,8 @@ void pitch(camera *cam, double angle) {
 /**
  * @brief roll rotation
  * 
- * @param cam 
- * @param angle 
+ * @param cam : the camera
+ * @param angle : the angle
  */
 void roll(camera *cam, double angle) {
     cam->right = unit_vector(addition_vector(mult_vector(cam->right, cos(angle)), mult_vector(cam->up, sin(angle))));
@@ -71,10 +71,10 @@ void roll(camera *cam, double angle) {
 /**
  * @brief move the camera
  * 
- * @param cam 
- * @param w 
- * @param direction 
- * @param speed 
+ * @param cam : the camera
+ * @param w : the world
+ * @param direction : the direction
+ * @param speed : the speed
  */
 static void move(camera *cam, world w, vector direction, double speed) {
     position p = addition_vector(cam->eye, mult_vector(direction, speed));
@@ -86,55 +86,55 @@ static void move(camera *cam, world w, vector direction, double speed) {
 /**
  * @brief move the camera forward
  * 
- * @param cam 
- * @param w 
+ * @param cam : the camera
+ * @param w : the world
  */
 void move_forward(camera *cam, world w) { move(cam, w, cam->forward,cam->speed); }
 
 /**
  * @brief move the camera backward
  * 
- * @param cam 
- * @param w 
+ * @param cam : the camera
+ * @param w : the world
  */
 void move_backward(camera *cam, world w) { move(cam, w, cam->forward, -cam->speed); }
 
 /**
  * @brief move the camera up
  * 
- * @param cam 
- * @param w 
+ * @param cam : the camera
+ * @param w : the world
  */
 void move_up(camera *cam, world w) { move(cam, w, cam->up, cam->speed); }
 
 /**
  * @brief move camera right
  * 
- * @param cam 
- * @param w 
+ * @param cam : the camera
+ * @param w : the world
  */
 void move_right(camera *cam, world w) { move(cam, w, cam->right, cam->speed); }
 
 /**
  * @brief move camera left
  * 
- * @param cam 
- * @param w 
+ * @param cam : the camera
+ * @param w : the world
  */
 void move_left(camera *cam, world w) { move(cam, w, cam->right, -cam->speed); }
 
 /**
  * @brief move the camera down
  * 
- * @param cam 
- * @param w 
+ * @param cam : the camera
+ * @param w : the world
  */
 void move_down(camera *cam, world w) { move(cam, w, cam->up, -cam->speed); }
 
 /**
  * @brief rotate the cam for the menu screen
  * 
- * @param cam 
+ * @param cam : the camera
  */
 void rotate_menu_screen(camera *cam) {
     cam->menu_angle += cam->menu_rotation;
@@ -144,7 +144,7 @@ void rotate_menu_screen(camera *cam) {
 /**
  * @brief Get the camera position object
  * 
- * @param cam 
+ * @param cam : the camera
  * @return vector 
  */
 vector get_camera_position(camera cam) { return cam.eye; } 
@@ -152,7 +152,7 @@ vector get_camera_position(camera cam) { return cam.eye; }
 /**
  * @brief Get the camera direction object
  * 
- * @param cam 
+ * @param cam : the camera
  * @return vector 
  */
 vector get_camera_direction(camera cam) { return cam.forward; }
@@ -160,7 +160,7 @@ vector get_camera_direction(camera cam) { return cam.forward; }
 /**
  * @brief update the camera look vector
  * 
- * @param cam 
+ * @param cam : the camera
  */
 void update_camera_look(camera *cam) { 
     cam->look_at = addition_vector(get_camera_position(*cam), get_camera_direction(*cam));
@@ -169,16 +169,16 @@ void update_camera_look(camera *cam) {
 /**
  * @brief update the camera position
  * 
- * @param cam 
- * @param p 
+ * @param cam : the camera
+ * @param p : the position
  */
 void update_camera_position(camera *cam, position p) { cam->eye = p; }
 
 /**
  * @brief Set the camera speed object
  * 
- * @param cam 
- * @param speed 
+ * @param cam : the camera
+ * @param speed : the speed
  */
 void set_camera_speed(camera *cam, double speed) { 
     if (screen.mode == GAME) cam->speed = speed;

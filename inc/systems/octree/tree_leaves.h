@@ -15,20 +15,21 @@ typedef struct {
     int length;
 } tree_leaves;
 
+
 /**
- * @brief fill the structure tree_leaves 
+ * @brief fill the structure tree_leaves
  * 
- * @param leaves 
- * @param world_obj 
- * @param c 
+ * @param leaves : the leaves
+ * @param world_obj : the list of the object
+ * @param c : the cube
  */
 void construct_tree_leaves(tree_leaves *leaves, world_object world_obj, cube c);
 
 /**
  * @brief Get the tree leaves cube object
  * 
- * @param leaves 
- * @param index 
+ * @param leaves : the leaves
+ * @param index : the index
  * @return cube 
  */
 cube get_tree_leaves_cube(tree_leaves leaves, int index);
@@ -36,8 +37,8 @@ cube get_tree_leaves_cube(tree_leaves leaves, int index);
 /**
  * @brief Get the tree leaves world object object
  * 
- * @param leaves 
- * @param index 
+ * @param leaves : the leaves
+ * @param index : the index of the array of object
  * @return world_object 
  */
 world_object get_tree_leaves_world_object(tree_leaves leaves, int index);
@@ -45,7 +46,7 @@ world_object get_tree_leaves_world_object(tree_leaves leaves, int index);
 /**
  * @brief draw world object bounding box
  * 
- * @param leaves 
+ * @param leaves : the leaves
  */
 void draw_world_object_bounding_box(tree_leaves leaves);
 

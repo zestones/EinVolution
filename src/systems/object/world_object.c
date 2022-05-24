@@ -59,8 +59,8 @@ object *generate_world_object(position pos) {
 /**
  * @brief Get the number object inside the cube
  * 
- * @param this 
- * @param c 
+ * @param this : the world object
+ * @param c : the cube
  * @return int 
  */
 int get_number_object(world_object this, cube c) {
@@ -78,8 +78,8 @@ int get_number_object(world_object this, cube c) {
 /**
  * @brief Get the object in cube
  * 
- * @param this 
- * @param c 
+ * @param this : the world object
+ * @param c : the cube
  * @return world_object 
  */
 world_object get_object_in_cube(world_object this, cube c) {
@@ -105,8 +105,8 @@ world_object get_object_in_cube(world_object this, cube c) {
 /**
  * @brief Get the world object by id
  * 
- * @param this 
- * @param index 
+ * @param this : the world object
+ * @param index : the index of the object in the world object array
  * @return object 
  */
 object get_world_object_by_id(world_object this, int index) { return this.arr_object[index]; }
@@ -114,8 +114,8 @@ object get_world_object_by_id(world_object this, int index) { return this.arr_ob
 /**
  * @brief remove an object from the world
  * 
- * @param this 
- * @param index 
+ * @param this : the world object
+ * @param index : the index of the object inside the world object array 
  */
 void remove_object_from_world(world_object *this, int index) {
     int i = 0;

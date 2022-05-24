@@ -1,9 +1,13 @@
 #include "../../../inc/components/complex-shape/tunnel.h"
+
+
 /**
  * @brief Create a tunnel object
  * 
- * @param p 
- * @param size 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return tunnel 
  */
 tunnel create_tunnel(position p, double width, double height, double depth) {

@@ -38,11 +38,12 @@ typedef struct {
     int length;
 } player_missile;
 
+
 /**
  * @brief Create a missile object
  * 
- * @param p 
- * @param forward 
+ * @param p : the position
+ * @param forward : the direction
  * @return missile 
  */
 missile create_missile(position p, vector forward);
@@ -50,31 +51,31 @@ missile create_missile(position p, vector forward);
 /**
  * @brief move the missile forward
  * 
- * @param m 
- * @param w 
+ * @param m : the missile
+ * @param w : the world
  */
 void move_missile_forward(missile *m, world w);
 
 /**
- * @brief remove a missile
+ * @brief remove missile from player missile
  * 
- * @param m 
+ * @param m : the missile 
  */
 void remove_missile(missile *m);
 
 /**
- * @brief update the missile launched
+ * @brief update the missile launched 
  * 
- * @param pm 
- * @param p 
- * @param forward 
+ * @param pm : the player missile i.e the array of the missile launched by the player
+ * @param p : the position
+ * @param forward : the direction
  */
 void update_player_missile(player_missile *pm, position p, vector forward);
 
 /**
  * @brief draw the missile
  * 
- * @param m 
+ * @param m : the missile
  */
 void draw_missile(missile m);
 

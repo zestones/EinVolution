@@ -9,11 +9,11 @@
 #define DISTANCE_DETECTION 25
 
 /**
- * @brief draw the field of view
+ * @brief draw the field of view of the camera
  * 
- * @param eye 
- * @param frust 
- * @param leaves 
+ * @param eye : the position of the player
+ * @param frust : the frustum
+ * @param leaves : the leaves
  */
 void draw_field_view(position eye, frustum frust, tree_leaves leaves);
 

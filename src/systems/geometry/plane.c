@@ -1,11 +1,12 @@
 #include "../../../inc/systems/geometry/plane.h"
 
+
 /**
  * @brief Create a plane object
  * 
- * @param p1 
- * @param p2 
- * @param p3 
+ * @param p1 : the first position
+ * @param p2 : the second position 
+ * @param p3 : the third position 
  * @return plane 
  */
 plane create_plane(position p1, position p2, position p3) {
@@ -19,6 +20,8 @@ plane create_plane(position p1, position p2, position p3) {
 
     // calculate the normal vector
 	p.normal = unit_vector(cross_product(u, v));
+
+    // set the d value
 	p.d = -(scalar_product(p.normal, p2));
 
     return p;
@@ -28,8 +31,8 @@ plane create_plane(position p1, position p2, position p3) {
  * @brief return the distance between the plane
  * and the position of u
  * 
- * @param p 
- * @param u 
+ * @param p : the plane
+ * @param u : the position
  * @return double 
  */
 double distance_to_plane(plane p, vector u) {
@@ -39,7 +42,7 @@ double distance_to_plane(plane p, vector u) {
 /**
  * @brief print the plane
  * 
- * @param p 
+ * @param p : the plane 
  */
 void print_plane(plane p) {
     fprintf(stdout, "\n[ PRINT PLANE ]\n");

@@ -1,14 +1,15 @@
 #include "../../../inc/components/complex-shape/octahedron.h"
 
+
 extern const color brown[];
 
 /**
  * @brief Create a octahedron object
  * 
- * @param p 
- * @param width 
- * @param height 
- * @param depth 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return octahedron 
  */
 octahedron create_octahedron(position p, double width, double height, double depth) {

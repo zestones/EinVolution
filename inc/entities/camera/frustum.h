@@ -48,28 +48,30 @@ typedef struct {
 
 } frustum;
 
+
 /**
  * @brief Create a frustum perspective
  * 
- * @param width 
- * @param height 
+ * @param width : the width 
+ * @param height : the height
  * @return frustum 
  */
 frustum create_frustum_perspective(int width, int height);
 
 /**
- * @brief 
+ * @brief update the frustum perspective
+ * every time the window is resized
  * 
- * @param frust 
- * @param ration 
+ * @param frust : the frustum
+ * @param ratio : the ratio
  */
 void update_frustum_perspective(frustum *frust, double ration);
 
 /**
  * @brief check if a point is inside the frustum
  * 
- * @param frust 
- * @param p 
+ * @param frust : the frustum
+ * @param p : the position
  * @return int 
  */
 int is_point_in_frustum(frustum frust, position p);
@@ -78,18 +80,18 @@ int is_point_in_frustum(frustum frust, position p);
  * @brief update the frustum
  * for every movement all of the face of the frucstum are calculated
  * 
- * @param frust 
- * @param eye 
- * @param forward 
- * @param up 
+ * @param frust : the frustum
+ * @param eye : the position
+ * @param forward : the direction forward
+ * @param up : the direction up
  */
 void update_frustum(frustum *frust, position eye, vector forward, vector up);
 
 /**
- * @brief check if a cube is inside the fructum
+ * @brief check if a cube is in the frustum
  * 
- * @param frust 
- * @param c 
+ * @param frust : the frustum
+ * @param c : the cube
  * @return int 
  */
 int is_cube_in_frustum(frustum frust, cube c);

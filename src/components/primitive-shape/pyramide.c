@@ -1,10 +1,13 @@
 #include "../../../inc/components/primitive-shape/pyramide.h"
 
+
 /**
  * @brief Create a pyramide object
  * 
- * @param p 
- * @param size 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return pyramide 
  */
 pyramide create_pyramide(position p, double width, double height, double depth) {

@@ -69,8 +69,8 @@ void Init_Game_Parameter(int new_game);
 /**
  * @brief reshape the window with the good proportion
  * 
- * @param width 
- * @param height 
+ * @param width : the screen width
+ * @param height  : the sreen height
  */
 void reshape(int width, int height);
 
@@ -78,7 +78,7 @@ void reshape(int width, int height);
  * @brief Refresh the display periodically 
  * according to the FPS value (in window.h)
  * 
- * @param v 
+ * @param v : the time
  */
 void Timer(int v);
 

@@ -19,8 +19,10 @@ typedef struct object tree;
 /**
  * @brief Create a tree object
  * 
- * @param p 
- * @param size 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return tree 
  */
 tree create_tree(position p, double width, double height, double depth);

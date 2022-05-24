@@ -24,17 +24,18 @@ typedef struct world {
 /**
  * @brief Create a world object
  * 
- * @param p1 
- * @param p2 
- * @param size 
+ * @param p1 : the first position
+ * @param p2 : the second position
+ * @param size : the edge size
  * @return world 
  */
 world create_world(position p1, position p2, double size);
 
 /**
- * @brief Set the world texture
+ * @brief Set the world texture object
+ * ! source : http://thepentamollisproject.blogspot.com/2018/02/setting-up-first-person-camera-in.html
  * 
- * @param c 
+ * @param c : the cube
  */
 void set_world_texture(cube c);
 

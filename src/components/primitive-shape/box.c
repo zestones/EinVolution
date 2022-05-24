@@ -1,10 +1,13 @@
 #include "../../../inc/components/primitive-shape/box.h"
 
+
 /**
  * @brief Create a box object
  * 
- * @param p 
- * @param size 
+ * @param p : the position
+ * @param width : the width
+ * @param height : the height
+ * @param depth : the depth
  * @return box 
  */
 box create_box(position p, double width, double height, double depth) {
