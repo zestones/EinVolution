@@ -75,6 +75,17 @@ void update_object_health(object *this, double health_point) {
 }
 
 /**
+ * @brief Set the object color
+ * 
+ * @param this 
+ * @param c 
+ */
+void set_object_color(object this, const color *c) {
+    for (int i = 0; i < this.length; i++)
+        update_face_color(&this.arr_face[i], c[i]);
+}
+
+/**
  * @brief draw the box object
  * 
  * @param b 

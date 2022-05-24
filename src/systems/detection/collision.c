@@ -61,6 +61,7 @@ static void update_player_health(int health) {
         Init_Game_Parameter(NEW_GAME);
         return;
     }
+
     player_health = health;
 }
 
@@ -72,12 +73,12 @@ static void update_player_health(int health) {
  */
 static void primitive_object_collision(position player, bounding_box this) {
     if (point_intersect_bounding_box(player, this)) {           
-            // ! for dev
-            /*************/
-            printf("COLLISION\n");
-            screen.key.IS_UP_KEY_DOWN = !screen.key.IS_UP_KEY_DOWN;
-            /*************/
-            update_player_health(player_health - 1);
+        // ! for dev
+        /*************/
+        printf("COLLISION\n");
+        /*************/
+        screen.key.IS_UP_KEY_DOWN = !screen.key.IS_UP_KEY_DOWN;
+        update_player_health(player_health - 1);
     }
 }
 

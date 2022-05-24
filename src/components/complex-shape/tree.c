@@ -1,4 +1,5 @@
 #include "../../../inc/components/complex-shape/tree.h"
+#include "../../../inc/systems/shape/texture.h"
 
 /**
  * @brief Create a tree object
@@ -22,6 +23,8 @@ tree create_tree(position p, double width, double height, double depth) {
 
     // create the trunk
     box trunk = create_box(p, t.width/6, t.height/2, t.depth/6);
+    set_object_color(trunk, brown);
+
     position cpy_pos_z = p;
 
     set_x(&cpy_pos_z, (get_x(p) - t.width/2) + trunk.width/2);

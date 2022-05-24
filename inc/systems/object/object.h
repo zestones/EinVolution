@@ -45,6 +45,14 @@ object concat_objects(int argc, ...);
 void update_object_health(object *this, double health_point);
 
 /**
+ * @brief Set the object color
+ * 
+ * @param this 
+ * @param c 
+ */
+void set_object_color(object this, const color *c);
+
+/**
  * @brief draw the object
  * 
  * @param object the box

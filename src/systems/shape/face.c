@@ -50,6 +50,14 @@ static position get_point_face(face this, int index) { return this.points[index]
 face get_face_by_index(face *this, int index) { return this[index]; }
 
 /**
+ * @brief update the face color
+ * 
+ * @param this 
+ * @param c 
+ */
+void update_face_color(face *this, color c) { this->color = c; }
+
+/**
  * @brief draw the face object
  * 
  * @param f 

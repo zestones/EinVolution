@@ -21,7 +21,14 @@ octahedron create_octahedron(position p, double width, double height, double dep
     pyramide py = create_pyramide(p, width/2, height/2, depth/2);
     pyramide py_down = create_pyramide(p, width/2, -height/2, depth/2);
 
+    int i = 0;
     
+    update_face_color(&py_down.arr_face[i++], set_color(0.7, 0.5, 0.3));
+    update_face_color(&py_down.arr_face[i++], set_color(0.7, 1, 0.8));
+    update_face_color(&py_down.arr_face[i++], set_color(0.7, 0.7, 0.5));
+    update_face_color(&py_down.arr_face[i++], set_color(0.7, 0.7, 0.5));
+    update_face_color(&py_down.arr_face[i++], set_color(0.7, 0.5, 0.3));
+
     position min = get_bounding_box_min_position(py_down.bb_primitive_shape);
     py_down.bb_primitive_shape = set_object_bounding_box(min, width/2, height, depth/2);
 

@@ -53,6 +53,14 @@ face create_face(int argc, TYPE  type, color c, position p, ...);
 face get_face_by_index(face *this, int index);
 
 /**
+ * @brief update the face color
+ * 
+ * @param this 
+ * @param c 
+ */
+void update_face_color(face *this, color c);
+
+/**
  * @brief draw the face object
  * 
  * @param f 
